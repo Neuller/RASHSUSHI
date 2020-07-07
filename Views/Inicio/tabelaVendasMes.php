@@ -29,9 +29,9 @@ $result = mysqli_query($conexao, $sql);
             <!-- CABEÇALHO -->
 			<thead>
 				<tr>
-					<td>Nome</td>
-                    <td>Data</td>
-                    <td>Comprovante</td>
+					<td>Nome do Cliente</td>
+                    <td>Data da Venda</td>
+                    <td>Comprovante de Venda</td>
 					<td>Visualizar</td>
 				</tr>
 			</thead> 
@@ -48,7 +48,7 @@ $result = mysqli_query($conexao, $sql);
 						<!-- DATA DE CADASTRO -->
                             <td>'.$data.'</td>	
                         <!-- COMPROVANTE -->
-						<td>'.'<a href="./Procedimentos/Vendas/CriarComprovante.php?idserv='.$mostrar[0].'" target="_BLANK" class="btn btn-danger btn-sm">
+						<td>'.'<a href="./Procedimentos/Vendas/CriarComprovante.php?idvenda='.$mostrar[0].'" target="_BLANK" class="btn btn-danger btn-sm">
 						<span class="glyphicon glyphicon-print"></span>
 						</a>'.'</td>			
 						<!-- BOTÃO VISUALIZAR -->

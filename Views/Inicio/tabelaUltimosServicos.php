@@ -29,7 +29,7 @@ $result = mysqli_query($conexao, $sql);
             <!-- CABEÇALHO -->
 			<thead>
 				<tr>
-					<td>Nome</td>
+					<td>Nome do Cliente</td>
 					<td>Status</td>
 					<td>N° de Série</td>
 					<td>Data de entrada</td>

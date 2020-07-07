@@ -19,7 +19,7 @@ function file_get_contents_curl($url) {
     return $dados;
 }
 
-$html=file_get_contents("http://localhost/SGN/Views/Servicos/OrdemServico.php?idserv=".$id);
+$html=file_get_contents("http://localhost/NservPortal/Views/Servicos/OrdemServico.php?idserv=".$id);
 
 // Instanciamos um objeto da classe DOMPDF.
 $pdf = new DOMPDF();
