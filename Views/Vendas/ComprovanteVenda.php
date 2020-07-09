@@ -11,13 +11,13 @@ $conexao = $c->conexao();
 
 $idVenda = $_GET['idvenda'];
 
-$sql = "SELECT vend.ID_Venda,
- 	vend.ID_Cliente,
- 	vend.ID_Produto,
-    vend.ID_Usuario,
-	vend.ValorTotal,
-	vend.DataVenda
-	FROM vendas AS vend WHERE ID_Venda='$idVenda'";
+$sql = "SELECT ve.ID_Venda,
+ 	ve.ID_Cliente,
+ 	ve.ID_Produto,
+    ve.ID_Usuario,
+    ve.ValorTotal,
+	ve.DataVenda
+	FROM vendas AS ve WHERE ID_Venda='$idVenda'";
 
 $result = mysqli_query($conexao, $sql);
 
@@ -25,9 +25,7 @@ $mostrar = mysqli_fetch_row($result);
 
 $codigoVenda = $mostrar[0];
 $idCliente = $mostrar[1];
-$idProduto = $mostrar[2];
 $idVendedor = $mostrar[3];
-$valorTotal = $mostrar[4];
 $dataVenda = $mostrar[5];
 ?>
 
@@ -126,37 +124,73 @@ $dataVenda = $mostrar[5];
                     <span><?php echo $informacoesCliente[9]; ?></span>
                 </div>
             <?php } ?>
-            <!-- INFORMAÇÕES DO EQUIPAMENTO E SERVIÇOS -->
+            <!-- INFORMAÇÕES DO EQUIPAMENTO E SERVIÇOS -->           
             <div class="produtosServicos">
                 <div class="text-left">
-                    <label><strong>PRODUTOS E SERVIÇOS</strong></label>
+                    <label><strong>PRODUTO(S)</strong></label>
                 </div>
                 <hr>
             </div>
             <div class="dadosProdutosServicos">
-                
+                <div class="formatoObservacao" align="center">
+                    <span>*CÓDIGO - DESCRIÇÃO - VALOR UN - GARANTIA*</span>
+                </div>
+                <?php 
+                    $sql="SELECT ve.ID_Venda,
+                    ve.ID_Cliente,
+                    ve.ID_Produto,
+                    ve.ID_Usuario,
+                    ve.ValorTotal,
+                    ve.DataVenda,
+                    pro.Codigo,
+                    pro.Descricao,
+                    pro.Garantia,
+                    pro.Preco
+                    FROM vendas AS ve
+                    INNER JOIN produtosnserv AS pro
+                    ON ve.ID_Produto = pro.ID_Produto
+                    and ve.ID_Venda='$idVenda'";
+                                
+                    $resultado = mysqli_query($conexao, $sql);
+                    
+                    while($produtoPortal = mysqli_fetch_row($resultado)){
+                ?>
+                <div class="informacoesProdutos">
+                    <ul>
+                        <li>
+                            <span><?php echo $produtoPortal[6] ?> || 
+                            <?php echo $produtoPortal[7] ?> || R$
+                            <?php echo $produtoPortal[9] ?> || 
+                            <?php echo $produtoPortal[8] ?></span>
+                        </li>
+                    </ul>
+                </div>              
+                <?php			    
+ 				}
+ 			    ?> 
+                <div>
+                    <span>VENDEDOR:</span>
+                    <span><?php echo $objUtils->nomeColaborador($idVendedor); ?></span>
+                </div>
+                <div>
+                    <span>DATA DA VENDA:</span>
+                    <span><?php echo $objUtils->data($dataVenda) ?></span>
+                </div>              
+                <?php
+                    $sql = "SELECT SUM(ValorTotal) FROM vendas WHERE ID_Venda = '$idVenda'";
+                    $resultado = mysqli_query($conexao, $sql);
+                    while ($total = mysqli_fetch_row($resultado)) {
+                    $valorTotal = $total[0];
+                ?>               
+                <div>
+                    <span>VALOR TOTAL:</span>
+                    <span><?php echo "R$ ".$valorTotal ?></span>
+                </div>
+                <?php } ?>
             </div>
         </form>
-        <!-- CONDIÇÕES DE SERVIÇOS -->
+        <!-- MENSAGEM FIDELIDADE -->
         <div class="produtosServicos">
-            <div class="text-center" align="center">
-                <div>
-                    <span><strong>CONDIÇÕES DE SERVIÇOS</strong></span>
-                </div>
-            </div>
-            <div class="text-justity condicoesServico">
-                <div>
-                    <span>
-                        Orçamento de IMPRESSORAS e NOTEBOOKS,
-                        será cobrada uma taxa de R$ 25,00 caso o mesmo seja recusado pelo cliente.
-                    </span>
-                </div>
-                <div>
-                    <span>
-                        Após 90 dias para retirada do equipamento, será cobrado MULTA no valor de R$ 01,00 ao dia a título de guarda.
-                    </span>
-                </div>
-            </div>
             <div class="text-center msgFidelidade">
                 <span>
                     A qualidade é a nossa melhor garantia de fidelidade ao cliente,
@@ -189,8 +223,12 @@ $dataVenda = $mostrar[5];
         margin-top: 30px;
     }
 
-    .condicoesServico {
-        margin-top: 15px;
+    .informacoesProdutos{
+        margin-bottom: 10px;
+    }
+
+    .formatoObservacao {
+        margin-bottom: 15px;
         color: red;
         font-size: 11px;
     }

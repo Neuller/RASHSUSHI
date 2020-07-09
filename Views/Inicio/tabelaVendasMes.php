@@ -12,6 +12,7 @@ $dataAtual = date('m');
 $sql = "SELECT ID_Venda, ID_Cliente, ID_Produto, ID_Usuario, ValorTotal, DataVenda
 FROM vendas 
 where MONTH(DataVenda) = ".$dataAtual."
+GROUP BY ID_Venda
 ORDER BY DataVenda DESC";
 
 $result = mysqli_query($conexao, $sql);
