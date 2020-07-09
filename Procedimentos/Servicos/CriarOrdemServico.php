@@ -1,10 +1,9 @@
 <?php
-// Carregar dompdf
 require_once '../../Lib/dompdf/autoload.inc.php';
 
 use Dompdf\Dompdf;
 
-$id=$_GET['idserv']; // Via URL - Método GET
+$id = $_GET['idserv']; // Via URL - Método GET
 
 function file_get_contents_curl($url) {
     $ch = curl_init();
@@ -19,22 +18,22 @@ function file_get_contents_curl($url) {
     return $dados;
 }
 
-$html=file_get_contents("http://localhost/NservPortal/Views/Servicos/OrdemServico.php?idserv=".$id);
+$html = file_get_contents("http://localhost/NservPortal/Views/Servicos/OrdemServico.php?idserv=".$id);
 
 // Instanciamos um objeto da classe DOMPDF.
 $pdf = new DOMPDF();
  
 // Definimos o tamanho do papel e orientação.
-$pdf->set_paper("a4", "partrait");
+$pdf -> set_paper("a4", "portrait");
  
 // Carregar o conteúdo html.
-$pdf->load_html($html);
+$pdf -> load_html($html);
  
 // Renderizar PDF.
-$pdf->render();
+$pdf -> render();
  
 // Enviamos pdf para navegador.
-$pdf->stream('OrdemServico.pdf', array("Attachment"=>0));
+$pdf -> stream('OrdemServico.pdf', array("Attachment" => 0));
 ?>
 
 

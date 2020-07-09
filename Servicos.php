@@ -266,6 +266,7 @@ if (isset($_SESSION['User'])) {
 			$('#tabelaServicosEntrada').load('./Views/Servicos/TabelaServicos.php');
 			$('.dataSaida').mask('99/99/9999');
 			$('.valorTotal').mask('9999999999');
+			
 			$('#btnEditar').click(function() {
 				// VALIDAR CAMPOS
 				var diagnostico = frmServicoU.diagnosticoU.value;

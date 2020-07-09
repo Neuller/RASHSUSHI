@@ -191,8 +191,7 @@ if (isset($_SESSION['User'])) {
                     url: "./Procedimentos/Vendas/AdicionarProdutoTbl.php",
                     success: function(r) {
                         $('#tabelaVendasTemporaria').load('./Views/Vendas/TabelaVendasTemporaria.php');
-                        alertify.success("Produto adicionado no carrinho");
-                        $('#frmVenda')[0].reset();
+                        alertify.success("Produto adicionado no carrinho");                      
                     }
                 });
             });
