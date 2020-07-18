@@ -7,7 +7,7 @@
 <meta name="author" content="Neuller César">
 
 <!-- TÍTULO -->
-<title>SGN - SISTEMA DE GESTÃO NSERV</title>
+<title>ERP - PORTAL NSERV</title>
 
 <!-- ICONE -->
 <link rel="icon" href="Img/Icone.png">

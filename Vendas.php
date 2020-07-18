@@ -29,6 +29,10 @@ if (isset($_SESSION['User'])) {
 				<div class="col-sm-12" align="center">
 					<div id="tabelaVendas"></div>
 				</div>
+            </div>
+            <!-- BTN NOVO CADASTRO -->
+			<div class="btnLeft">
+				<span class="btn btn-success" id="btnNovoCadastro">NOVO CADASTRO</span>
 			</div>
         </div>
     </body>
@@ -40,6 +44,10 @@ if (isset($_SESSION['User'])) {
 		// CARREGAR TABELA
 		$(document).ready(function() {
             $('#tabelaVendas').load('./Views/Vendas/TabelaVendas.php');
+
+            $('#btnNovoCadastro').click(function() {
+				window.location.href = "http://localhost/NservPortal/CadastrarVendas.php";
+			});
         });
     </script>
     <style>

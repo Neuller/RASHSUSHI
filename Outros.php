@@ -21,12 +21,16 @@ if (isset($_SESSION['User'])) {
                     <h3><strong>TABELA DE PRODUTOS - OUTROS</strong></h3>
                 </div>
             </div>
-            <!-- TABELA HARD DISK -->
+            <!-- TABELA OUTROS -->
             <div class="row">
                 <div class="col-sm-12" align="center">
                     <div id="tabelaOutros"></div>
                 </div>
             </div>
+            <!-- BTN NOVO CADASTRO -->
+			<div class="btnLeft">
+				<span class="btn btn-success" id="btnNovoCadastro">NOVO CADASTRO</span>
+			</div>
         </div>
         <!-- MODAL EDIÇÃO -->
         <div class="modal fade" id="editarProduto" tabindex="-1" role="dialog" aria-labelledby="modalEditar">
@@ -253,6 +257,10 @@ if (isset($_SESSION['User'])) {
                     }
                 });
             });
+
+            $('#btnNovoCadastro').click(function() {
+				window.location.href = "http://localhost/NservPortal/CadastrarProdutos.php";
+			});
         });
         // PREENCHER MODAL DE EDIÇÂO
         function adicionarDados(idProduto) {

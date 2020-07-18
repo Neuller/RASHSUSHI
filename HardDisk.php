@@ -26,6 +26,10 @@ if (isset($_SESSION['User'])) {
                     <div id="tabelaHardDisk"></div>
                 </div>
             </div>
+            <!-- BTN NOVO CADASTRO -->
+			<div class="btnLeft">
+				<span class="btn btn-success" id="btnNovoCadastro">NOVO CADASTRO</span>
+			</div>
         </div>
         <!-- MODAL EDIÇÃO -->
         <div class="modal fade" id="editarProduto" tabindex="-1" role="dialog" aria-labelledby="modalEditar">
@@ -252,6 +256,10 @@ if (isset($_SESSION['User'])) {
                     }
                 });
             });
+
+            $('#btnNovoCadastro').click(function() {
+				window.location.href = "http://localhost/NservPortal/CadastrarProdutos.php";
+			});
         });
         // EDITAR DADOS DE PRODUTO
         function adicionarDados(idProduto) {

@@ -31,7 +31,7 @@ if (mysqli_num_rows($result) > 0) {
 				<div class="panel panel-body">
 					<!-- IMAGEM -->
 					<div class="imagemPainel">
-						<img src="Img/Login.jpg" width="100%">
+						<img src="Img/NSERV.png" width="100%">
 					</div>
 					<!-- FORMULÁRIO -->
 					<form id="frmLogin" class="col-md-12 col-sm-12 col-xs-12">
