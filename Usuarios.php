@@ -20,30 +20,32 @@ if(isset($_SESSION['User'])){
 		</div>
 		<!-- FORMULÁRIO DE CADASTRO --> 
 		<div class="row">
-			<div class="col-sm-4" align="center">
-				<form id="frmRegistro">
+			<div class="col-sm-4">
+				<form id="frmUsuario">
 					<!-- USUÁRIO -->
-					<div>
-						<label>USUÁRIO*</label>
-						<input type="text" class="form-control input-sm" name="usuario" id="usuario">
+					<div class="mb-20px col-md-12 col-sm-12 col-xs-12">
+						<label>USUÁRIO<span class="required">*</span></label>
+						<input type="text" class="form-control input-sm align" name="usuario" id="usuario">
 					</div>
 					<!-- NOME -->
-					<div>
-						<label>NOME*</label>
+					<div class="mb-20px col-md-12 col-sm-12 col-xs-12">
+						<label>NOME<span class="required">*</span></label>
 						<input type="text" class="form-control input-sm" name="nome" id="nome">
 					</div>
 					<!-- E-MAIL -->
-					<div>
-						<label>E-MAIL*</label>
+					<div class="mb-20px col-md-12 col-sm-12 col-xs-12">
+						<label>E-MAIL<span class="required">*</span></label>
 						<input type="text" class="form-control input-sm" name="email" id="email">
 					</div>
 					<!-- SENHA -->
-					<div>
-						<label>SENHA*</label>
+					<div class="mb-20px col-md-12 col-sm-12 col-xs-12">
+						<label>SENHA<span class="required">*</span></label>
 						<input type="text" class="form-control input-sm" name="senha" id="senha">
 					</div>
 					<!-- BOTÂO CADASTRAR -->
-					<span class="btn btn-primary" id="registro">CADASTRAR</span>
+					<div class="btnCadastrar">
+						<span class="btn btn-primary" id="btnAdicionar" title="CADASTRAR">CADASTRAR</span>
+					</div>
 				</form>
 			</div>
 		<!-- TABELA --> 
@@ -100,21 +102,21 @@ if(isset($_SESSION['User'])){
 	// CARREGAR TABELA
 	$(document).ready(function(){
 		$('#tabelaUsuariosLoad').load('./Views/Usuarios/TabelaUsuarios.php');
-			$('#registro').click(function(){
+			$('#btnAdicionar').click(function(){
 				// VALIDAR CAMPOS
-				vazios=validarFormVazio('frmRegistro');
+				vazios=validarFormVazio('frmUsuario');
 			if(vazios > 0){
 				alertify.alert("ATENÇÃO","Preencha todo(s) o(s) campo(s).");
 				return false;
 			}
-		datos=$('#frmRegistro').serialize();
+		datos=$('#frmUsuario').serialize();
 		$.ajax({
 			type:"POST",
 			data:dados,
 			url:"./Procedimentos/Login/RegistrarUsuarios.php",
 			success:function(r){
 				if(r==1){
-					$('#frmRegistro')[0].reset();
+					$('#frmUsuario')[0].reset();
 					$('#tabelaUsuariosLoad').load('./Views/Usuarios/TabelaUsuarios.php');
 					alertify.success("Cadastro realizado com sucesso");
 				}else{

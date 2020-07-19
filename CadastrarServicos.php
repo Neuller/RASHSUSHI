@@ -107,7 +107,7 @@ if (isset($_SESSION['User'])) {
                         </div>
                         <!-- BOTÃO CADASTRAR -->
                         <div class="btnCadastrar">
-                            <span class="btn btn-primary" id="btnCadastrar" title="Cadastrar">CADASTRAR</span>
+                            <span class="btn btn-primary" id="btnCadastrar" title="CADASTRAR">CADASTRAR</span>
                         </div>
                     </form>
                 </div>

@@ -41,15 +41,15 @@ $result=mysqli_query($conexao,$sql);
 						<td>'.$mostrar[2].'</td>
 						<td>'.$mostrar[3].'</td>
 						<!-- BOTÂO EDITAR -->
-						<td>'.'<span class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editarProduto" title="Editar" onclick="adicionarDados('.$mostrar[0].','.$mostrar[1].')">
+						<td>'.'<span class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editarProduto" title="EDITAR" onclick="adicionarDados('.$mostrar[0].','.$mostrar[1].')">
 						<span class="glyphicon glyphicon-pencil"></span>
 						</span>'.'</td>
 						<!-- BOTÃO VISUALIZAR -->
-						<td>'.'<span class="btn btn-default btn-sm" data-toggle="modal" data-target="#visualizarProduto" onclick="visualizarDados('.$mostrar[0].','.$mostrar[1].')">
+						<td>'.'<span class="btn btn-default btn-sm" data-toggle="modal" data-target="#visualizarProduto" title="VISUALIZAR" onclick="visualizarDados('.$mostrar[0].','.$mostrar[1].')">
 						<span class="glyphicon glyphicon-search"></span>
 						</span>'.'</td>
 						<!-- BOTÃO EXCLUIR -->
-						<td>'.'<span class="btn btn-danger btn-sm" onclick="excluirProduto('.$mostrar[0].')">
+						<td>'.'<span class="btn btn-danger btn-sm" title="EXCLUIR" onclick="excluirProduto('.$mostrar[0].')">
 						<span class="glyphicon glyphicon-remove"></span>
 						</span>'.'</td>
 						</tr>

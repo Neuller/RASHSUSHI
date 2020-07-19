@@ -44,6 +44,9 @@ $valorTotal = $mostrar[9];
 <html>
 <link rel="stylesheet" type="text/css" href="../../Lib/bootstrap/css/bootstrap.css">
 
+<!-- TÍTULO -->
+<title>ORDEM DE SERVICO - NSERV</title>
+
 <head class="container">
     <div class="text-center">
         <!-- TÍTULO DA PÁGINA -->
@@ -51,12 +54,11 @@ $valorTotal = $mostrar[9];
         <!-- ICONE DA PÁGINA -->
         <link rel="icon" href="../../Img/Icon.png">
 
-
         <!-- CABEÇALHO -->
         <div class="cabecalho">
             <div class="logo">
                 <!-- LOGO -->
-                <img src="../../Img/CabecalhoOS.png" width="600" widht="600">
+                <img src="../../Img/Documentos/CABECALHO_DOCUMENTOS.png" width="600" widht="600">
             </div>
         </div>
     </div>

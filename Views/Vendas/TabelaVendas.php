@@ -43,11 +43,11 @@ $result=mysqli_query($conexao,$sql);
 							<!-- DATA DE CADASTRO -->
 								<td>'.$data.'</td>	
 							<!-- COMPROVANTE -->
-							<td>'.'<a href="./Procedimentos/Vendas/CriarComprovante.php?idvenda='.$mostrar[0].'" target="_BLANK" class="btn btn-danger btn-sm">
+							<td>'.'<a href="./Procedimentos/Vendas/CriarComprovante.php?idvenda='.$mostrar[0].'" target="_BLANK" class="btn btn-danger btn-sm" title="COMPROVANTE DE VENDA">
 							<span class="glyphicon glyphicon-print"></span>
 							</a>'.'</td>			
 							<!-- BOTÃO VISUALIZAR -->
-								<td>'.'<span class="btn btn-default btn-sm" data-toggle="modal" data-target="#visualizarVenda" onclick="visualizarDadosVendas('.$mostrar[0].','.$mostrar[1].')">
+								<td>'.'<span class="btn btn-default btn-sm" data-toggle="modal" data-target="#visualizarVenda" title="VISUALIZAR" onclick="visualizarDadosVendas('.$mostrar[0].','.$mostrar[1].')">
 								<span class="glyphicon glyphicon-search"></span>
 								</span>'.'</td>							
 							</tr>

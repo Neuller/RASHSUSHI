@@ -31,7 +31,7 @@ session_start();
                         <td><?php echo "R$ " . $d[2]?></td>
                         <td><?php echo $d[5] ?></td>
                         <td>
-                            <span class="btn btn-danger btn-sm" onclick="excluir('<?php echo $i; ?>'), atualizarEstoque('<?php echo $idProduto; ?>,<?php echo $estoque; ?>')">
+                            <span class="btn btn-danger btn-sm" title="EXCLUIR" onclick="excluir('<?php echo $i; ?>'), atualizarEstoque('<?php echo $idProduto; ?>,<?php echo $estoque; ?>')">
                                 <span class="glyphicon glyphicon-remove"></span>
                             </span>
                         </td>
@@ -49,7 +49,7 @@ session_start();
             </tr>
         </table>
         <div class="btnCadastrar">
-            <span class="btn btn-primary" onclick="cadastrarVenda()" id="btnCadastrar" title="Cadastrar">CADASTRAR</span>
+            <span class="btn btn-primary" onclick="cadastrarVenda()" id="btnCadastrar" title="CADASTRAR">CADASTRAR</span>
         </div>
     </div>
 </body>

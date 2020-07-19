@@ -55,15 +55,15 @@ $result = mysqli_query($conexao, $sql);
 						<!-- DATA DE CADASTRO -->
 							<td>'.$data.'</td>
 						<!-- ORDEM DE SERVIÇO -->
-							<td>'.'<a href="./Procedimentos/Servicos/CriarOrdemServico.php?idserv='.$mostrar[0].'" target="_BLANK" class="btn btn-danger btn-sm">
+							<td>'.'<a href="./Procedimentos/Servicos/CriarOrdemServico.php?idserv='.$mostrar[0].'" target="_BLANK" class="btn btn-danger btn-sm" title="ORDEM DE SERVIÇO">
 							<span class="glyphicon glyphicon-print"></span>
 							</a>'.'</td>
 						<!-- BOTÂO EDITAR -->
-							<td>'.'<span class="btn btn-warning btn-sm" data-toggle="modal" data-target="#atualizarServico" title="Editar" onclick="adicionarDados('.$mostrar[0].','.$mostrar[1].')">
+							<td>'.'<span class="btn btn-warning btn-sm" data-toggle="modal" data-target="#atualizarServico" title="EDITAR" onclick="adicionarDados('.$mostrar[0].','.$mostrar[1].')">
 							<span class="glyphicon glyphicon-pencil"></span>
 							</span>'.'</td>
 						<!-- BOTÃO VISUALIZAR -->
-							<td>'.'<span class="btn btn-default btn-sm" data-toggle="modal" data-target="#visualizarServico" onclick="visualizarDados('.$mostrar[0].','.$mostrar[1].')">
+							<td>'.'<span class="btn btn-default btn-sm" data-toggle="modal" data-target="#visualizarServico" title="VISUALIZAR" onclick="visualizarDados('.$mostrar[0].','.$mostrar[1].')">
 							<span class="glyphicon glyphicon-search"></span>
 							</span>'.'</td>							
 						</tr>

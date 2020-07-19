@@ -28,7 +28,7 @@ if (isset($_SESSION['User'])) {
             </div>
             <!-- BTN NOVO CADASTRO -->
 			<div class="btnLeft">
-				<span class="btn btn-success" id="btnNovoCadastro">NOVO CADASTRO</span>
+				<span class="btn btn-success" id="btnNovoCadastro" title="NOVO CADASTRO">NOVO CADASTRO</span>
 			</div>
         </div>
         <!-- MODAL EDIÇÃO -->

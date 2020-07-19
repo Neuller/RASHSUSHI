@@ -100,7 +100,7 @@ if (isset($_SESSION['User'])) {
                         </div>
                         <!-- BOTÃO CADASTRAR E LIMPAR -->
                         <div class="btnGroup">
-                            <span class="btn btn-success" id="btnAdicionar" title="Adicionar">ADICIONAR<span class="fas fa-shopping-cart ml-15"></span></span>
+                            <span class="btn btn-success" id="btnAdicionar" title="ADICIONAR ITEM">ADICIONAR ITEM<span class="fas fa-shopping-cart ml-15"></span></span>
                             <!-- <span class="btn btn-warning" id="btnLimpar" title="Limpar">LIMPAR</span> -->
                         </div>
                     </form>

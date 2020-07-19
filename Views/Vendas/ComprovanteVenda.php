@@ -32,6 +32,9 @@ $dataVenda = $mostrar[5];
 <html>
 <link rel="stylesheet" type="text/css" href="../../Lib/bootstrap/css/bootstrap.css">
 
+<!-- TÍTULO -->
+<title>COMPROVANTE DE VENDA - NSERV</title>
+
 <head class="container">
     <div class="text-center">
         <!-- TÍTULO DA PÁGINA -->
@@ -44,7 +47,7 @@ $dataVenda = $mostrar[5];
         <div class="cabecalho">
             <div class="logo">
                 <!-- LOGO -->
-                <img src="../../Img/Documentos/cabecalho.png" width="600" widht="600">
+                <img src="../../Img/Documentos/CABECALHO_DOCUMENTOS.png" width="600" widht="600">
             </div>
         </div>
     </div>
@@ -54,7 +57,7 @@ $dataVenda = $mostrar[5];
     <!-- ORDEM DE SERVIÇO -->
     <div class="text-center" align="center">
         <div class="titulo">
-            <span><strong>COMPROVANTE DE VENDA</strong></span>
+            <span><strong>COMPROVANTE DE VENDA - NSERV</strong></span>
         </div>
     </div>
     <div class="col-md-12 col-sm-12 col-xs-12">
