@@ -439,6 +439,7 @@ if (isset($_SESSION['User'])) {
 				}
 			});
 		}
+		
 	</script>
 	<style>
 		.mb-20px {

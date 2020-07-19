@@ -40,7 +40,7 @@ if (isset($_SESSION['User'])) {
 			</div>
 		</div>
 
-		<!-- MODAL EDIÇÃO -->
+		<!-- MODAL EDIÇÃO SERVIÇOS -->
 		<div class="modal fade" id="atualizarServico" tabindex="-1" role="dialog" aria-labelledby="modalEditar">
 			<div class="modal-dialog modal-lg" role="document" data-keyboard="true">
 				<div class="col-md-12 col-sm-12 col-xs-12">
@@ -56,6 +56,31 @@ if (isset($_SESSION['User'])) {
 								<!-- ID -->
 								<div>
 									<input type="text" hidden="" id="idServico" name="idServico">
+								</div>
+								<!-- DIAGNÓSTICO -->
+								<div class='col-md-12 col-sm-12 col-xs-12 separador itensFormularioCadastro'>
+									<div>
+									<h4><strong>DIAGNÓSTICO TÉCNICO</strong><span class="glyphicon glyphicon-file ml-15"></span></h4>
+									<hr>
+										<textarea type="text" class="form-control text-uppercase input-sm" id="diagnosticoU" name="diagnosticoU" maxlength="100" rows="3" style="resize: none"></textarea>
+									</div>
+								</div>
+								<!-- TÉCNICO -->
+								<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+									<div>
+									<label>TÉCNICO<span class="required">*</span></label>
+										<select class="form-control input-sm" id="tecnicoU" name="tecnicoU">
+											<option value="">SELECIONE UM TECNICO</option>
+											<?php
+											$sql = "SELECT idTecnico, nome 
+										FROM tecnicos";
+											$result = mysqli_query($conexao, $sql);
+											?>
+											<?php while ($mostrar = mysqli_fetch_row($result)) : ?>
+												<option value="<?php echo $mostrar[0]; ?>"><?php echo $mostrar[1]; ?></option>
+											<?php endwhile; ?>
+										</select>
+									</div>
 								</div>
 								<!-- FORMULÁRIO INFORMAÇÕES DO EQUIPAMENTO / SERVIÇO -->
 								<div class='col-md-12 col-sm-12 col-xs-12 separador'>
@@ -81,35 +106,11 @@ if (isset($_SESSION['User'])) {
 										</select>
 									</div>
 								</div>
-								<!-- TÉCNICO -->
-								<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
-									<div>
-										<label>TÉCNICO<span class="required">*</span></label>
-										<select class="form-control input-sm" id="tecnicoU" name="tecnicoU">
-											<option value="">SELECIONE UM TECNICO</option>
-											<?php
-											$sql = "SELECT idTecnico, nome 
-										FROM tecnicos";
-											$result = mysqli_query($conexao, $sql);
-											?>
-											<?php while ($mostrar = mysqli_fetch_row($result)) : ?>
-												<option value="<?php echo $mostrar[0]; ?>"><?php echo $mostrar[1]; ?></option>
-											<?php endwhile; ?>
-										</select>
-									</div>
-								</div>
 								<!-- OBSERVAÇÕES -->
 								<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
 									<div>
 										<label>OBSERVAÇÕES</label>
 										<textarea type="text" class="form-control input-sm text-uppercase" id="informacaoU" name="informacaoU" maxlength="100" rows="3" style="resize: none"></textarea>
-									</div>
-								</div>
-								<!-- DIAGNÓSTICO -->
-								<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
-									<div>
-										<label>DIAGNÓSTICO TÉCNICO<span class="required">*</span></label>
-										<textarea type="text" class="form-control text-uppercase input-sm" id="diagnosticoU" name="diagnosticoU" maxlength="100" rows="3" style="resize: none"></textarea>
 									</div>
 								</div>
 								<!-- SERVIÇO EXECUTADO -->
