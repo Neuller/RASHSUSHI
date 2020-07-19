@@ -253,6 +253,7 @@ if (isset($_SESSION['User'])) {
 				</div>
 			</div>
 		</div>
+
 		<!-- MODAL VISUALIZAR SERVIÇOS -->
 		<div class="modal fade" id="visualizarServico" tabindex="-1" role="dialog" aria-labelledby="modalVisualizar">
 			<div class="modal-dialog modal-lg" role="document" data-keyboard="true">
@@ -269,6 +270,21 @@ if (isset($_SESSION['User'])) {
 								<!-- ID -->
 								<div>
 									<input readonly type="text" hidden="" id="idServicoView" name="idServicoView">
+								</div>
+								<!-- DIAGNÓSTICO -->
+								<div class='col-md-12 col-sm-12 col-xs-12 separador'>
+									<div>
+									<h4><strong>DIAGNÓSTICO TÉCNICO</strong><span class="glyphicon glyphicon-file ml-15"></span></h4>
+									<hr>
+										<textarea type="text" readonly class="form-control input-sm" id="diagnosticoView" name="diagnosticoView" rows="3" style="resize: none"></textarea>
+									</div>
+								</div>
+								<!-- TÉCNICO -->
+								<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+									<div>
+										<label>TÉCNICO</label>
+										<input class="form-control input-sm" readonly id="tecnicoView" name="tecnicoView"></input>
+									</div>
 								</div>
 								<!-- FORMULÁRIO INFORMAÇÕES DO EQUIPAMENTO / SERVIÇO -->
 								<div class='col-md-12 col-sm-12 col-xs-12 separador'>
@@ -297,28 +313,21 @@ if (isset($_SESSION['User'])) {
 										<label>STATUS DO SERVIÇO</label>
 										<input class="form-control input-sm" readonly id="selectStatusView" name="selectStatusView"></input>
 									</div>
-								</div>
-								<!-- TÉCNICO -->
+								</div>			
+								<!-- GARANTIA -->
 								<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
 									<div>
-										<label>TÉCNICO</label>
-										<input class="form-control input-sm" readonly id="tecnicoView" name="tecnicoView"></input>
+										<label>GARANTIA</label>
+										<input type="text" readonly class="form-control input-sm" id="garantiaView" name="garantiaView"></input>
 									</div>
-								</div>
+								</div>	
 								<!-- OBSERVAÇÕES -->
 								<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
 									<div>
 										<label>OBSERVAÇÕES</label>
 										<textarea type="text" readonly class="form-control input-sm text-uppercase" id="informacaoView" name="informacaoView" rows="3" style="resize: none"></textarea>
 									</div>
-								</div>
-								<!-- DIAGNÓSTICO -->
-								<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
-									<div>
-										<label>DIAGNÓSTICO TÉCNICO</label>
-										<textarea type="text" readonly class="form-control input-sm" id="diagnosticoView" name="diagnosticoView" rows="3" style="resize: none"></textarea>
-									</div>
-								</div>
+								</div>								
 								<!-- SERVIÇO EXECUTADO -->
 								<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
 									<div>
@@ -332,14 +341,7 @@ if (isset($_SESSION['User'])) {
 										<label>DATA DE ENTREGA</label>
 										<input type="text" readonly class="form-control input-sm" id="dataSaidaView" name="dataSaidaView">
 									</div>
-								</div>
-								<!-- GARANTIA -->
-								<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
-									<div>
-										<label>GARANTIA</label>
-										<input type="text" readonly class="form-control input-sm" id="garantiaView" name="garantiaView"></input>
-									</div>
-								</div>
+								</div>								
 								<!-- VALOR TOTAL -->
 								<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
 									<div>
@@ -353,19 +355,23 @@ if (isset($_SESSION['User'])) {
 				</div>
 			</div>
 		</div>
+
 	</body>
 	</html>
 
 	<!-- SCRIPT -->
 	<script type="text/javascript">
-		// CARREGAR TABELA
+
 		$(document).ready(function() {
+			// CARREGAR TABELAS
 			$('#tabelaUltimosServicos').load('./Views/Inicio/tabelaUltimosServicos.php');
 			$('#tabelaVendasMes').load('./Views/Inicio/tabelaVendasMes.php');
+			// PERSONALIZAÇÃO DE CAMPOS
 			$('.dataSaida').mask('99/99/9999');
 			$('.valorTotal').mask('9999999999');
+			// BOTÃO EDITAR
 			$('#btnEditar').click(function() {
-				// VALIDAR CAMPOS
+				// VALIDAÇÃO DE CAMPOS
 				var diagnostico = frmServicoU.diagnosticoU.value;
 				var tecnico = frmServicoU.tecnicoU.value;
 
@@ -375,6 +381,7 @@ if (isset($_SESSION['User'])) {
 				}
 
 				dados = $('#frmServicoU').serialize();
+
 				$.ajax({
 					type: "POST",
 					data: dados,
