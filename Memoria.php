@@ -32,6 +32,7 @@ if (isset($_SESSION['User'])) {
 				<span class="btn btn-success" id="btnNovoCadastro" title="NOVO CADASTRO">NOVO CADASTRO</span>
 			</div>
         </div>
+
         <!-- MODAL EDIÇÃO -->
         <div class="modal fade" id="editarProduto" tabindex="-1" role="dialog" aria-labelledby="modalEditar">
             <div class="modal-dialog modal-lg" role="document" data-keyboard="true">
@@ -125,7 +126,7 @@ if (isset($_SESSION['User'])) {
                                 </div>
                                 <!-- BOTÃO EDITAR -->
                                 <div class="btnEditar">
-                                    <span class="btn btn-warning" id="btnEditar" title="Editar" data-dismiss="modal">EDITAR</span>
+                                    <span class="btn btn-warning" id="btnEditar" title="EDITAR" data-dismiss="modal">EDITAR</span>
                                 </div>
                             </form>
                         </div>

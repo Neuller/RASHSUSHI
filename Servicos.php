@@ -154,7 +154,7 @@ if (isset($_SESSION['User'])) {
 								</div>
 								<!-- BOTÃO EDITAR -->
 								<div class="btnEditar">
-									<span class="btn btn-warning" id="btnEditar" title="Editar" data-dismiss="modal">EDITAR</span>
+									<span class="btn btn-warning" id="btnEditar" title="EDITAR" data-dismiss="modal">EDITAR</span>
 								</div>
 							</form>
 						</div>
