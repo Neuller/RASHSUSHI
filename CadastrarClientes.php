@@ -169,6 +169,7 @@ if (isset($_SESSION['User'])) {
 				}
 
 				dados = $('#frmClientes').serialize();
+
 				$.ajax({
 					type: "POST",
 					data: dados,
@@ -192,7 +193,7 @@ if (isset($_SESSION['User'])) {
 		}
 	</style>
 
-	<!-- SE NÂO ESTIVAR LOGADO RETORNA À PÁGINA INICIAL -->
+<!-- SE NÂO ESTIVAR LOGADO RETORNA À PÁGINA INICIAL -->
 <?php
 } else {
 	header("location:./index.php");

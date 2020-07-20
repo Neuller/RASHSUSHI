@@ -22,7 +22,7 @@ if (mysqli_num_rows($result) > 0) {
 	<div class="container conteudo">
 		<div class="col-sm-4"></div>
 		<div class="col-sm-4">
-			<div class="panel panel-primary">
+			<div class="panel panel-default painelLogin">
 				<!-- PANEL HEADING -->
 				<div class="panel-heading">
 					OLÁ! ACESSE JÁ.
@@ -38,21 +38,21 @@ if (mysqli_num_rows($result) > 0) {
 						<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
 							<div>
 								<label>USUÁRIO<span class="required">*</span></label>
-								<input type="text" class="form-control input-sm" name="usuario" id="usuario">
+								<input type="text" class="form-control input-sm text-uppercase" name="usuario" id="usuario">
 							</div>
 						</div>
 						<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
 							<div>
 								<label>SENHA<span class="required">*</span></label>
-								<input type="password" name="senha" id="senha" class="form-control input-sm">
+								<input type="password" name="senha" id="senha" class="form-control input-sm text-uppercase">
 							</div>
 						</div>
 						<!-- BOTÃO ENTRAR -->
 						<div class="btnEntrar">
-							<span class="btn btn-primary btn-sm" id="entrarSistema" title="Entrar">ENTRAR</span>
+							<span class="btn btn-primary btn-sm" id="entrar" title="ENTRAR">ENTRAR</span>
 						</div>
 						<?php if (!$validar) : ?>
-							<a href="Registrar.php" class="btn btn-danger btn-sm" title="Registrar">REGISTRAR</a>
+							<a href="Registrar.php" class="btn btn-danger btn-sm" title="REGISTRAR">REGISTRAR</a>
 						<?php endif; ?>
 					</form>
 				</div>
@@ -65,12 +65,12 @@ if (mysqli_num_rows($result) > 0) {
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#entrarSistema').click(function() {
+		$('#entrar').click(function() {
 
 			vazios = validarFormVazio('frmLogin');
 
 			if (vazios > 0) {
-				alertify.error("Preencha todos os campos");
+				alertify.error("PREENCHA TODOS OS CAMPOS");
 				return false;
 			}
 
@@ -80,14 +80,24 @@ if (mysqli_num_rows($result) > 0) {
 				data: dados,
 				url: "Procedimentos/Login/Login.php",
 				success: function(r) {
-
 					if (r == 1) {
 						window.location = "./Inicio.php";
 					} else {
-						alertify.error("Acesso negado");
+						alertify.error("ACESSO NEGADO");
 					}
 				}
 			});
 		});
-	});
+		$("#senha").keypress(function(event) { 
+            if (event.keyCode === 13) { 
+                $("#entrar").click(); 
+            } 
+        }); 
+	});	
 </script>
+
+<style>
+	.painelLogin{
+		margin-top: 25%;
+	}
+</style>
