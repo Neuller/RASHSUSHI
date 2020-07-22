@@ -173,7 +173,7 @@ $dataVenda = $mostrar[5];
  			    ?> 
                 <div>
                     <span>VENDEDOR:</span>
-                    <span><?php echo $objUtils->nomeColaborador($idVendedor); ?></span>
+                    <span></span>
                 </div>
                 <div>
                     <span>DATA DA VENDA:</span>
