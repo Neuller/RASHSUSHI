@@ -134,10 +134,7 @@ $dataVenda = $mostrar[5];
                 </div>
                 <hr>
             </div>
-            <div class="dadosProdutosServicos">
-                <div class="formatoObservacao" align="center">
-                    <span>*CÓDIGO - DESCRIÇÃO - VALOR UN - GARANTIA*</span>
-                </div>
+            <div class="dadosProdutosServicos">               
                 <?php 
                     $sql="SELECT ve.ID_Venda,
                     ve.ID_Cliente,
@@ -161,10 +158,13 @@ $dataVenda = $mostrar[5];
                 <div class="informacoesProdutos">
                     <ul>
                         <li>
-                            <span><?php echo $produtoPortal[6] ?> || 
-                            <?php echo $produtoPortal[7] ?> || R$
-                            <?php echo $produtoPortal[9] ?> || 
-                            <?php echo $produtoPortal[8] ?></span>
+                            <span>CÓDIGO: <?php echo $produtoPortal[6] ?></span>
+                            <br>
+                            <span>DESCRIÇÃO: <?php echo $produtoPortal[7] ?></span>
+                            <br>
+                            <span>VALOR: R$ <?php echo $produtoPortal[9] ?></span>
+                            <br>
+                            <span>GARANTIA: <?php echo $produtoPortal[8] ?></span>
                         </li>
                     </ul>
                 </div>              
@@ -173,7 +173,15 @@ $dataVenda = $mostrar[5];
  			    ?> 
                 <div>
                     <span>VENDEDOR:</span>
-                    <span></span>
+                    <span>
+                    <?php 
+                        if($idVendedor == 0){
+                            echo "";
+                        }else{
+                            echo $idVendedor;
+                        } 
+                    ?>
+                    </span>
                 </div>
                 <div>
                     <span>DATA DA VENDA:</span>
@@ -228,12 +236,6 @@ $dataVenda = $mostrar[5];
 
     .informacoesProdutos{
         margin-bottom: 10px;
-    }
-
-    .formatoObservacao {
-        margin-bottom: 15px;
-        color: red;
-        font-size: 11px;
     }
 
     .msgFidelidade {

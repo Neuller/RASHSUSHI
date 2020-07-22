@@ -179,8 +179,8 @@ $valorTotal = $mostrar[9];
                     <span><?php echo  $garantia ?></span>
                 </div>
                 <div>
-                    <span>VALOR TOTAL: R$</span>
-                    <span><?php echo  $valorTotal ?>,00</span>
+                    <span>VALOR TOTAL:</span>
+                    <span>R$ <?php echo  $valorTotal ?>,00</span>
                 </div>
             </div>
         </form>
