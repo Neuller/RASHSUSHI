@@ -239,7 +239,7 @@ if (isset($_SESSION['User'])) {
                 var preco = frmProduto.precoU.value;
 
                 if (descricao == "" || preco == "") {
-                    alertify.error("Preencha o(s) campo(s) obrigatório(s)");
+                    alertify.error("PREENCHA OS CAMPOS OBRIGATÓRIOS*");
                     return false;
                 }
 
@@ -251,9 +251,9 @@ if (isset($_SESSION['User'])) {
                     success: function(r) {
                         if (r == 1) {
                             $('#tabelaPlacaVideo').load('./Views/Produtos/PlacaVideo/TabelaPlacaVideo.php');
-                            alertify.success("Registro atualizado com sucesso");
+                            alertify.success("REGISTRO ATUALIZADO");
                         } else {
-                            alertify.error("Não foi possível atualizar");
+                            alertify.error("NÃO FOI POSSÍVEL ATUALIZAR");
                         }
                     }
                 });
@@ -315,14 +315,14 @@ if (isset($_SESSION['User'])) {
                     success: function(r) {
                         if (r == 1) {
                             $('#tabelaPlacaVideo').load('./Views/Produtos/PlacaVideo/TabelaPlacaVideo.php');
-                            alertify.success("Registro excluído com sucesso");
+                            alertify.success("REGISTRO EXCLUÍDO");
                         } else {
-                            alertify.error("Não foi possível excluir");
+                            alertify.error("NÃO FOI POSSÍVEL EXCLUIR");
                         }
                     }
                 });
             }, function() {
-                alertify.error('Cancelado')
+                alertify.error('AÇÃO CANCELADA')
             });
         }
     </script>

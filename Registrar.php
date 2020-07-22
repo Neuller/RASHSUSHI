@@ -71,7 +71,7 @@ if (mysqli_num_rows($result) > 0) {
 			vazios = validarFormVazio('frmRegistro');
 
 			if (vazios > 0) {
-				alert("Preencha todos os Campos");
+				alert("PREENCHA TODOS OS CAMPOS.");
 				return false;
 			}
 
@@ -84,11 +84,11 @@ if (mysqli_num_rows($result) > 0) {
 					//alert(r);
 
 					if (r == 1) {
-						alert("Cadastro Realizado com Sucesso");
+						alert("CADASTRO REALIZADO");
 						$('#frmRegistro')[0].reset();
 						window.location = "index.php";
 					} else {
-						alert("Erro ao Cadastrar");
+						alert("PROBLEMA AO CADASTRAR");
 						$('#frmRegistro')[0].reset();
 					}
 				}

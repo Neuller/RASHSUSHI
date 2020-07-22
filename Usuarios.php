@@ -115,7 +115,7 @@ if(isset($_SESSION['User'])){
 				// VALIDAR CAMPOS
 				vazios=validarFormVazio('frmUsuario');
 			if(vazios > 0){
-				alertify.alert("ATENÇÃO","Preencha todo(s) o(s) campo(s).");
+				alertify.alert("ATENÇÃO","PREENCHA TODOS OS CAMPOS.");
 				return false;
 			}
 		datos=$('#frmUsuario').serialize();
@@ -127,9 +127,9 @@ if(isset($_SESSION['User'])){
 				if(r==1){
 					$('#frmUsuario')[0].reset();
 					$('#tabelaUsuariosLoad').load('./Views/Usuarios/TabelaUsuarios.php');
-					alertify.success("Cadastro realizado com sucesso");
+					alertify.success("CADASTRO REALIZADO");
 				}else{
-					alertify.error("Não foi possível adicionar");
+					alertify.error("NÃO FOI POSSÍVEL CADASTRAR");
 				}
 			}
 		});
@@ -160,9 +160,9 @@ if(isset($_SESSION['User'])){
 					success:function(r){
 						if(r==1){
 							$('#tabelaUsuariosLoad').load('./Views/Usuarios/TabelaUsuarios.php');
-							alertify.success("Registro excluído com sucesso");
+							alertify.success("REGISTRO EXCLUÍDO");
 						}else{
-							alertify.error("Não foi possível excluir");
+							alertify.error("NÃO FOI POSSÍVEL EXCLUIR");
 						}
 					}
 				});
@@ -181,9 +181,9 @@ if(isset($_SESSION['User'])){
 					success:function(r){
 						if(r==1){
 							$('#tabelaUsuariosLoad').load('./Views/Usuarios/TabelaUsuarios.php');
-							alertify.success("Registro atualizado com sucesso");
+							alertify.success("REGISTRO ATUALIZADO");
 						}else{
-							alertify.error("Não foi possível atualizar");
+							alertify.error("NÃO FOI POSSÍVEL ATUALIZAR");
 						}
 					}
 				});

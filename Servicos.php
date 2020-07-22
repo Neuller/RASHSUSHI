@@ -40,7 +40,7 @@ if (isset($_SESSION['User'])) {
 			</div>
 		</div>
 
-		<!-- MODAL EDIÇÃO SERVIÇOS -->
+		<!-- MODAL EDITAR SERVIÇOS -->
 		<div class="modal fade" id="atualizarServico" tabindex="-1" role="dialog" aria-labelledby="modalEditar">
 			<div class="modal-dialog modal-lg" role="document" data-keyboard="true">
 				<div class="col-md-12 col-sm-12 col-xs-12">
@@ -68,7 +68,7 @@ if (isset($_SESSION['User'])) {
 								<!-- TÉCNICO -->
 								<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
 									<div>
-									<label>TÉCNICO<span class="required">*</span></label>
+									<label>TÉCNICO</label>
 										<select class="form-control input-sm" id="tecnicoU" name="tecnicoU">
 											<option value="">SELECIONE UM TECNICO</option>
 											<?php
@@ -182,7 +182,7 @@ if (isset($_SESSION['User'])) {
 									<input readonly type="text" hidden="" id="idServicoView" name="idServicoView">
 								</div>
 								<!-- DIAGNÓSTICO -->
-								<div class='col-md-12 col-sm-12 col-xs-12 separador'>
+								<div class='col-md-12 col-sm-12 col-xs-12 separador itensFormularioCadastro'>
 									<div>
 									<h4><strong>DIAGNÓSTICO TÉCNICO</strong><span class="glyphicon glyphicon-file ml-15"></span></h4>
 									<hr>
@@ -278,12 +278,11 @@ if (isset($_SESSION['User'])) {
 			$('.valorTotal').mask('9999999999');
 			
 			$('#btnEditar').click(function() {
-				// VALIDAR CAMPOS
-				var diagnostico = frmServicoU.diagnosticoU.value;
-				var tecnico = frmServicoU.tecnicoU.value;
+				// VALIDAÇÃO DE CAMPOS
+				var statusServico = frmServicoU.selectStatusU.value;
 
-				if (diagnostico == "" || tecnico == "") {
-					alertify.error("Preencha o(s) campo(s) obrigatório(s)");
+				if (statusServico == "")  {
+					alertify.error("PREENCHA OS CAMPOS OBRIGATÓRIOS*");
 					return false;
 				}
 
@@ -295,9 +294,9 @@ if (isset($_SESSION['User'])) {
 					success: function(r) {
 						if (r == 1) {
 							$('#tabelaServicosEntrada').load("./Views/Servicos/TabelaServicos.php");
-							alertify.success("Registro atualizado com sucesso");
+							alertify.success("REGISTRO ATUALIZADO");
 						} else {
-							alertify.error("Não foi possível atualizar");
+							alertify.error("NÃO FOI POSSÍVEL ATUALIZAR");
 						}
 					}
 				});
@@ -307,7 +306,7 @@ if (isset($_SESSION['User'])) {
 				window.location.href = "http://localhost/NservPortal/CadastrarServicos.php";
 			});
 		});
-		// PREENCHER MODAL DE EDIÇÂO
+		// MODAL EDITAR SERVIÇOS
 		function adicionarDados(idServico) {
 			$.ajax({
 				type: "POST",
@@ -327,7 +326,7 @@ if (isset($_SESSION['User'])) {
 				}
 			});
 		}
-		// VISUALIZAR
+		// MODAL VISUALIZAR SERVIÇOS
 		function visualizarDados(idServico) {
 			$.ajax({
 				type: "POST",
@@ -338,8 +337,24 @@ if (isset($_SESSION['User'])) {
 					$('#idServicoView').val(dado['ID_Servico']);
 					$('#equipamentoView').val(dado['Equipamento']);
 					$('#serialNumberView').val(dado['SerialNumber']);
-					$('#selectStatusView').val(dado['ID_Status']);
-					$('#tecnicoView').val(dado['idTecnico']);
+					// NOME DO STATUS
+					$.ajax({
+						type : "POST",
+						data: "idStatus=" + dado.ID_Status,			
+						url : './Procedimentos/Utilitarios/ObterNomeStatus.php',
+					}).then(function(data){			
+						var nomeStatus = JSON.parse(data);
+						$('#selectStatusView').val(nomeStatus);
+					});
+					// NOME DO TECNICO
+					$.ajax({
+						type : "POST",
+						data: "idTecnico=" + dado.idTecnico,			
+						url : './Procedimentos/Utilitarios/ObterNomeTecnico.php',
+					}).then(function(data){			
+						var nomeTecnico = JSON.parse(data);
+						$('#tecnicoView').val(nomeTecnico);
+					});
 					$('#informacaoView').val(dado['Info']);
 					$('#diagnosticoView').val(dado['Diagnostico']);
 					$('#servicoView').val(dado['Servico']);

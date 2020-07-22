@@ -27,7 +27,6 @@
 <link rel="stylesheet" type="text/css" href="./Css/Inicio.css">
 <link rel="stylesheet" type="text/css" href="./Css/Clientes.css">
 <link rel="stylesheet" type="text/css" href="./Css/Servicos.css">
-<link rel="stylesheet" type="text/css" href="./Css/Vendas.css">
 
 <script src="Lib/jquery-3.5.0.min.js"></script>
 <script src="Lib/bootstrap/js/bootstrap.js"></script>
