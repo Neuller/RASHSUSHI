@@ -89,7 +89,7 @@
     </div>
     <!-- IMAGEM BANNER -->
     <div class="divImagemBanner">
-      <img src="./Img/Banner.png" class="img-fluid imagemBanner" title="SISTEMA DE GESTÃO NSERV">
+      <img src="./Img/BANNER_PRINCIPAL.png" class="img-fluid imagemBanner" title="SISTEMA DE GESTÃO NSERV">
     </div>
   </div>
 

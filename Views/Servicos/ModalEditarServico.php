@@ -34,11 +34,11 @@ if (isset($_SESSION['User'])) {
 							</div>
 						</div>
 						<!-- TÉCNICO -->
-						<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
-							<div>
+						<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro" id="divTecnico">
+							<div id="divTecnico2">
 							    <label>TÉCNICO</label>
 								<select class="form-control input-sm" id="tecnicoU" name="tecnicoU">
-									<option value="">SELECIONE UM TECNICO</option>
+									<option value="0">SELECIONE UM TECNICO</option>
 									<?php
 									$sql = "SELECT idTecnico, nome 
 								    FROM tecnicos";
@@ -62,7 +62,7 @@ if (isset($_SESSION['User'])) {
 							<div>
 								<label>STATUS DO SERVIÇO<span class="required">*</span></label>
 								<select class="form-control input-sm" id="selectStatusU" name="selectStatusU">
-									<option value="">SELECIONE UM STATUS</option>
+									<option value="0">SELECIONE UM STATUS</option>
 									<?php
 									$sql = "SELECT ID_Status, Nome_Status FROM status";
 									$result = mysqli_query($conexao, $sql);
