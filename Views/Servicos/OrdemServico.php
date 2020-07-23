@@ -180,7 +180,7 @@ $valorTotal = $mostrar[9];
                 </div>
                 <div>
                     <span>VALOR TOTAL:</span>
-                    <span>R$ <?php echo  $valorTotal ?>,00</span>
+                    <span>R$ <?php echo  $valorTotal ?></span>
                 </div>
             </div>
         </form>

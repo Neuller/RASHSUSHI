@@ -148,7 +148,6 @@ if (isset($_SESSION['User'])) {
 		$('#modalEditarServico').load('./Views/Servicos/ModalEditarServico.php');
 		// PERSONALIZAÇÃO DE CAMPOS
 		$('.dataSaida').mask('99/99/9999');
-		$('.valorTotal').mask('9999999999');
 	});
 	// MODAL EDITAR SERVIÇOS
 	function adicionarDados(idServico) {

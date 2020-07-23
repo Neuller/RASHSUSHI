@@ -56,7 +56,6 @@ if (isset($_SESSION['User'])) {
 		$('#modalEditarServico').load('./Views/Servicos/ModalEditarServico.php');
 		$('#modalVisualizarServico').load('./Views/Servicos/ModalVisualizarServico.php');
 		$('.dataSaida').mask('99/99/9999');
-		$('.valorTotal').mask('9999999999');
 	
 		$('#btnNovoCadastro').click(function() {
 			window.location.href = "http://localhost/NservPortal/CadastrarServicos.php";
@@ -71,10 +70,22 @@ if (isset($_SESSION['User'])) {
 			success: function(r) {
 				dado = jQuery.parseJSON(r);
 				$('#idServico').val(dado['ID_Servico']);
-				$('#selectStatusU').val(dado['ID_Status']);
+				// VERIFICA STATUS
+				var identificadorStatus = dado['ID_Status'];
+				if((identificadorStatus === "0") || (identificadorStatus === "") || (identificadorStatus === null)){
+					$("#selectStatusU").val("0");
+				}else{
+					$('#selectStatusU').val(identificadorStatus);
+				}
 				$('#informacaoU').val(dado['Info']);
 				$('#servicoU').val(dado['Servico']);
-				$('#tecnicoU').val(dado['idTecnico']);
+				// VERIFICA TÉCNICO RESPONSÁVEL
+				var identificadorTecnico = dado['idTecnico'];
+				if((identificadorTecnico === "0") || (identificadorTecnico === "") || (identificadorTecnico === null)){
+					$("#tecnicoU").val("0");
+				}else{
+					$('#tecnicoU').val(identificadorTecnico);
+				}
 				$('#garantiaU').val(dado['Garantia']);
 				$('#precoU').val(dado['Preco']);
 				$('#dataSaidaU').val(dado['DataSaida']);
