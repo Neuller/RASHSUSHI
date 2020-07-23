@@ -19,7 +19,7 @@ public function obterDadosServicos($idServico){
 
 	$sql = "SELECT ID_Servico, ID_Cliente, ID, ID_Status, Equipamento, 
 	Info, Servico, idTecnico, SerialNumber, 
-	Garantia, Preco, DataCadastro, DataSaida, Diagnostico
+	Garantia, Preco, DataCadastro, DataSaida, Diagnostico, NF_Emitida
 	FROM servicos WHERE ID_Servico = '$idServico' ";
 
 	$result = mysqli_query($conexao, $sql);
@@ -39,7 +39,8 @@ public function obterDadosServicos($idServico){
 		'Preco' => $mostrar[10],
 		'DataCadastro' => $mostrar[11],
 		'DataSaida' => $mostrar[12],
-		'Diagnostico' => $mostrar[13]
+		'Diagnostico' => $mostrar[13],
+		'NF_Emitida' => $mostrar[14]
 	);
 
 	return $dados;
@@ -51,7 +52,7 @@ public function editarServico($dados){
 
 	$sql = "UPDATE servicos SET ID_Status = '$dados[1]', Servico = '$dados[2]', 
 	Info = '$dados[4]', idTecnico = '$dados[3]', Garantia = '$dados[5]', 
-	Preco = '$dados[6]', DataSaida = '$dados[7]', Diagnostico = '$dados[8]'
+	Preco = '$dados[6]', DataSaida = '$dados[7]', Diagnostico = '$dados[8]', NF_Emitida = '$dados[9]'
 	WHERE ID_Servico = '$dados[0]'";
 
 	echo mysqli_query($conexao, $sql);

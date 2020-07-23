@@ -13,7 +13,8 @@ $_POST['informacaoU'] = strtoupper($_POST['informacaoU']),
 $_POST['garantiaU'] = strtoupper($_POST['garantiaU']),
 $_POST['precoU'] = strtoupper($_POST['precoU']),
 $_POST['dataSaidaU'] = strtoupper($_POST['dataSaidaU']),
-$_POST['diagnosticoU'] = strtoupper($_POST['diagnosticoU'])
+$_POST['diagnosticoU'] = strtoupper($_POST['diagnosticoU']),
+$_POST['nfeEmitidaU'] = strtoupper($_POST['nfeEmitidaU'])
 );
 
 echo $obj-> editarServico($dados);
