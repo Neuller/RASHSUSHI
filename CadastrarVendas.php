@@ -191,7 +191,7 @@ if (isset($_SESSION['User'])) {
                     url: "./Procedimentos/Vendas/AdicionarProdutoTbl.php",
                     success: function(r) {
                         $('#tabelaVendasTemporaria').load('./Views/Vendas/TabelaVendasTemporaria.php');
-                        alertify.success("Produto adicionado no carrinho");                      
+                        alertify.success("PRODUTO ADICIONADO");                      
                     }
                 });
             });
@@ -213,11 +213,11 @@ if (isset($_SESSION['User'])) {
                     if (r > 0) {
                         $('#tabelaVendasTemporaria').load('./Views/Vendas/TabelaVendasTemporaria.php');
                         $('#frmVenda')[0].reset();
-                        alertify.success("Venda realizada com sucesso");
+                        alertify.success("VENDA REALIZADA");
                     } else if (r == 0) {
-                        alertify.alert("ATENÇÃO", "O carrinho está vazio");
+                        alertify.alert("ATENÇÃO", "CARRINHO VAZIO");
                     } else {
-                        alertify.error("Venda não realizada");
+                        alertify.error("VENDA NÃO REALIZADA");
                     }
                 }
             });
@@ -230,7 +230,7 @@ if (isset($_SESSION['User'])) {
                 url: "./Procedimentos/Vendas/ExcluirProduto.php",
                 success: function(r) {
                     $('#tabelaVendasTemporaria').load('./Views/Vendas/TabelaVendasTemporaria.php');
-                    alertify.success("Produto removido do carrinho");
+                    alertify.success("PRODUTO REMOVIDO");
                 }
             });
         }
@@ -242,7 +242,7 @@ if (isset($_SESSION['User'])) {
                 url: "./Procedimentos/Vendas/EditarEstoque.php",
                 success: function(r) {
                     $('#tabelaVendasTemporaria').load('./Views/Vendas/TabelaVendasTemporaria.php');
-                    alertify.success("Estoque atualizado");                                            
+                    alertify.success("ESTOQUE ATUALIZADO");                                            
                 }
             });
         }

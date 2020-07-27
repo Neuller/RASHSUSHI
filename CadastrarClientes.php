@@ -71,28 +71,28 @@ if (isset($_SESSION['User'])) {
 							<!-- CEP -->
 							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
 								<div>
-									<label>CEP<span class="required">*</span></label>
+									<label>CEP</label>
 									<input type="text" class="form-control input-sm align cep text-uppercase" placeholder="#####-###" id="cep" name="cep">
 								</div>
 							</div>
 							<!-- BAIRRO -->
 							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
 								<div>
-									<label>BAIRRO<span class="required">*</span></label>
+									<label>BAIRRO</label>
 									<input type="text" class="form-control input-sm align text-uppercase" id="bairro" name="bairro">
 								</div>
 							</div>
 							<!-- ENDEREÇO -->
 							<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
 								<div>
-									<label>ENDEREÇO<span class="required">*</span></label>
+									<label>ENDEREÇO</label>
 									<input type="text" class="form-control input-sm align text-uppercase" id="endereco" name="endereco">
 								</div>
 							</div>
 							<!-- NÚMERO -->
 							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
 								<div>
-									<label>NÚMERO<span class="required">*</span></label>
+									<label>NÚMERO</label>
 									<input type="text" class="form-control input-sm align text-uppercase" id="numero" name="numero">
 								</div>
 							</div>
@@ -151,20 +151,15 @@ if (isset($_SESSION['User'])) {
 				// VALIDAR CAMPOS
 				var nome = frmClientes.nome.value;
 				var cpf = frmClientes.cpf.value;
-				var cnpj = frmClientes.cnpj.value;
-				var cep = frmClientes.cep.value;
-				var endereco = frmClientes.endereco.value;
-				var bairro = frmClientes.bairro.value;
-				var numero = frmClientes.numero.value;
+				var cnpj = frmClientes.cnpj.value;				
 				var celular = frmClientes.celular.value;
 
-				if ((nome == "") || (cep == "") || (endereco == "") || (bairro == "") || (numero == "") ||
-					(celular == "")) {
-					alertify.alert("ATENÇÃO", "Preencha todos os campos obrigatórios.");
+				if ((nome == "") || (celular == "")) {
+					alertify.alert("ATENÇÃO", "PREENCHA TODOS OS CAMPOS OBRIGATÓRIOS.");
 					return false;
 				}
 				if ((cpf == "") && (cnpj == "")) {
-					alertify.alert("ATENÇÃO", "Preencha com um CPF ou CNPJ válido.");
+					alertify.alert("ATENÇÃO", "É NECESSÁRIO INSERIR UM CPF OU CNPJ VÁLIDO.");
 					return false;
 				}
 
@@ -177,9 +172,9 @@ if (isset($_SESSION['User'])) {
 					success: function(r) {
 						if (r == 1) {
 							$('#frmClientes')[0].reset();
-							alertify.success("Cadastro realizado com sucesso");
+							alertify.success("CADASTRO REALIZADO");
 						} else {
-							alertify.error("Não foi possível adicionar");
+							alertify.error("NÃO FOI POSSÍVEL CADASTRAR");
 						}
 					}
 				});

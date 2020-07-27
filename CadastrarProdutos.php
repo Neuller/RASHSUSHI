@@ -154,9 +154,9 @@ if (isset($_SESSION['User'])) {
                     success: function(r) {
                         if (r == 1) {
                             $('#frmProdutos')[0].reset();
-                            alertify.success("Cadastro realizado com sucesso");
+                            alertify.success("CADASTRO REALIZADO");
                         } else {
-                            alertify.error("Não foi possível adicionar");
+                            alertify.error("NÃO FOI POSSÍVEL CADASTRAR");
                         }
                     }
                 });

@@ -57,7 +57,7 @@ $dataVenda = $mostrar[5];
     <!-- ORDEM DE SERVIÇO -->
     <div class="text-center" align="center">
         <div class="titulo">
-            <span><strong>COMPROVANTE DE VENDA - NSERV</strong></span>
+            <span><strong>COMPROVANTE DE VENDA</strong></span>
         </div>
     </div>
     <div class="col-md-12 col-sm-12 col-xs-12">

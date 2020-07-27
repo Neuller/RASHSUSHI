@@ -46,7 +46,7 @@ if (isset($_SESSION['User'])) {
                             <div>
                                 <label>CLIENTE<span class="required">*</span></label>
                                 <select class="form-control input-sm" id="clienteSelect" name="clienteSelect">
-                                    <option value="">SELECIONE UM CLIENTE</option>                      
+                                    <option value="0">SELECIONE UM CLIENTE</option>                      
                                     <!-- PHP -->
                                     <?php
                                     $sql = "SELECT ID_Cliente, Nome FROM clientes ORDER BY ID_CLIENTE DESC";
@@ -154,9 +154,9 @@ if (isset($_SESSION['User'])) {
                     success: function(r) {
                         if (r == 1) {
                             $('#frmNovoServico')[0].reset();
-                            alertify.success("Cadastro realizado com sucesso");
+                            alertify.success("CADASTRO REALIZADO");
                         } else {
-                            alertify.error("Não foi possível adicionar");
+                            alertify.error("NÃO FOI POSSÍVEL CADASTRAR");
                         }
                     }
                 });
