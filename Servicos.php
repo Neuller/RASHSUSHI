@@ -56,7 +56,6 @@ if (isset($_SESSION['User'])) {
 			$('#tabelaServicosEntrada').load('./Views/Servicos/TabelaServicos.php');
 			$('#modalEditarServico').load('./Views/Servicos/ModalEditarServico.php');
 			$('#modalVisualizarServico').load('./Views/Servicos/ModalVisualizarServico.php');
-			$('.dataSaida').mask('99/99/9999');
 
 			$('#btnNovoCadastro').click(function() {
 				window.location.href = "http://localhost/NservPortal/CadastrarServicos.php";

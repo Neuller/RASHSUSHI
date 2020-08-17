@@ -145,7 +145,7 @@ if (isset($_SESSION['User'])) {
 	</div>
 	<script type="text/javascript">
 		$(document).ready(function() {
-
+			$('.dataSaida').mask('99/99/9999');
 		});
 		$('#btnEditar').click(function() {
 			var statusServico = frmServicoU.selectStatusU.value;
