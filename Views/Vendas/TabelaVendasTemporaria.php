@@ -27,8 +27,8 @@ session_start();
                     $estoque = $d[4];
             ?>
                     <tr>
-                        <td><?php echo $d[1] ?></td>                      
-                        <td><?php echo "R$ " . $d[2]?></td>
+                        <td><?php echo $d[1] ?></td>
+                        <td><?php echo "R$ " . $d[2] ?></td>
                         <td><?php echo $d[5] ?></td>
                         <td>
                             <span class="btn btn-danger btn-sm" title="EXCLUIR" onclick="excluir('<?php echo $i; ?>'), atualizarEstoque('<?php echo $idProduto; ?>,<?php echo $estoque; ?>')">
@@ -58,8 +58,31 @@ session_start();
 
 <script type="text/javascript">
     $(document).ready(function() {
-        // FUNÇÃO NOME DO CLIENTE
         nome = "<?php echo @$cliente ?>";
         $('#nomeCliente').text(nome);
     });
+
+    function excluir(index) {
+        $.ajax({
+            type: "POST",
+            data: "ind=" + index,
+            url: "./Procedimentos/Vendas/ExcluirProduto.php",
+            success: function(r) {
+                $('#tabelaVendasTemporaria').load('./Views/Vendas/TabelaVendasTemporaria.php');
+                alertify.success("PRODUTO REMOVIDO");
+            }
+        });
+    }
+
+    function atualizarEstoque(dados) {
+        $.ajax({
+            type: "POST",
+            data: "dados=" + dados,
+            url: "./Procedimentos/Vendas/EditarEstoque.php",
+            success: function(r) {
+                $('#tabelaVendasTemporaria').load('./Views/Vendas/TabelaVendasTemporaria.php');
+                alertify.success("ESTOQUE ATUALIZADO");
+            }
+        });
+    }
 </script>
