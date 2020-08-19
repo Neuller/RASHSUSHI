@@ -7,8 +7,8 @@ $conexao = $c->conexao();
 
 $idCliente = $_POST['clienteSelect'];
 $idProduto = $_POST['produtoSelect'];
-$estoque = $_POST['estoqueView'];
-$quantidadeVendida = $_POST['quantidadeVendida'];
+$quantidadeEstoque = $_POST['estoqueView'];
+$quantidade = $_POST['quantidade'];
 $preco = $_POST['precoView'];
 
 $sql = "SELECT Nome 
@@ -29,13 +29,13 @@ $produto = $idProduto . "||" .
 	$descricao . "||" .
 	$preco . "||" .
 	$nomeCliente . "||" .
-	$estoque . "||" .
-	$quantidadeVendida . "||" .
-	$quantidadeVendida * $preco . "||" .
+	$quantidadeEstoque . "||" .
+	$quantidade . "||" .
+	$quantidade * $preco . "||" .
 	$idCliente;
 
 $_SESSION['tabelaVendasTemp'][] = $produto;
 
-$quantidadeNova = $estoque - $quantidadeVendida;
+$quantidadeNova = $quantidadeEstoque - $quantidade;
 $sqlU = "UPDATE produtosnserv SET Estoque = '$quantidadeNova' WHERE ID_Produto = '$idProduto' ";
 mysqli_query($conexao, $sqlU);

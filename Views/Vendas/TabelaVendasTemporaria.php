@@ -81,7 +81,6 @@ session_start();
             url: "./Procedimentos/Vendas/EditarEstoque.php",
             success: function(r) {
                 $('#tabelaVendasTemporaria').load('./Views/Vendas/TabelaVendasTemporaria.php');
-                alertify.success("ESTOQUE ATUALIZADO");
             }
         });
     }

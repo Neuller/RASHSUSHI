@@ -46,7 +46,7 @@ if (isset($_SESSION['User'])) {
                             <div>
                                 <label>CLIENTE<span class="required">*</span></label>
                                 <select class="form-control input-sm" id="clienteSelect" name="clienteSelect">
-                                    <option value="0">SELECIONE UM CLIENTE</option>                      
+                                    <option value="0">SELECIONE UM CLIENTE</option>
                                     <!-- PHP -->
                                     <?php
                                     $sql = "SELECT ID_Cliente, Nome FROM clientes ORDER BY ID_CLIENTE DESC";
@@ -101,8 +101,7 @@ if (isset($_SESSION['User'])) {
                         <div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
                             <div>
                                 <label>OBSERVAÇÕES</label>
-                                <textarea type="text" class="form-control input-sm text-uppercase" id="informacao" 
-                                name="informacao" maxlength="100" rows="3" style="resize: none"></textarea >
+                                <textarea type="text" class="form-control input-sm text-uppercase" id="informacao" name="informacao" maxlength="100" rows="3" style="resize: none"></textarea>
                             </div>
                         </div>
                         <!-- BOTÃO CADASTRAR -->
@@ -154,6 +153,7 @@ if (isset($_SESSION['User'])) {
                     success: function(r) {
                         if (r == 1) {
                             $('#frmNovoServico')[0].reset();
+                            $("#clienteSelect").val("0").change();
                             alertify.success("CADASTRO REALIZADO");
                         } else {
                             alertify.error("NÃO FOI POSSÍVEL CADASTRAR");

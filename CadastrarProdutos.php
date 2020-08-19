@@ -44,7 +44,7 @@ if (isset($_SESSION['User'])) {
                                 <div>
                                     <label>CATEGORIA<span class="required">*</span></label>
                                     <select class="form-control input-sm" id="categoria" name="categoria">
-                                        <option value="">SELECIONE UMA CATEGORIA</option>
+                                        <option value="0">SELECIONE UMA CATEGORIA</option>
                                         <option value="1">HARD DISK</option>
                                         <option value="2">MEMORIA</option>
                                         <option value="3">PLACA DE VIDEO</option>
@@ -69,7 +69,7 @@ if (isset($_SESSION['User'])) {
                                 <div>
                                     <label>GARANTIA</label>
                                     <select class="form-control input-sm" id="garantia" name="garantia">
-                                        <option value="">SELECIONE UM PRAZO DE GARANTIA</option>
+                                        <option value="0">SELECIONE UM PRAZO DE GARANTIA</option>
                                         <option value="FUNCIONAL">FUNCIONAL</option>
                                         <option value="30 DIAS">30 DIAS</option>
                                         <option value="90 DIAS">90 DIAS</option>
@@ -98,7 +98,7 @@ if (isset($_SESSION['User'])) {
                                     <label>VALOR INSTALADO</label>
                                     <input type="number" class="form-control input-sm text-uppercase" id="precoInstalacao" name="precoInstalacao" maxlenght="10">
                                 </div>
-                            </div>                           
+                            </div>
                             <!-- NF -->
                             <div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
                                 <div>
@@ -112,7 +112,7 @@ if (isset($_SESSION['User'])) {
                                     <label>NCM</label>
                                     <input type="text" class="form-control ncm input-sm text-uppercase" id="ncm" name="ncm" maxlenght="10">
                                 </div>
-                            </div>               
+                            </div>
                             <!-- BOTÂO CADASTRAR -->
                             <div class="btnCadastrar">
                                 <span class="btn btn-primary" id="btnAdicionar" title="CADASTRAR">CADASTRAR</span>
@@ -135,16 +135,15 @@ if (isset($_SESSION['User'])) {
             $('.ncm').mask('9999999999');
 
             $('#btnAdicionar').click(function() {
-                // VALIDAR CAMPOS
                 var descricao = frmProdutos.descricao.value;
                 var preco = frmProdutos.preco.value;
                 var categoria = frmProdutos.categoria.value;
                 var estoque = frmProdutos.estoque.value;
 
-                if ((descricao == "") || (preco == "") || (categoria == "") || (estoque == "")){
-                    alertify.alert("ATENÇÃO", "Preencha todos os campos obrigatórios.");
+                if ((descricao == "") || (preco == "") || (categoria == "") || (estoque == "")) {
+                    alertify.alert("ATENÇÃO", "PREENCHA TODOS OS CAMPOS OBRIGATÓRIOS.");
                     return false;
-                }          
+                }
 
                 dados = $('#frmProdutos').serialize();
                 $.ajax({

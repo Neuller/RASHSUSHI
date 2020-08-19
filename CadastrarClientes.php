@@ -151,7 +151,7 @@ if (isset($_SESSION['User'])) {
 				// VALIDAR CAMPOS
 				var nome = frmClientes.nome.value;
 				var cpf = frmClientes.cpf.value;
-				var cnpj = frmClientes.cnpj.value;				
+				var cnpj = frmClientes.cnpj.value;
 				var celular = frmClientes.celular.value;
 
 				if ((nome == "") || (celular == "")) {
@@ -159,7 +159,7 @@ if (isset($_SESSION['User'])) {
 					return false;
 				}
 				if ((cpf == "") && (cnpj == "")) {
-					alertify.alert("ATENÇÃO", "É NECESSÁRIO INSERIR UM CPF OU CNPJ VÁLIDO.");
+					alertify.alert("ATENÇÃO", "INSIRA UM CPF OU CNPJ VÁLIDO.");
 					return false;
 				}
 
@@ -188,7 +188,7 @@ if (isset($_SESSION['User'])) {
 		}
 	</style>
 
-<!-- SE NÂO ESTIVAR LOGADO RETORNA À PÁGINA INICIAL -->
+	<!-- SE NÂO ESTIVAR LOGADO RETORNA À PÁGINA INICIAL -->
 <?php
 } else {
 	header("location:./index.php");

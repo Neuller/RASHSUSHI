@@ -76,7 +76,7 @@ if (isset($_SESSION['User'])) {
             <div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
                 <div>
                     <label>QUANTIDADE<span class="required">*</span></label>
-                    <input type="number" class="form-control input-sm estoque text-uppercase quantidadeVendida" id="quantidadeVendida" name="quantidadeVendida" maxlenght="10">
+                    <input type="number" class="form-control input-sm estoque text-uppercase quantidade" id="quantidade" name="quantidade" maxlenght="10">
                 </div>
             </div>
             <!-- BOTÃO CADASTRAR E LIMPAR -->
@@ -109,26 +109,26 @@ if (isset($_SESSION['User'])) {
             $('#btnAdicionar').click(function() {
 
                 var produto = $("#produtoSelect").val();
-                var quantidadeVendida = $("#quantidadeVendida").val();
+                var quantidade = $("#quantidade").val();
                 var cliente = $("#clienteSelect").val();
 
-                if ((cliente == "0") || (produto == "0") || (quantidadeVendida == "")) {
+                if ((cliente == "0") || (produto == "0") || (quantidade == "")) {
                     alertify.error("PREENCHA OS CAMPOS OBRIGATÓRIOS");
                     return false;
                 }
 
-                quantidadeVendida = 0;
+                quantidade = 0;
                 quantidadeEstoque = 0;
 
-                quantidadeVendida = $('#quantidadeVendida').val();
-                quantidadeEstoque = $('#estoqueView').val();
+                quantidade = parseInt($('#quantidade').val());
+                quantidadeEstoque = parseInt($('#estoqueView').val());
 
-                if (quantidadeVendida > quantidadeEstoque) {
+                if ((quantidade > quantidadeEstoque) || (quantidade == 0)) {
                     alertify.alert("ATENÇÃO", "QUANTIDADE INDISPONÍVEL EM ESTOQUE");
-                    quantidadeVendida = $('#quantidadeVendida').val("");
+                    quantidade = $('#quantidade').val("");
                     return false;
                 } else {
-                    quantidadeEstoque = $('#estoqueView').val();
+                    quantidadeEstoque = parseInt($('#estoqueView').val());
                 }
 
                 dados = $('#frmCadastarVenda').serialize();
@@ -136,13 +136,13 @@ if (isset($_SESSION['User'])) {
                 $.ajax({
                     type: "POST",
                     data: dados,
-                    url: "./Procedimentos/Vendas/AdicionarProdutoTbl.php",
+                    url: "./Procedimentos/Vendas/AdicionarProdutoTabelaTemporaria.php",
                     success: function(r) {
                         $('#tabelaVendasTemporaria').load('./Views/Vendas/TabelaVendasTemporaria.php');
-                        $("#produtoSelect").val("0");
+                        $("#produtoSelect").val("0").change();
                         $("#estoqueView").val("");
                         $("#precoView").val("");
-                        $("#quantidadeVendida").val("");
+                        $("#quantidade").val("");
                         alertify.success("ITEM ADICIONADO");
                     }
                 });
