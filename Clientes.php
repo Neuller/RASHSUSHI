@@ -96,28 +96,28 @@ if (isset($_SESSION['User'])) {
 								<!-- CEP -->
 								<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
 									<div>
-										<label>CEP<span class="required">*</span></label>
+										<label>CEP</label>
 										<input type="text" class="form-control input-sm align cep text-uppercase" placeholder="#####-###" id="cepU" name="cepU">
 									</div>
 								</div>
 								<!-- BAIRRO -->
 								<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
 									<div>
-										<label>BAIRRO<span class="required">*</span></label>
+										<label>BAIRRO</label>
 										<input type="text" class="form-control input-sm align text-uppercase" id="bairroU" name="bairroU">
 									</div>
 								</div>
 								<!-- ENDEREÇO -->
 								<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
 									<div>
-										<label>ENDEREÇO<span class="required">*</span></label>
+										<label>ENDEREÇO</label>
 										<input type="text" class="form-control input-sm align text-uppercase" id="enderecoU" name="enderecoU">
 									</div>
 								</div>
 								<!-- NÚMERO -->
 								<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
 									<div>
-										<label>NÚMERO<span class="required">*</span></label>
+										<label>NÚMERO</label>
 										<input type="text" class="form-control input-sm align text-uppercase" id="numeroU" name="numeroU">
 									</div>
 								</div>
@@ -370,6 +370,20 @@ if (isset($_SESSION['User'])) {
 		// EDITAR 
 		$(document).ready(function() {
 			$('#btnEditar').click(function() {
+				var nome = frmClientesU.nomeU.value;
+				var cpf = frmClientesU.cpfU.value;
+				var cnpj = frmClientesU.cnpjU.value;
+				var celular = frmClientesU.celularU.value;
+
+				if ((nome == "") || (celular == "")) {
+					alertify.alert("ATENÇÃO", "PREENCHA TODOS OS CAMPOS OBRIGATÓRIOS.");
+					return false;
+				}
+				if ((cpf == "") && (cnpj == "")) {
+					alertify.alert("ATENÇÃO", "INSIRA UM CPF OU CNPJ VÁLIDO.");
+					return false;
+				}
+
 				dados = $('#frmClientesU').serialize();
 				$.ajax({
 					type: "POST",

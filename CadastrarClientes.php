@@ -148,7 +148,6 @@ if (isset($_SESSION['User'])) {
 			$('.cep').mask('99999-999');
 
 			$('#btnAdicionar').click(function() {
-				// VALIDAR CAMPOS
 				var nome = frmClientes.nome.value;
 				var cpf = frmClientes.cpf.value;
 				var cnpj = frmClientes.cnpj.value;
