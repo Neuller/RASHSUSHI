@@ -200,6 +200,20 @@ if (isset($_SESSION['User'])) {
 				url: "./Procedimentos/Servicos/ObterDadosServicos.php",
 				success: function(r) {
 					dado = jQuery.parseJSON(r);
+					// DADOS CLIENTE
+					$.ajax({
+						type: "POST",
+						data: "idCliente=" + dado.ID_Cliente,
+						url: './Procedimentos/Utilitarios/ObterDadosResumidoCliente.php',
+					}).then(function(data) {
+						var result = JSON.parse(data);
+						var nomeCliente = result[0];
+						var telefoneCliente = result[1];
+						var celularCliente = result[2];
+						$('#clienteView').val(nomeCliente);
+						$('#telefoneClienteView').val(telefoneCliente);
+						$('#celularClienteView').val(celularCliente);
+					});
 					$('#idServicoView').val(dado['ID_Servico']);
 					$('#equipamentoView').val(dado['Equipamento']);
 					$('#serialNumberView').val(dado['SerialNumber']);
