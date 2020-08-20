@@ -162,14 +162,11 @@ if (isset($_SESSION['User'])) {
             });
         });
     </script>
-
     <style>
         .cabecalho {
             margin-bottom: 50px;
         }
     </style>
-
-    <!-- SE NÂO ESTIVAR LOGADO RETORNA À PÁGINA INICIAL -->
 <?php
 } else {
     header("location:./index.php");
