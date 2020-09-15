@@ -30,7 +30,7 @@ if (isset($_SESSION['User'])) {
 								<div>
 									<h4><strong>DIAGNÓSTICO TÉCNICO</strong><span class="glyphicon glyphicon-file ml-15"></span></h4>
 									<hr>
-									<textarea type="text" class="form-control text-uppercase input-sm" id="diagnosticoU" name="diagnosticoU" maxlength="100" rows="3" style="resize: none"></textarea>
+									<textarea type="text" class="form-control text-uppercase input-sm" id="diagnosticoU" name="diagnosticoU" maxlength="1000" rows="3" style="resize: none"></textarea>
 								</div>
 							</div>
 							<!-- TÉCNICO -->
@@ -57,6 +57,13 @@ if (isset($_SESSION['User'])) {
 								</div>
 								<hr>
 							</div>
+							<!-- ORDEM DE SERVIÇO -->
+							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+								<div>
+									<label>ORDEM DE SERVIÇO</label>
+									<input type="number" class="form-control text-uppercase input-sm" id="ordemServicoU" name="ordemServicoU" maxlength="10">
+								</div>
+							</div>
 							<!-- STATUS -->
 							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
 								<div>
@@ -74,13 +81,6 @@ if (isset($_SESSION['User'])) {
 									</select>
 								</div>
 							</div>
-							<!-- DATA DE ENTREGA -->
-							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
-								<div>
-									<label>DATA DE ENTREGA</label>
-									<input type="text" class="form-control text-uppercase dataSaida input-sm" id="dataSaidaU" name="dataSaidaU" maxlength="10">
-								</div>
-							</div>
 							<!-- OBSERVAÇÕES -->
 							<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
 								<div>
@@ -92,7 +92,14 @@ if (isset($_SESSION['User'])) {
 							<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
 								<div>
 									<label>SERVIÇO(s) EXECUTADO(s)</label>
-									<textarea type="text" class="form-control text-uppercase input-sm" id="servicoU" name="servicoU" maxlength="100" rows="3" style="resize: none"></textarea>
+									<textarea type="text" class="form-control text-uppercase input-sm" id="servicoU" name="servicoU" maxlength="1000" rows="3" style="resize: none"></textarea>
+								</div>
+							</div>
+							<!-- VALOR DE TERCEIRO -->
+							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+								<div>
+									<label>VALOR DE TERCEIRO</label>
+									<input type="text" class="form-control text-uppercase valorTerceiro input-sm" id="valorTerceiroU" name="valorTerceiroU" maxlength="10">
 								</div>
 							</div>
 							<!-- VALOR TOTAL -->
@@ -114,6 +121,13 @@ if (isset($_SESSION['User'])) {
 										<option value="06 MESES">06 MESES</option>
 										<option value="12 MESES">12 MESES</option>
 									</select>
+								</div>
+							</div>
+							<!-- DATA DE ENTREGA -->
+							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+								<div>
+									<label>DATA DE ENTREGA</label>
+									<input type="text" class="form-control text-uppercase dataSaida input-sm" id="dataSaidaU" name="dataSaidaU" maxlength="10">
 								</div>
 							</div>
 							<!-- NF-E EMITIDA? -->

@@ -67,6 +67,20 @@ if (isset($_SESSION['User'])) {
 								</div>
 								<hr>
 							</div>
+							<!-- ORDEM DE SERVIÇO -->
+							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+								<div>
+									<label>ORDEM DE SERVIÇO</label>
+									<input class="form-control input-sm" readonly id="ordemServicoView" name="ordemServicoView"></input>
+								</div>
+							</div>
+							<!-- STATUS -->
+							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+								<div>
+									<label>STATUS DO SERVIÇO</label>
+									<input class="form-control input-sm" readonly id="selectStatusView" name="selectStatusView"></input>
+								</div>
+							</div>
 							<!-- EQUIPAMENTO -->
 							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
 								<div>
@@ -79,20 +93,6 @@ if (isset($_SESSION['User'])) {
 								<div>
 									<label>NÚMERO DE SÉRIE</label>
 									<input type="text" readonly class="form-control input-sm" id="serialNumberView" name="serialNumberView">
-								</div>
-							</div>
-							<!-- STATUS -->
-							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
-								<div>
-									<label>STATUS DO SERVIÇO</label>
-									<input class="form-control input-sm" readonly id="selectStatusView" name="selectStatusView"></input>
-								</div>
-							</div>
-							<!-- DATA DE ENTREGA -->
-							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
-								<div>
-									<label>DATA DE ENTREGA</label>
-									<input type="text" readonly class="form-control input-sm" id="dataSaidaView" name="dataSaidaView">
 								</div>
 							</div>
 							<!-- OBSERVAÇÕES -->
@@ -109,6 +109,13 @@ if (isset($_SESSION['User'])) {
 									<textarea type="text" readonly class="form-control input-sm" id="servicoView" name="servicoView" rows="3" style="resize: none"></textarea>
 								</div>
 							</div>
+							<!-- VALOR DE TERCEIRO -->
+							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+								<div>
+									<label>VALOR DE TERCEIRO</label>
+									<input type="number" readonly class="form-control input-sm" id="valorTerceiroView" name="valorTerceiroView">
+								</div>
+							</div>
 							<!-- VALOR TOTAL -->
 							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
 								<div>
@@ -121,6 +128,13 @@ if (isset($_SESSION['User'])) {
 								<div>
 									<label>GARANTIA</label>
 									<input type="text" readonly class="form-control input-sm" id="garantiaView" name="garantiaView"></input>
+								</div>
+							</div>
+							<!-- DATA DE ENTREGA -->
+							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+								<div>
+									<label>DATA DE ENTREGA</label>
+									<input type="text" readonly class="form-control input-sm" id="dataSaidaView" name="dataSaidaView">
 								</div>
 							</div>
 							<!-- NF-E EMITIDA? -->

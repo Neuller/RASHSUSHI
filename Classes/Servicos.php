@@ -17,9 +17,9 @@ public function obterDadosServicos($idServico){
 	$c = new conectar();
 	$conexao = $c->conexao();
 
-	$sql = "SELECT ID_Servico, ID_Cliente, ID, ID_Status, Equipamento, 
-	Info, Servico, idTecnico, SerialNumber, 
-	Garantia, Preco, DataCadastro, DataSaida, Diagnostico, NF_Emitida
+	$sql = "SELECT ID_Servico, ID_Cliente, ID, ID_Status, numero_ordem_servico, 
+	Equipamento, Info, Servico, idTecnico, SerialNumber, Garantia, Preco, 
+	valor_terceirizado, DataCadastro, DataSaida, Diagnostico, NF_Emitida
 	FROM servicos WHERE ID_Servico = '$idServico' ";
 
 	$result = mysqli_query($conexao, $sql);
@@ -30,17 +30,19 @@ public function obterDadosServicos($idServico){
 		'ID_Cliente' => $mostrar[1],
 		'ID' => $mostrar[2],
 		'ID_Status' => $mostrar[3],
-		'Equipamento' => $mostrar[4],
-		'Info' => $mostrar[5],
-		'Servico' => $mostrar[6],
-		'idTecnico' => $mostrar[7],
-		'SerialNumber' => $mostrar[8],
-		'Garantia' => $mostrar[9],
-		'Preco' => $mostrar[10],
-		'DataCadastro' => $mostrar[11],
-		'DataSaida' => $mostrar[12],
-		'Diagnostico' => $mostrar[13],
-		'NF_Emitida' => $mostrar[14]
+		'ordemServico' => $mostrar[4],
+		'Equipamento' => $mostrar[5],
+		'Info' => $mostrar[6],
+		'Servico' => $mostrar[7],
+		'idTecnico' => $mostrar[8],
+		'SerialNumber' => $mostrar[9],
+		'Garantia' => $mostrar[10],
+		'Preco' => $mostrar[11],
+		'valorTerceiro' => $mostrar[12],
+		'DataCadastro' => $mostrar[13],
+		'DataSaida' => $mostrar[14],
+		'Diagnostico' => $mostrar[15],
+		'NF_Emitida' => $mostrar[16]
 	);
 
 	return $dados;
@@ -51,8 +53,8 @@ public function editarServico($dados){
 	$conexao = $c->conexao();
 
 	$sql = "UPDATE servicos SET ID_Status = '$dados[1]', Servico = '$dados[2]', 
-	Info = '$dados[4]', idTecnico = '$dados[3]', Garantia = '$dados[5]', 
-	Preco = '$dados[6]', DataSaida = '$dados[7]', Diagnostico = '$dados[8]', NF_Emitida = '$dados[9]'
+	Info = '$dados[5]', idTecnico = '$dados[3]', numero_ordem_servico = '$dados[4]', Garantia = '$dados[6]', 
+	valor_terceirizado = '$dados[7]', Preco = '$dados[8]', DataSaida = '$dados[9]', Diagnostico = '$dados[10]', NF_Emitida = '$dados[11]'
 	WHERE ID_Servico = '$dados[0]'";
 
 	echo mysqli_query($conexao, $sql);

@@ -165,6 +165,7 @@ if (isset($_SESSION['User'])) {
 						$('#selectStatusU').val(identificadorStatus);
 					}
 					$('#informacaoU').val(dado['Info']);
+					$('#ordemServicoU').val(dado['ordemServico']);
 					$('#servicoU').val(dado['Servico']);
 					// VERIFICA TÉCNICO RESPONSÁVEL
 					var identificadorTecnico = dado['idTecnico'];
@@ -175,6 +176,7 @@ if (isset($_SESSION['User'])) {
 					}
 					$('#garantiaU').val(dado['Garantia']);
 					$('#precoU').val(dado['Preco']);
+					$('#valorTerceiroU').val(dado['valorTerceiro']);
 					$('#dataSaidaU').val(dado['DataSaida']);
 					$('#diagnosticoU').val(dado['Diagnostico']);
 					// VERIFICAR NF-E
@@ -216,6 +218,7 @@ if (isset($_SESSION['User'])) {
 					});
 					$('#idServicoView').val(dado['ID_Servico']);
 					$('#equipamentoView').val(dado['Equipamento']);
+					$('#ordemServicoView').val(dado['ordemServico']);
 					$('#serialNumberView').val(dado['SerialNumber']);
 					// NOME DO STATUS
 					$.ajax({
@@ -240,6 +243,7 @@ if (isset($_SESSION['User'])) {
 					$('#servicoView').val(dado['Servico']);
 					$('#garantiaView').val(dado['Garantia']);
 					$('#precoView').val(dado['Preco']);
+					$('#valorTerceiroView').val(dado['valorTerceiro']);
 					$('#dataSaidaView').val(dado['DataSaida']);
 					// VERIFICAR NF-E
 					var $radios = $('input:radio[name = nfeEmitidaView]');

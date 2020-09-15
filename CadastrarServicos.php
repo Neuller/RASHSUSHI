@@ -70,14 +70,14 @@ if (isset($_SESSION['User'])) {
                         <div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
                             <div>
                                 <label>EQUIPAMENTO / MARCA / MODELO<span class="required">*</span></label>
-                                <input type="text" class="form-control input-sm text-uppercase" id="equipamento" name="equipamento" maxlength="50">
+                                <input type="text" class="form-control input-sm text-uppercase" id="equipamento" name="equipamento" maxlength="500">
                             </div>
                         </div>
                         <!-- NÚMERO DE SÉRIE -->
                         <div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
                             <div>
                                 <label>NÚMERO DE SÉRIE<span class="required">*</span></label>
-                                <input type="text" class="form-control input-sm text-uppercase" id="serialnumber" name="serialnumber" maxlength="50">
+                                <input type="text" class="form-control input-sm text-uppercase" id="serialnumber" name="serialnumber" maxlength="500">
                             </div>
                         </div>
                         <!-- STATUS -->
@@ -101,7 +101,8 @@ if (isset($_SESSION['User'])) {
                         <div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
                             <div>
                                 <label>OBSERVAÇÕES</label>
-                                <textarea type="text" class="form-control input-sm text-uppercase" id="informacao" name="informacao" maxlength="100" rows="3" style="resize: none"></textarea>
+                                <textarea type="text" class="form-control input-sm text-uppercase" id="informacao" name="informacao" maxlength="1000" 
+                                rows="3" style="resize: none" placeholder="COM FONTE DE ALIMENTAÇÃO, PERIFÉRICOS DEIXADOS PELO CLIENTE, ETC..."></textarea>
                             </div>
                         </div>
                         <!-- BOTÃO CADASTRAR -->
