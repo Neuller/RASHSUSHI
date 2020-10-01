@@ -6,8 +6,6 @@ if (isset($_SESSION['User'])) {
 
 	<!DOCTYPE html>
 	<html>
-	<!-- MENU -->
-
 	<head>
 		<?php require_once "./Menu.php"; ?>
 	</head>
@@ -139,7 +137,6 @@ if (isset($_SESSION['User'])) {
 
 	<!-- SCRIPT -->
 	<script type="text/javascript">
-		// CADASTRAR
 		$(document).ready(function() {
 			$('.celular').mask('(99) 9 9999-9999');
 			$('.telefone').mask('(99) 9999-9999');
@@ -162,21 +159,34 @@ if (isset($_SESSION['User'])) {
 					return false;
 				}
 
-				dados = $('#frmClientes').serialize();
-
-				$.ajax({
-					type: "POST",
-					data: dados,
-					url: "./Procedimentos/Clientes/AdicionarClientes.php",
-					success: function(r) {
-						if (r == 1) {
-							$('#frmClientes')[0].reset();
-							alertify.success("CADASTRO REALIZADO");
-						} else {
-							alertify.error("NÃO FOI POSSÍVEL CADASTRAR");
+				$.ajax({ 
+					type: 'POST',
+					data:{"CPF" : cpf},
+					url: './Procedimentos/Verificacoes/VerificarCPF.php', 
+					success: function(r) { 
+						data = $.parseJSON(r);
+						if (data == "CPF NAO CADASTRADO") {
+							dados = $('#frmClientes').serialize();
+							$.ajax({
+								type: "POST",
+								data: dados,
+								url: "./Procedimentos/Clientes/AdicionarClientes.php",
+								success: function(r) {
+									if (r == 1) {
+										$('#frmClientes')[0].reset();
+										alertify.success("CADASTRO REALIZADO");
+									} else {
+										alertify.error("NÃO FOI POSSÍVEL CADASTRAR");
+									}
+								}
+							});
+						}else{
+							alertify.error("CPF JÁ CADASTRADO");
 						}
-					}
-				});
+					} 
+				}); 
+
+				
 			});
 		});
 	</script>
@@ -186,8 +196,6 @@ if (isset($_SESSION['User'])) {
 			margin-bottom: 50px;
 		}
 	</style>
-
-	<!-- SE NÂO ESTIVAR LOGADO RETORNA À PÁGINA INICIAL -->
 <?php
 } else {
 	header("location:./index.php");
