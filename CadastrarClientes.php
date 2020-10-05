@@ -48,7 +48,7 @@ if (isset($_SESSION['User'])) {
 							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
 								<div>
 									<label>CNPJ</label>
-									<input type="text" class="form-control input-sm align cnpj text-uppercase" placeholder="##.###.###/###-##" id="cnpj" name="cnpj">
+									<input type="text" class="form-control input-sm align cnpj text-uppercase" placeholder="##.###.###/####-##" id="cnpj" name="cnpj">
 								</div>
 							</div>
 							<!-- E-MAIL -->
@@ -155,17 +155,17 @@ if (isset($_SESSION['User'])) {
 					return false;
 				}
 				if ((cpf == "") && (cnpj == "")) {
-					alertify.alert("ATENÇÃO", "INSIRA UM CPF OU CNPJ VÁLIDO.");
+					alertify.error("INSIRA UM CPF OU CNPJ VÁLIDO");
 					return false;
 				}
 
 				$.ajax({ 
 					type: 'POST',
-					data:{"CPF" : cpf},
-					url: './Procedimentos/Verificacoes/VerificarCPF.php', 
+					data:{"CPF" : cpf, "CNPJ" : cnpj},
+					url: './Procedimentos/Verificacoes/Verificar_CPF_CNPJ.php', 
 					success: function(r) { 
 						data = $.parseJSON(r);
-						if (data == "CPF NAO CADASTRADO") {
+						if (data == 0) {
 							dados = $('#frmClientes').serialize();
 							$.ajax({
 								type: "POST",
@@ -180,8 +180,9 @@ if (isset($_SESSION['User'])) {
 									}
 								}
 							});
+							//
 						}else{
-							alertify.error("CPF JÁ CADASTRADO");
+							alertify.error("CPF OU CNPJ JÁ CADASTRADO");
 						}
 					} 
 				}); 
