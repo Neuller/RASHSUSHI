@@ -10,7 +10,7 @@
 
       <!-- LOGO -->
       <div class="navbar-header logo">
-        <a class="navbar-brand" href="./Inicio.php"><img class="img-responsive logoMenu img-thumbnail" src="./Img/NSERV.png" title="PÁGINA INICIAL" width="200px" height="150px"></a>
+        <a class="navbar-brand" href="./Inicio.php"><img class="img-responsive logoMenu img-thumbnail" src="./Img/NSERV.png" title="IR PARA PÁGINA INICIAL" width="200px" height="150px"></a>
       </div>
 
       <!-- ITENS DE MENU -->

@@ -7,7 +7,7 @@
 <meta name="author" content="Neuller César">
 
 <!-- TÍTULO -->
-<title>ERP - PORTAL NSERV</title>
+<title>NSERV</title>
 
 <!-- ICONE -->
 <link rel="icon" href="Img/Icone.png">

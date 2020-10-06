@@ -69,7 +69,7 @@ if (isset($_SESSION['User'])) {
 							<!-- CEP -->
 							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
 								<div>
-									<label>CEP</label>
+									<label>CEP<span class="required">*</span></label>
 									<input type="text" class="form-control input-sm align cep text-uppercase" placeholder="#####-###" id="cep" name="cep">
 								</div>
 							</div>
@@ -144,14 +144,36 @@ if (isset($_SESSION['User'])) {
 			$('.cnpj').mask('99.999.999/9999-99');
 			$('.cep').mask('99999-999');
 
+			$(".cep").change(function(){
+				var cep = frmClientes.cep.value;
+				var urlPesquisaCep = "https://viacep.com.br/ws/"+cep+"/json";
+				
+				$.ajax({
+					type: "GET",
+					dataType: "JSON",
+					url: urlPesquisaCep,
+					success:function(r){
+						$("#bairro").val(r.bairro);
+						$("#endereco").val(r.logradouro);
+						$("#complemento").val(r.complemento);
+					},
+					error:function(){
+						alertify.error("CEP INVÁLIDO");
+						$("#cep").val("");
+						return false;
+					}
+				});
+			});
+
 			$('#btnAdicionar').click(function() {
 				var nome = frmClientes.nome.value;
 				var cpf = frmClientes.cpf.value;
 				var cnpj = frmClientes.cnpj.value;
+				var cep = frmClientes.cep.value;
 				var celular = frmClientes.celular.value;
 
-				if ((nome == "") || (celular == "")) {
-					alertify.alert("ATENÇÃO", "PREENCHA TODOS OS CAMPOS OBRIGATÓRIOS.");
+				if ((nome == "") || (celular == "") || (cep == "")) {
+					alertify.error("PREENCHA TODOS OS CAMPOS OBRIGATÓRIOS");
 					return false;
 				}
 				if ((cpf == "") && (cnpj == "")) {
