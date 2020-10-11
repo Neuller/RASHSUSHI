@@ -1,10 +1,9 @@
-.btnEntrar{
-    margin-top: 15px;
-    float: right;
-}
-#frmLogin{
+#frmLogin, #frmRegistro{
     margin-top: 25px;
 }
 .imagemPainel{
     margin-top: 10px;
+}
+.painelLogin{
+	margin-top: 25%;
 }

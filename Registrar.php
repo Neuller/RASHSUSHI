@@ -1,77 +1,84 @@
 <?php
-
 require_once "./Classes/Conexao.php";
 
 $obj = new conectar();
 $conexao = $obj->Conexao();
 
-$sql = "SELECT * from usuarios WHERE usuario = 'admin' or 'ADMIN' ";
+$sql = "SELECT * from usuarios WHERE grupo = 1";
 $result = mysqli_query($conexao, $sql);
 
 $validar = 0;
 if (mysqli_num_rows($result) > 0) {
-	header("location:index.php");
+	header("location: ./index.php");
 }
-
 ?>
-
-<?php require_once "./Dependencias.php" ?>
 
 <!DOCTYPE html>
 <html>
+	<head>
+		<?php require_once "./Dependencias.php" ?>
+	</head>
 
-<head>
-	<title>Nserv</title>
-</head>
-
-<body style="background-color: gray">
-	<br><br><br>
-	<div class="container">
-		<div class="row">
+	<body class="bgGray">
+		<div class="container conteudo">
 			<div class="col-sm-4"></div>
 			<div class="col-sm-4">
-				<div class="panel panel-primary">
-					<div class="panel panel-heading">Cadastre-se Agora</div>
+				<div class="panel panel-default painelLogin">
+					<!-- PANEL HEADING -->
+					<div class="panel-heading">
+						REALIZE O PRIMEIRO CADASTRO!
+					</div>
+					<!-- PANEL BODY -->
 					<div class="panel panel-body">
-						<p>
-							<img src="Img/NSERV.png" width="100%">
-						</p>
-						<form id="frmRegistro">
-							<br>
-							<label>Nome</label>
-							<input type="text" class="form-control input-sm" name="nome" id="nome">
-							<br>
-							<label>Usuário</label>
-							<input type="text" class="form-control input-sm" name="usuario" id="usuario">
-							<br>
-							<label>Email</label>
-							<input type="text" class="form-control input-sm" name="email" id="email">
-							<br>
-							<label>Senha</label>
-							<input type="password" class="form-control input-sm" name="senha" id="senha">
-							<br>
-							<p></p>
-							<span class="btn btn-primary" id="registro">Registrar</span>
-							<a href="index.php" class="btn btn-default">Voltar</a>
+						<!-- FORMULÁRIO -->
+						<form id="frmRegistro" class="col-md-12 col-sm-12 col-xs-12">
+							<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
+								<div>
+									<label>USUÁRIO<span class="required">*</span></label>
+									<input type="text" class="form-control input-sm text-uppercase" id="usuario" name="usuario" maxlenght="100">
+								</div>
+							</div>
+							<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
+								<div>
+									<label>NOME COMPLETO<span class="required">*</span></label>
+									<input type="text" class="form-control input-sm text-uppercase" name="nome" id="nome" maxlenght="100">
+								</div>
+							</div>
+							<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
+								<div>
+									<label>E-MAIL<span class="required">*</span></label>
+									<input type="text" class="form-control input-sm text-uppercase" id="email" name="email" maxlenght="100">
+								</div>
+							</div>
+							<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
+								<div>
+									<label>SENHA<span class="required">*</span></label>
+									<input type="password" class="form-control input-sm text-uppercase" id="senha"  name="senha" maxlenght="100">
+								</div>
+							</div>
+							<!-- BOTOES -->
+							<div class="btns">
+								<span class="btn btn-danger btn-sm" id="registrar" title="REGISTRAR">REGISTRAR</span>
+								<a class="btn btn-default" href="./index.php" title="VOLTAR">VOLTAR</a>
+							</div>
 						</form>
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-4"></div>
 		</div>
-	</div>
-</body>
-
+	</body>
 </html>
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#registro').click(function() {
+		$('#registrar').click(function() {
+			var usuario = frmRegistro.usuario.value;
+			var nome = frmRegistro.nome.value;
+			var email = frmRegistro.email.value;
+			var senha = frmRegistro.senha.value;
 
-			vazios = validarFormVazio('frmRegistro');
-
-			if (vazios > 0) {
-				alert("PREENCHA TODOS OS CAMPOS.");
+			if ((usuario == "") || (nome == "") || (email == "") || (senha == "")) {
+				alertify.error("PREENCHA TODOS OS CAMPOS OBRIGATÓRIOS");
 				return false;
 			}
 
@@ -79,17 +86,14 @@ if (mysqli_num_rows($result) > 0) {
 			$.ajax({
 				type: "POST",
 				data: dados,
-				url: "Procedimentos/login/registrarUsuarios.php",
+				url: "./Procedimentos/Login/CadastrarUsuario.php",
 				success: function(r) {
-					//alert(r);
-
 					if (r == 1) {
-						alert("CADASTRO REALIZADO");
 						$('#frmRegistro')[0].reset();
-						window.location = "index.php";
+						alertify.success("CADASTRO REALIZADO");
+						window.location = "./index.php";
 					} else {
-						alert("PROBLEMA AO CADASTRAR");
-						$('#frmRegistro')[0].reset();
+						alertify.error("NÃO FOI POSSÍVEL CADASTRAR");
 					}
 				}
 			});

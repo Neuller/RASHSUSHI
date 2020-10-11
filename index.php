@@ -4,7 +4,7 @@ require_once "./Classes/Conexao.php";
 $obj = new conectar();
 $conexao = $obj->Conexao();
 
-$sql = "SELECT * from usuarios WHERE usuario = 'admin' or 'ADMIN' ";
+$sql = "SELECT * from usuarios WHERE grupo = 1";
 $result = mysqli_query($conexao, $sql);
 
 $validar = 0;
@@ -31,29 +31,29 @@ if (mysqli_num_rows($result) > 0) {
 				<div class="panel panel-body">
 					<!-- IMAGEM -->
 					<div class="imagemPainel">
-						<img src="Img/NSERV.png" width="100%">
+						<img src="Img/RASHSUSHI.png" width="100%">
 					</div>
 					<!-- FORMULÁRIO -->
 					<form id="frmLogin" class="col-md-12 col-sm-12 col-xs-12">
 						<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
 							<div>
 								<label>USUÁRIO<span class="required">*</span></label>
-								<input type="text" class="form-control input-sm text-uppercase" name="usuario" id="usuario">
+								<input type="text" class="form-control input-sm text-uppercase" id="usuario" name="usuario">
 							</div>
 						</div>
 						<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
 							<div>
 								<label>SENHA<span class="required">*</span></label>
-								<input type="password" name="senha" id="senha" class="form-control input-sm text-uppercase">
+								<input type="password" class="form-control input-sm text-uppercase" id="senha" name="senha">
 							</div>
 						</div>
-						<!-- BOTÃO ENTRAR -->
-						<div class="btnEntrar">
+						<!-- BOTOES -->
+						<div class="btns">
 							<span class="btn btn-primary btn-sm" id="entrar" title="ENTRAR">ENTRAR</span>
+							<?php if (!$validar) : ?>
+								<a href="./Registrar.php" class="btn btn-danger btn-sm" id="registrar" title="REGISTRAR">REGISTRAR</a>
+							<?php endif; ?>
 						</div>
-						<?php if (!$validar) : ?>
-							<a href="Registrar.php" class="btn btn-danger btn-sm" title="REGISTRAR">REGISTRAR</a>
-						<?php endif; ?>
 					</form>
 				</div>
 			</div>
@@ -66,11 +66,11 @@ if (mysqli_num_rows($result) > 0) {
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#entrar').click(function() {
+			var usuario = frmLogin.usuario.value;
+			var senha = frmLogin.senha.value;
 
-			vazios = validarFormVazio('frmLogin');
-
-			if (vazios > 0) {
-				alertify.error("PREENCHA TODOS OS CAMPOS");
+			if ((usuario == "") || (senha == "")) {
+				alertify.error("PREENCHA TODOS OS CAMPOS OBRIGATÓRIOS");
 				return false;
 			}
 
@@ -81,13 +81,19 @@ if (mysqli_num_rows($result) > 0) {
 				url: "Procedimentos/Login/Login.php",
 				success: function(r) {
 					if (r == 1) {
-						window.location = "./Inicio.php";
+						window.location = "./Principal.php";
 					} else {
 						alertify.error("ACESSO NEGADO");
 					}
 				}
 			});
 		});
+
+		$("#usuario").keypress(function(event) { 
+            if (event.keyCode === 13) { 
+                $("#entrar").click(); 
+            } 
+        }); 
 		$("#senha").keypress(function(event) { 
             if (event.keyCode === 13) { 
                 $("#entrar").click(); 
@@ -95,9 +101,3 @@ if (mysqli_num_rows($result) > 0) {
         }); 
 	});	
 </script>
-
-<style>
-	.painelLogin{
-		margin-top: 25%;
-	}
-</style>

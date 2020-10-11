@@ -12,4 +12,12 @@
     color: black;
 	padding: 1%;
 }
-
+.textCabecalho_White{
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    padding: 1%;
+}
+.teste{
+    z-index: 1;
+    position: relative;
+}

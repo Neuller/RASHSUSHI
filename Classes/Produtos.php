@@ -1,12 +1,12 @@
 <?php 
 class produtos{
 // MÉTODO ADICIONAR
-public function adicionarProduto($dados){
+public function cadastrarProduto($dados){
 	$c = new conectar();
 	$conexao = $c->conexao();
 
-	$sql = "INSERT INTO produtosnserv (ID_Categoria, Codigo, Descricao, Garantia, Preco, PrecoInstalacao, Estoque, NF, NCM) 
-	VALUES ('$dados[1]','$dados[0]', '$dados[2]','$dados[3]', '$dados[5]', '$dados[6]', '$dados[4]', '$dados[7]', '$dados[8]')";
+	$sql = "INSERT INTO produtos (id_categoria, id_usuario, descricao, quantidade, valor_unidade) 
+	VALUES ('$dados[0]','$dados[1]', '$dados[2]','$dados[3]', '$dados[4]')";
 
 	return mysqli_query($conexao, $sql);
 }
