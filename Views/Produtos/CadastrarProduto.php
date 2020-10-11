@@ -50,7 +50,7 @@ if (isset($_SESSION['User'])) {
                             <!-- QUANTIDADE -->
                             <div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
                                 <div>
-                                    <label>QUANTIDADE<span class="required">*</span></label>
+                                    <label>QUANTIDADE</label>
                                     <input type="number" class="form-control input-sm estoque text-uppercase" id="quantidade" name="quantidade" maxlenght="100">
                                 </div>
                             </div>
@@ -80,10 +80,9 @@ if (isset($_SESSION['User'])) {
     $('#btnCadastrar').click(function() {
 		var descricao = frmProduto.descricao.value;
         var categoria = frmProduto.categoriaSelect.value;
-        var quantidade = frmProduto.quantidade.value;
         var valor_unidade = frmProduto.valor_unidade.value;
         
-        if ((descricao == "") || (categoria == "") || (quantidade == "") || (valor_unidade == "")) {
+        if ((descricao == "") || (categoria == "") || (valor_unidade == "")) {
 			alertify.error("PREENCHA TODOS OS CAMPOS OBRIGATÓRIOS");
 			return false;
 		}

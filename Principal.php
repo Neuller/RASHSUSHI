@@ -117,6 +117,7 @@ if (isset($_SESSION['User'])) {
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <a id="cadastrarProduto" class="dropdown-item" href="#">CADASTRAR PRODUTO</a>
+          <a id="cadastrarCombinado" class="dropdown-item" href="#">CADASTRAR COMBINADO</a>
           <a id="procurarProduto" class="dropdown-item" href="#">PROCURAR PRODUTO</a>
         </div>
       </div>
@@ -246,6 +247,9 @@ if (isset($_SESSION['User'])) {
   // PRODUTOS
   $("#cadastrarProduto").click(function(e) {
     $('#conteudo').load("./Views/Produtos/CadastrarProduto.php");	
+  });
+  $("#cadastrarCombinado").click(function(e) {
+    $('#conteudo').load("./Views/Produtos/CadastrarCombinado.php");	
   });
   // USUÁRIOS
   $("#cadastrarUsuario").click(function(e) {
