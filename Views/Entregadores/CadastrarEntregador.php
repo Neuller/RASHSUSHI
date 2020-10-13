@@ -156,7 +156,7 @@ if (isset($_SESSION['User'])) {
                                 <div>
                                     <label>VEÍCULO</label>
                                     <select class="form-control input-sm" id="veiculoSelect" name="veiculoSelect">
-                                        <option value="">SELECIONE UM VEICULO</option>
+                                        <option value="">SELECIONE UM VEÍsCULO</option>
                                         <?php
                                         $sql = "SELECT id_veiculo, marca_modelo FROM veiculos ORDER BY id_veiculo DESC";
                                         $result = mysqli_query($conexao, $sql);
@@ -189,6 +189,7 @@ if (isset($_SESSION['User'])) {
 			$('.telefone2').mask('(99) 9999-9999');
 			$('.celular').mask('(99) 9 9999-9999');
 			$('.celular2').mask('(99) 9 9999-9999');
+			$('#veiculoSelect').select2();
 
 			$(".cep").change(function(){
 				var cep = frmEntregador.cep.value;

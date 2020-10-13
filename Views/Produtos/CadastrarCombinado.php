@@ -27,7 +27,7 @@ if (isset($_SESSION['User'])) {
                                 <hr>
 								<div>
                                     <label>PRODUTO<span class="required">*</span></label>
-                                    <select class="form-control input-sm" id="produtoSelect" name="produtoSelect">
+                                    <select class="form-control descricao input-sm" id="produtoSelect" name="produtoSelect">
                                     <option value="">SELECIONE UM PRODUTO</option>
                                     <!-- PHP -->
                                     <?php
@@ -45,14 +45,14 @@ if (isset($_SESSION['User'])) {
                                 <hr>
 								<div>
 									<label>DESCRIÇÃO</label>
-									<input type="text" readonly class="form-control input-sm text-uppercase" id="descricao" name="descricao" maxlenght="100">
+									<input type="text" readonly class="form-control descricao input-sm text-uppercase" id="descricao" name="descricao" maxlenght="100">
 								</div>
 							</div>
                             <!-- NÚMERO DE PEÇAS -->
                             <div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
                                 <div>
                                     <label>NÚMERO DE PEÇAS<span class="required">*</span></label>
-                                    <input type="number" class="form-control input-sm estoque text-uppercase" id="quantidade_pecas" name="quantidade_pecas" maxlenght="100">
+                                    <input type="number" class="form-control quantidade_pecas input-sm estoque text-uppercase" id="quantidade_pecas" name="quantidade_pecas" maxlenght="100">
                                 </div>
                             </div>
                             <!-- VALOR TOTAL -->
@@ -75,7 +75,33 @@ if (isset($_SESSION['User'])) {
 
 <script type="text/javascript">
 	$(document).ready(function($) {
-        
+        $('#produtoSelect').select2();
+        $(".descricao").change(function(){
+			var produto = frmCombinado.produtoSelect.value;
+            var quantidade_pecas = frmCombinado.quantidade_pecas.value;
+            $.ajax({
+			    type: "POST",
+				data: "idProduto=" + produto,
+				url: "./Procedimentos/Produtos/ObterDadosProdutos.php",
+				success:function(r){
+                    dados = jQuery.parseJSON(r);
+					$("#descricao").val(quantidade_pecas + " PEÇAS - " + dados.descricao);
+				}
+			});
+		});
+        $(".quantidade_pecas").change(function(){
+            var produto = frmCombinado.produtoSelect.value;
+			var quantidade_pecas = frmCombinado.quantidade_pecas.value;
+            $.ajax({
+			    type: "POST",
+				data: "idProduto=" + produto,
+				url: "./Procedimentos/Produtos/ObterDadosProdutos.php",
+				success:function(r){
+                    dados = jQuery.parseJSON(r);
+					$("#descricao").val(quantidade_pecas + " PEÇAS - " + dados.descricao);
+				}
+			});
+		});
 	});
 
     $('#btnCadastrar').click(function() {

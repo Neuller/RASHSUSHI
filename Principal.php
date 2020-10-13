@@ -33,7 +33,7 @@ if (isset($_SESSION['User'])) {
     <!-- SIDEBAR -->
     <!-- MENU LATERAL -->
     <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading">RASH SUSHI</div>
+      <div class="sidebar-heading rashSushi">RASH SUSHI</div>
 
       <div class="group-menu list-group list-group-flush">
         <!-- PAGINA INICIAL -->

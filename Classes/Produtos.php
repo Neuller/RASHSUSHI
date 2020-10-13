@@ -15,24 +15,19 @@ public function obterDadosProdutos($idProduto){
 	$c = new conectar();
 	$conexao = $c->conexao();
 
-	$sql = "SELECT ID_Produto, ID_Categoria, Codigo, Descricao, Garantia, Preco, 
-	PrecoInstalacao, Estoque, NF, NCM
-	FROM produtosnserv WHERE ID_Produto = '$idProduto' ";
+	$sql = "SELECT id_produto, id_categoria, id_usuario, descricao, quantidade, valor_unidade
+	FROM produtos WHERE id_produto = '$idProduto' ";
 
 	$result = mysqli_query($conexao, $sql);
 	$mostrar = mysqli_fetch_row($result);
 
 	$dados = array(
-		'ID_Produto' => $mostrar[0],
-		'ID_Categoria' => $mostrar[1],
-		'Codigo' => $mostrar[2],
-		'Descricao' => $mostrar[3],
-		'Garantia' => $mostrar[4],
-		'Preco' => $mostrar[5],
-		'PrecoInstalacao' => $mostrar[6],
-		'Estoque' => $mostrar[7],
-		'NF' => $mostrar[8],
-		'NCM' => $mostrar[9]
+		'id_produto' => $mostrar[0],
+		'id_categoria' => $mostrar[1],
+		'id_usuario' => $mostrar[2],
+		'descricao' => $mostrar[3],
+		'quantidade' => $mostrar[4],
+		'valor_unidade' => $mostrar[5]
 	);
 	return $dados;
 }
