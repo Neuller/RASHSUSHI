@@ -24,7 +24,6 @@ if (isset($_SESSION['User'])) {
 						<div>
 							<!-- DESCRIÇÃO -->
 							<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
-                                <hr>
 								<div>
 									<label>DESCRIÇÃO<span class="required">*</span></label>
 									<input type="text" class="form-control input-sm text-uppercase" id="descricao" name="descricao" maxlenght="100">

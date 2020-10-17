@@ -17,17 +17,10 @@ if (isset($_SESSION['User'])) {
 				<div class="mx-auto">
 					<form id="frmVeiculo">
 						<div>
-							<!-- FORMULÁRIO VEÍCULO -->
-							<div class='col-md-12 col-sm-12 col-xs-12'>
-								<div class="text-left">
-									<h4><strong>DADOS DO VEÍCULO</strong><i class="fa fa-lg fa-motorcycle ml-15"></i></h4>
-								</div>
-								<hr>
-							</div>
 							<!-- MARCA/MODELO -->
 							<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
 								<div>
-									<label>MARCA/MODELO</label>
+									<label>MARCA/MODELO<span class="required">*</span></label>
 									<input type="text" class="form-control input-sm text-uppercase" id="marca_modelo" name="marca_modelo" maxlenght="100">
 								</div>
 							</div>
@@ -84,6 +77,13 @@ if (isset($_SESSION['User'])) {
 		});
 
         $('#btnCadastrar').click(function() {
+			var marca_modelo = frmVeiculo.marca_modelo.value;
+
+			if (marca_modelo == "") {
+				alertify.error("PREENCHA O CAMPO 'MARCA/MODELO'");
+				return false;
+			}
+
             dados = $('#frmVeiculo').serialize();
             $.ajax({
                 type: "POST",

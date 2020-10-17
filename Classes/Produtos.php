@@ -1,6 +1,5 @@
 <?php 
 class produtos{
-// MÉTODO ADICIONAR
 public function cadastrarProduto($dados){
 	$c = new conectar();
 	$conexao = $c->conexao();
@@ -10,7 +9,6 @@ public function cadastrarProduto($dados){
 
 	return mysqli_query($conexao, $sql);
 }
-// MÉTODO RETORNAR DADOS 
 public function obterDadosProdutos($idProduto){
 	$c = new conectar();
 	$conexao = $c->conexao();

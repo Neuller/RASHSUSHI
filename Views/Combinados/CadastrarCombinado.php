@@ -24,7 +24,6 @@ if (isset($_SESSION['User'])) {
 						<div>
                             <!-- PRODUTO -->
 							<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
-                                <hr>
 								<div>
                                     <label>PRODUTO<span class="required">*</span></label>
                                     <select class="form-control descricao input-sm" id="produtoSelect" name="produtoSelect">
@@ -119,10 +118,10 @@ if (isset($_SESSION['User'])) {
         $.ajax({
 			type: "POST",
 			data: dados,
-			url: "./Procedimentos/Produtos/CadastrarCombinado.php",
+			url: "./Procedimentos/Combinados/CadastrarCombinado.php",
 			success: function(r) {
                 if (r == 1) {
-                $('#frmCombinado')[0].reset();
+                	$('#frmCombinado')[0].reset();
                     alertify.success("CADASTRO REALIZADO");
                 } else {
                     alertify.error("NÃO FOI POSSÍVEL CADASTRAR");

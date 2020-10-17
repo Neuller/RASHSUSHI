@@ -80,9 +80,9 @@ if (isset($_SESSION['User'])) {
               <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			  FINANCEIRO
               </a>
-			  <!-- LISTA RELATORIOS -->
+			  <!-- LISTA FINANCEIRO -->
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#"></a>
+              <a class="dropdown-item" href="#">CADASTRAR COMPRA</a><a class="dropdown-item" href="#"></a>
               </div>
         </div>
 
@@ -105,8 +105,8 @@ if (isset($_SESSION['User'])) {
               </a>
 			  <!-- LISTA PEDIDOS -->
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">CADASTRAR PEDIDOS</a>
-                <a class="dropdown-item" href="#">PROCURAR PEDIDOS</a>
+                <a id="cadastrarPedido"class="dropdown-item" href="#">CADASTRAR PEDIDOS</a>
+                <a id="procurarPedido" class="dropdown-item" href="#">PROCURAR PEDIDOS</a>
               </div>
             </div>
 
@@ -129,7 +129,7 @@ if (isset($_SESSION['User'])) {
               </a>
 			  <!-- LISTA RELATORIOS -->
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">GERAR RELATORIO MENSAL</a>
+                <a class="dropdown-item" href="#">GERAR RELATORIO MENSAL <span class="required">- VERSÃO COMPLETA</span></a>
               </div>
 			</div>
 
@@ -236,6 +236,10 @@ if (isset($_SESSION['User'])) {
 	$("#procurarCliente").click(function(e) {
 		$('#conteudo').load("./Views/Clientes/ProcurarClientes.php");	
   });
+  // COMBINADOS
+  $("#cadastrarCombinado").click(function(e) {
+    $('#conteudo').load("./Views/Combinados/CadastrarCombinado.php");	
+  });
   // ENTREGADORES
   $("#cadastrarEntregador").click(function(e) {
     $('#conteudo').load("./Views/Entregadores/CadastrarEntregador.php");	
@@ -244,12 +248,13 @@ if (isset($_SESSION['User'])) {
   $("#cadastrarFornecedor").click(function(e) {
     $('#conteudo').load("./Views/Fornecedores/CadastrarFornecedor.php");	
   });
+  // PEDIDOS
+  $("#cadastrarPedido").click(function(e) {
+    $('#conteudo').load("./Views/Pedidos/CadastrarPedido.php");	
+  });
   // PRODUTOS
   $("#cadastrarProduto").click(function(e) {
     $('#conteudo').load("./Views/Produtos/CadastrarProduto.php");	
-  });
-  $("#cadastrarCombinado").click(function(e) {
-    $('#conteudo').load("./Views/Produtos/CadastrarCombinado.php");	
   });
   // USUÁRIOS
   $("#cadastrarUsuario").click(function(e) {

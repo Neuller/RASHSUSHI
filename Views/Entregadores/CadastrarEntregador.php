@@ -145,10 +145,10 @@ if (isset($_SESSION['User'])) {
 								</div>
 							</div>
 
-                            <!-- FORMULÁRIO VEÍCULO -->
+                            <!-- DADOS DO VEÍCULO -->
 							<div class='separador col-md-12 col-sm-12 col-xs-12'>
 								<div class="text-left">
-									<h4><strong>VEÍCULO</strong><i class="fa fa-lg fa-motorcycle ml-15"></i></h4>
+									<h4><strong>DADOS DO VEÍCULO</strong><i class="fa fa-lg fa-motorcycle ml-15"></i></h4>
 								</div>
 								<hr>
 							</div>
@@ -156,7 +156,7 @@ if (isset($_SESSION['User'])) {
                                 <div>
                                     <label>VEÍCULO</label>
                                     <select class="form-control input-sm" id="veiculoSelect" name="veiculoSelect">
-                                        <option value="">SELECIONE UM VEÍsCULO</option>
+                                        <option value="">SELECIONE UM VEÍCULO</option>
                                         <?php
                                         $sql = "SELECT id_veiculo, marca_modelo FROM veiculos ORDER BY id_veiculo DESC";
                                         $result = mysqli_query($conexao, $sql);
