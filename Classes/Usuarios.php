@@ -1,6 +1,5 @@
 <?php 
 class usuarios{
-// MÉTODO CADASTRAR PRIMEIRO USUÁRIO
 public function cadastrarPrimeiroUsuario($dados){
 	$c = new conectar();
 	$conexao = $c->conexao();
@@ -12,7 +11,6 @@ public function cadastrarPrimeiroUsuario($dados){
 
 	return mysqli_query($conexao, $sql);
 }
-// MÉTODO CADASTRAR
 public function cadastrarUsuario($dados){
 	$c = new conectar();
 	$conexao = $c->conexao();
@@ -26,7 +24,6 @@ public function cadastrarUsuario($dados){
 
 	return mysqli_query($conexao, $sql);
 }
-// MÉTODO PARA LOGAR
 public function login($dados){
 	$c = new conectar();
 	$conexao = $c->conexao();
@@ -47,7 +44,6 @@ public function login($dados){
 		return 0;
 	}
 }
-// MÉTODO TRAZER ID USUÁRIO
 public function obter_id_usuario($dados){
 	$c = new conectar();
 	$conexao = $c->conexao();
@@ -61,7 +57,6 @@ public function obter_id_usuario($dados){
 
 	return mysqli_fetch_row($result)[0];
 }
-// MÉTODO RETORNAR DADOS
 public function obterDados($idUsuario){
 	$c = new conectar();
 
@@ -98,7 +93,6 @@ public function obterDados($idUsuario){
 
 	return $dados;
 }
-// MÉTODO EDITAR
 public function atualizar($dados){
 	$c = new conectar();
 	$conexao=$c->conexao();
@@ -111,7 +105,6 @@ public function atualizar($dados){
 
 	return mysqli_query($conexao,$sql);	
 }
-// MÉTODO EXCLUIR
 public function excluir($idusuario){
 	$c = new conectar();
 	$conexao=$c->conexao();

@@ -16,7 +16,7 @@ session_start();
                     </tr>
                 </thead>
                 <?php
-                $valorTotal = 0; // INICIALIZAR VALOR TOTAL
+                $valorTotal = 0;
                 if (isset($_SESSION['tabelaTemporaria'])) :
                     $i = 0;
                     foreach (@$_SESSION['tabelaTemporaria'] as $key) {

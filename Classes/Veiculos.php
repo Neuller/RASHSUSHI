@@ -1,6 +1,5 @@
 <?php 
 class veiculos{
-// MÉTODO ADICIONAR
 public function cadastrarVeiculo($dados){
 	$c = new conectar();
 	$conexao = $c->conexao();

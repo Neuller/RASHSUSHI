@@ -13,15 +13,15 @@ class pedidos {
         for ($i = 0; $i < count($dados) ; $i++) { 
             $d = explode("||", $dados[$i]);
 
-            $sql="INSERT INTO pedidos (id_pedido, id_cliente, id_produto, id_usuario, valor_total, status, data_hora)
-            VALUES ('$idPedido', '$d[7]', '$d[0]', '$idUsuario', '$d[6]', 'EM ABERTO', '$data_hora')";
+            $sql="INSERT INTO pedidos (id_pedido, id_cliente, id_produto, id_usuario, valor_total, status, data_hora_pedido)
+            VALUES ('$idPedido', '$d[6]', '$d[0]', '$idUsuario', '$d[5]', 'EM ABERTO', '$data_hora')";
 
             $r = $r + $result = mysqli_query($conexao,$sql);
         }
         return $r;
     }
     public function criarComprovante(){
-        $c= new conectar();
+        $c = new conectar();
         $conexao = $c -> conexao();
     
         $sql = "SELECT id_pedido from pedidos group by id_pedido desc";
@@ -34,6 +34,14 @@ class pedidos {
         }else{
             return $id + 1;
         }
+    }
+    public function excluirPedido($idPedido){
+        $c = new conectar();
+        $conexao = $c -> conexao();
+    
+        $sql = "DELETE from pedidos WHERE id_pedido = '$idPedido' ";
+    
+        return mysqli_query($conexao, $sql);
     }
 }
 ?>

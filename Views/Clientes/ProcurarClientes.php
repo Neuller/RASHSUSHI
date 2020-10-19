@@ -107,19 +107,11 @@ if (isset($_SESSION['User'])) {
 		}
 	</script>
 
-	<style>
-		.mb-20px {
-			margin-bottom: 20px;
-		}
-
-		.mb-15px {
-			margin-bottom: 15px;
-		}
-
-		.cabecalho {
-			margin-bottom: 25px;
-		}
-	</style>
+<style>
+	.cabecalho {
+		margin-bottom: 50px;
+	}
+</style>
 <?php
 } else {
 	header("location:./index.php");

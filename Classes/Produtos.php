@@ -29,7 +29,6 @@ public function obterDadosProdutos($idProduto){
 	);
 	return $dados;
 }
-// MÉTODO EDITAR
 public function editarProduto($dados){
 	$c = new conectar();
 	$conexao = $c->conexao();
@@ -41,7 +40,6 @@ public function editarProduto($dados){
 
 	echo mysqli_query($conexao, $sql);
 }
-// MÉTODO EXCLUIR 
 public function excluirProduto($idProduto){
 	$c = new conectar();
 	$conexao = $c->conexao();

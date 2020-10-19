@@ -1,6 +1,5 @@
 <?php 
 class entregadores{
-// MÉTODO ADICIONAR
 public function cadastrarEntregador($dados){
 	$c = new conectar();
 	$conexao = $c->conexao();

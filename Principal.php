@@ -252,6 +252,9 @@ if (isset($_SESSION['User'])) {
   $("#cadastrarPedido").click(function(e) {
     $('#conteudo').load("./Views/Pedidos/CadastrarPedido.php");	
   });
+  $("#procurarPedido").click(function(e) {
+    $('#conteudo').load("./Views/Pedidos/ProcurarPedidos.php");	
+  });
   // PRODUTOS
   $("#cadastrarProduto").click(function(e) {
     $('#conteudo').load("./Views/Produtos/CadastrarProduto.php");	

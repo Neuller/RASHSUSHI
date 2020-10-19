@@ -45,6 +45,10 @@ if (isset($_SESSION['User'])) {
                                 </select>
                             </div>
                         </div>
+                        <!-- ADICIONAR CLIENTE -->
+                        <div>
+                            <span class="btn btn-success glyphicon glyphicon-plus ml-15" id="btnAddCliente"></span>
+                        </div>
                         <!-- DADOS DO PEDIDO -->
                         <div class='col-xs-12 col-md-12 col-sm-12 separador'>
                             <div class="text-left">
@@ -91,12 +95,14 @@ if (isset($_SESSION['User'])) {
                                 <input type="number" class="form-control input-sm text-uppercase quantidade" id="quantidade" name="quantidade" maxlenght="100">
                             </div>
                         </div>
-						<!-- BOTÂO ADICIONAR AO CARRINHO -->
-						<div class="btnAdicionar">
-							<span class="btn btn-success" id="btnAdicionar" title="ADICIONAR AO CARRINHO">ADICIONAR AO CARRINHO</span>
-						</div>
+						
 					</form>
 				</div>
+            </div>
+            <!-- BOTÂO ADICIONAR/LIMPAR -->
+			<div class="btnAdicionar">
+                <span class="btn btn-success" id="btnAdicionar" title="ADICIONAR">ADICIONAR</span>
+                <span class="btn btn-warning" id="btnLimpar" title="LIMPAR">LIMPAR</span>
 			</div>
             <!-- CARRINHO -->
             <div class="col-sm-12" align="center">
@@ -134,7 +140,6 @@ if (isset($_SESSION['User'])) {
                         url: "./Procedimentos/Combinados/ObterCombinados.php",
                         success:function(r){
                             dados = jQuery.parseJSON(r);
-                            console.log(dados);
                             $("#medidaSelect").empty();
                             $('#medidaSelect').append($('<option>', {
                                 value: "",
@@ -144,11 +149,11 @@ if (isset($_SESSION['User'])) {
                                 value: valor_unidade,
                                 text: "UNIDADE"
                             }));
-                            debugger;
                             for (i = 0; i <= dados.length; i++) {
+                                const document = dados[i];
                                 $('#medidaSelect').append($('<option>', {
-                                    value: dados[i].valor_total,
-                                    text: dados[i].descricao
+                                    value: document?.valor_total,
+                                    text: document?.descricao
                                 }));
                             }
                         }
@@ -210,6 +215,7 @@ if (isset($_SESSION['User'])) {
             success: function(r) {
                 if (r > 0) {
                     $('#carrinho_compras').load('./Views/Pedidos/CarrinhoCompras.php');
+                    $("#clienteSelect").val("").change();
                     $('#frmPedido')[0].reset();
                     alertify.success("CADASTRO REALIZADO");
                 } else if (r == 0) {
@@ -219,6 +225,19 @@ if (isset($_SESSION['User'])) {
                 }
             }
         });
+    });
+
+    $('#btnLimpar').click(function() {
+        $.ajax({
+            url: "./Procedimentos/Pedidos/LimparCarrinho.php",
+            success: function(r) {
+                $('#carrinho_compras').load('./Views/Pedidos/CarrinhoCompras.php');
+            }
+        });
+    });
+
+    $('#btnAddCliente').click(function() {
+        $('#conteudo').load("./Views/Clientes/CadastrarClientes.php");	
     });
 </script>
 <style>

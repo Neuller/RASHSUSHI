@@ -4,7 +4,7 @@
 }
 .btnCadastrar{
     margin: 25px;
-    float: right;
+    float: left !important;
 }
 .btnEditar{
     margin: 25px;
@@ -12,11 +12,11 @@
 }
 .btnAdicionar{
     margin: 25px;
-    float: right;
+    float: left !important;
 }
 .btnLimpar{
     margin: 25px;
-    float: right;
+    float: left !important;
 }
 .btnLeft{
     margin: 25px;

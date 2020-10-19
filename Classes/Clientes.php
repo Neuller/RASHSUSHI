@@ -1,6 +1,5 @@
 <?php 
 class clientes{
-// MÉTODO ADICIONAR
 public function cadastrarCliente($dados){
 	$c = new conectar();
 	$conexao = $c->conexao();
@@ -11,7 +10,6 @@ public function cadastrarCliente($dados){
 	
 	return mysqli_query($conexao, $sql);
 }
-// MÉTODO RETORNAR DADOS
 public function obterDadosCliente($idCliente){
 	$c = new conectar();
 	$conexao = $c->conexao();
@@ -42,7 +40,6 @@ public function obterDadosCliente($idCliente){
 	);
 	return $dados;
 }
-// MÉTODO EDITAR 
 public function atualizarCliente($dados){
 	$c = new conectar();
 	$conexao = $c->conexao();
@@ -66,7 +63,6 @@ public function atualizarCliente($dados){
 
 	echo mysqli_query($conexao, $sql);
 }
-// MÉTODO EXCLUIR 
 public function excluirCliente($idcliente){
 	$c = new conectar();
 	$conexao = $c->conexao();
