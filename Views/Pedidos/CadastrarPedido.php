@@ -29,7 +29,7 @@ if (isset($_SESSION['User'])) {
                             <hr>
                         </div>
                         <!-- CLIENTE -->
-                        <div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+                        <div class="mb-20px col-md-8 col-sm-8 col-xs-8 itensFormularioCadastro">
                             <div>
                                 <label>CLIENTE<span class="required">*</span></label>
                                 <select class="form-control input-sm" id="clienteSelect" name="clienteSelect">
@@ -53,9 +53,9 @@ if (isset($_SESSION['User'])) {
                             <hr>
                         </div>
                         <!-- DESCRIÇÃO DO PRODUTO -->
-                        <div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+                        <div class="mb-20px col-xs-8 col-md-8 col-sm-8 itensFormularioCadastro">
                             <div>
-                                <label>DESCRIÇÃO<span class="required">*</span></label>
+                                <label>PRODUTO<span class="required">*</span></label>
                                 <select class="form-control input-sm" id="produtoSelect" name="produtoSelect">
                                     <option value="">SELECIONE UM PRODUTO</option>
                                     <?php
@@ -69,14 +69,23 @@ if (isset($_SESSION['User'])) {
                             </div>
                         </div>
                         <!-- VALOR UNITÁRIO -->
-                        <div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+                        <div class="mb-20px col-xs-4 col-md-4 col-sm-4 itensFormularioCadastro">
                             <div>
                                 <label>VALOR UNITÁRIO</label>
                                 <input readonly type="text" class="form-control input-sm text-uppercase" id="valor_unidade" name="valor_unidade" maxlenght="100">
                             </div>
                         </div>
+                        <!-- MEDIDA -->
+                        <div class="mb-20px col-xs-8 col-md-8 col-sm-8 itensFormularioCadastro">
+                            <div>
+                                <label>MEDIDA<span class="required">*</span></label>
+                                <select class="form-control input-sm" id="medidaSelect" name="medidaSelect">
+                                    <option value="">SELECIONE UMA OPÇÃO DE MEDIDA</option>
+                                </select>
+                            </div>
+                        </div>
                         <!-- QUANTIDADE -->
-                        <div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+                        <div class="mb-20px col-xs-4 col-md-4 col-sm-4 itensFormularioCadastro">
                             <div>
                                 <label>QUANTIDADE<span class="required">*</span></label>
                                 <input type="number" class="form-control input-sm text-uppercase quantidade" id="quantidade" name="quantidade" maxlenght="100">
@@ -105,8 +114,12 @@ if (isset($_SESSION['User'])) {
 	$(document).ready(function($) {
         $('#clienteSelect').select2();
         $('#produtoSelect').select2();
+        $('#medidaSelect').select2();
         $('#carrinho_compras').load('./Views/Pedidos/CarrinhoCompras.php');
+        $("#medidaSelect").prop('disabled', true);
+
         $("#produtoSelect").change(function(){
+            $("#medidaSelect").prop('disabled', false);
 			var produto = $("#produtoSelect").val();
             $.ajax({
 			    type: "POST",
@@ -114,27 +127,53 @@ if (isset($_SESSION['User'])) {
 				url: "./Procedimentos/Produtos/ObterDadosProdutos.php",
 				success:function(r){
                     dados = jQuery.parseJSON(r);
-					$("#valor_unidade").val(dados.valor_unidade);
+                    var valor_unidade = dados.valor_unidade;
+                    $.ajax({
+                        type: "POST",
+                        data: "idProduto=" + produto,
+                        url: "./Procedimentos/Combinados/ObterCombinados.php",
+                        success:function(r){
+                            dados = jQuery.parseJSON(r);
+                            console.log(dados);
+                            $("#medidaSelect").empty();
+                            $('#medidaSelect').append($('<option>', {
+                                value: "",
+                                text: "SELECIONE UMA OPÇÃO DE MEDIDA"
+                            }));
+                            $('#medidaSelect').append($('<option>', {
+                                value: valor_unidade,
+                                text: "UNIDADE"
+                            }));
+                            debugger;
+                            for (i = 0; i <= dados.length; i++) {
+                                $('#medidaSelect').append($('<option>', {
+                                    value: dados[i].valor_total,
+                                    text: dados[i].descricao
+                                }));
+                            }
+                        }
+                    });
 				}
 			});
-            $.ajax({
-                type: "POST",
-                data: "idProduto=" + produto,
-                url: "./Procedimentos/Combinados/ObterCombinados.php",
-                success:function(retorno){
-                    dados = jQuery.parseJSON(retorno);
-                    debugger;
-                }
-            });
+        });
+        
+        $("#medidaSelect").change(function(){
+			var valor_unidade = $("#medidaSelect").val();
+            $("#valor_unidade").val(valor_unidade);
 		});
 	});
 
     $('#btnAdicionar').click(function() {
     var produto = $("#produtoSelect").val();
     var quantidade = $("#quantidade").val();
+    var medida = $("#medidaSelect").val();
 
     if (produto == "") {
         alertify.error("SELECIONE UM PRODUTO");
+        return false;
+    }
+    if (medida == "") {
+        alertify.error("SELECIONE UMA MEDIDA");
         return false;
     }
     if (quantidade == "") {
