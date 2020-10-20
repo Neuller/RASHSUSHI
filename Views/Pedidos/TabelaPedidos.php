@@ -32,7 +32,7 @@ $result = mysqli_query($conexao, $sql);
 			</thead>
 			<tbody>
 				<?php
-					while($mostrar=mysqli_fetch_array($result))
+					while($mostrar = mysqli_fetch_array($result))
 					{
 						echo 
 						'

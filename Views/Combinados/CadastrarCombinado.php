@@ -84,7 +84,7 @@ if (isset($_SESSION['User'])) {
 				url: "./Procedimentos/Produtos/ObterDadosProdutos.php",
 				success:function(r){
                     dados = jQuery.parseJSON(r);
-					$("#descricao").val(quantidade_pecas + " PEÇAS - " + dados.descricao);
+					$("#descricao").val("COMBINADO " + quantidade_pecas + " PEÇAS - " + dados.descricao);
 				}
 			});
 		});
@@ -97,7 +97,7 @@ if (isset($_SESSION['User'])) {
 				url: "./Procedimentos/Produtos/ObterDadosProdutos.php",
 				success:function(r){
                     dados = jQuery.parseJSON(r);
-					$("#descricao").val(quantidade_pecas + " PEÇAS - " + dados.descricao);
+					$("#descricao").val("COMBINADO " + quantidade_pecas + " PEÇAS - " + dados.descricao);
 				}
 			});
 		});

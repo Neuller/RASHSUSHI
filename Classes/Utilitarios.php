@@ -1,7 +1,7 @@
 <?php
 class utilitarios{
 	public function data($data){
-		return date("d/m/Y", strtotime($data));
+		return date("d/m/Y h:i:s", strtotime($data));
 	}
 	public function obterNomeCliente($idCliente){
 		$c = new conectar();

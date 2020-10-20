@@ -47,7 +47,7 @@ if (isset($_SESSION['User'])) {
                         </div>
                         <!-- CADASTRAR CLIENTE -->
                         <div>
-                            <span class="btn btn-success glyphicon glyphicon-plus ml-15" id="btnAddCliente"></span>
+                            <span class="btn btn-success glyphicon glyphicon-plus ml-15" id="btnCadastrarCliente" title="CADASTRAR CLIENTE"></span>
                         </div>
                         <!-- DADOS DO PEDIDO -->
                         <div class='col-xs-12 col-md-12 col-sm-12 separador'>
@@ -136,6 +136,7 @@ if (isset($_SESSION['User'])) {
 				success:function(r){
                     dados = jQuery.parseJSON(r);
                     var valor_unidade = dados.valor_unidade;
+                    var descricao = dados.descricao;
                     $.ajax({
                         type: "POST",
                         data: "idProduto=" + produto,
@@ -149,7 +150,7 @@ if (isset($_SESSION['User'])) {
                             }));
                             $('#medidaSelect').append($('<option>', {
                                 value: valor_unidade,
-                                text: "UNIDADE"
+                                text: "UNIDADE - " + descricao
                             }));
                             for (i = 0; i <= dados.length; i++) {
                                 const document = dados[i];
@@ -165,8 +166,8 @@ if (isset($_SESSION['User'])) {
         });
         
         $("#medidaSelect").change(function(){
-			var valor_unidade = $("#medidaSelect").val();
-            $("#valor_unidade").val(valor_unidade);
+            var valorUnidade = $("#medidaSelect").val();
+            $("#valor_unidade").val(valorUnidade);
 		});
 	});
 
@@ -238,7 +239,7 @@ if (isset($_SESSION['User'])) {
         });
     });
 
-    $('#btnAddCliente').click(function() {
+    $('#btnCadastrarCliente').click(function() {
         $('#conteudo').load("./Views/Clientes/CadastrarClientes.php");	
     });
 </script>
