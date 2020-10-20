@@ -13,8 +13,8 @@ class pedidos {
         for ($i = 0; $i < count($dados) ; $i++) { 
             $d = explode("||", $dados[$i]);
 
-            $sql="INSERT INTO pedidos (id_pedido, id_cliente, id_produto, id_usuario, valor_total, status, data_hora_pedido)
-            VALUES ('$idPedido', '$d[6]', '$d[0]', '$idUsuario', '$d[5]', 'EM ABERTO', '$data_hora')";
+            $sql="INSERT INTO pedidos (id_pedido, id_cliente, id_produto, id_usuario, descricao, quantidade_itens, valor_total, status, data_hora_pedido)
+            VALUES ('$idPedido', '$d[6]', '$d[0]', '$idUsuario', '$d[1]', '$d[4]', '$d[5]', 'EM ABERTO', '$data_hora')";
 
             $r = $r + $result = mysqli_query($conexao,$sql);
         }

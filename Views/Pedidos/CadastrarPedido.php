@@ -45,7 +45,7 @@ if (isset($_SESSION['User'])) {
                                 </select>
                             </div>
                         </div>
-                        <!-- ADICIONAR CLIENTE -->
+                        <!-- CADASTRAR CLIENTE -->
                         <div>
                             <span class="btn btn-success glyphicon glyphicon-plus ml-15" id="btnAddCliente"></span>
                         </div>
@@ -126,6 +126,8 @@ if (isset($_SESSION['User'])) {
 
         $("#produtoSelect").change(function(){
             $("#medidaSelect").prop('disabled', false);
+            $("#valor_unidade").val("");
+            $("#quantidade").val("");
 			var produto = $("#produtoSelect").val();
             $.ajax({
 			    type: "POST",

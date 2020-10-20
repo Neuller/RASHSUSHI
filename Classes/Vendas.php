@@ -61,17 +61,6 @@ public function criarComprovante(){
     }
 }
 // MÉTODOS INFORMAÇÕES DO CLIENTE PELO ID
-public function nomeCliente($idCliente){
-	$c= new conectar();
-	$conexao=$c->conexao();
 
-	$sql="SELECT Nome 
-	FROM clientes WHERE ID_Cliente='$idCliente'";
-
-	$result=mysqli_query($conexao,$sql);
-	$ver=mysqli_fetch_row($result);
-
-	return $ver[0];
-}
 }
 ?>
