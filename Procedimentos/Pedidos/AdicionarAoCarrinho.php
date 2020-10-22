@@ -15,12 +15,8 @@ $sql = "SELECT nome FROM clientes WHERE id_cliente = '$idCliente'";
 $result = mysqli_query($conexao, $sql);
 $nomeCliente = mysqli_fetch_row($result)[0];
 
-$sql = "SELECT descricao FROM produtos WHERE id_produto = '$idProduto'";
+$descricao = $_POST['descricao'];
 
-$result = mysqli_query($conexao, $sql);
-$descricao = mysqli_fetch_row($result)[0];
-
-$descricao_combinado = 
 
 $item = $idProduto . "||" .
 	$descricao . "||" .

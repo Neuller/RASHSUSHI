@@ -56,8 +56,8 @@ if (isset($_SESSION['User'])) {
                             </div>
                             <hr>
                         </div>
-                        <!-- DESCRIÇÃO DO PRODUTO -->
-                        <div class="mb-20px col-xs-8 col-md-8 col-sm-8 itensFormularioCadastro">
+                        <!-- PRODUTO -->
+                        <div class="mb-20px col-xs-6 col-md-6 col-sm-6 itensFormularioCadastro">
                             <div>
                                 <label>PRODUTO<span class="required">*</span></label>
                                 <select class="form-control input-sm" id="produtoSelect" name="produtoSelect">
@@ -72,24 +72,31 @@ if (isset($_SESSION['User'])) {
                                 </select>
                             </div>
                         </div>
+                        <!-- MEDIDA -->
+                        <div class="mb-20px col-xs-6 col-md-6 col-sm-6 itensFormularioCadastro">
+                            <div>
+                                <label>MEDIDA<span class="required">*</span></label>
+                                <select class="form-control input-sm" id="medidaSelect" name="medidaSelect">
+                                    <option value="">SELECIONE UMA MEDIDA</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- DESCRIÇÃO DO PRODUTO -->
+                        <div class="mb-20px col-xs-6 col-md-6 col-sm-6 itensFormularioCadastro">
+                            <div>
+                                <label>DESCRIÇÃO</label>
+                                <input readonly type="text" class="form-control input-sm text-uppercase" id="descricao" name="descricao" maxlenght="100">
+                            </div>
+                        </div>
                         <!-- VALOR UNITÁRIO -->
-                        <div class="mb-20px col-xs-4 col-md-4 col-sm-4 itensFormularioCadastro">
+                        <div class="mb-20px col-xs-3 col-md-3 col-sm-3 itensFormularioCadastro">
                             <div>
                                 <label>VALOR UNITÁRIO</label>
                                 <input readonly type="text" class="form-control input-sm text-uppercase" id="valor_unidade" name="valor_unidade" maxlenght="100">
                             </div>
                         </div>
-                        <!-- MEDIDA -->
-                        <div class="mb-20px col-xs-8 col-md-8 col-sm-8 itensFormularioCadastro">
-                            <div>
-                                <label>MEDIDA<span class="required">*</span></label>
-                                <select class="form-control input-sm" id="medidaSelect" name="medidaSelect">
-                                    <option value="">SELECIONE UMA OPÇÃO DE MEDIDA</option>
-                                </select>
-                            </div>
-                        </div>
                         <!-- QUANTIDADE -->
-                        <div class="mb-20px col-xs-4 col-md-4 col-sm-4 itensFormularioCadastro">
+                        <div class="mb-20px col-xs-3 col-md-3 col-sm-3 itensFormularioCadastro">
                             <div>
                                 <label>QUANTIDADE<span class="required">*</span></label>
                                 <input type="number" class="form-control input-sm text-uppercase quantidade" id="quantidade" name="quantidade" maxlenght="100">
@@ -166,8 +173,10 @@ if (isset($_SESSION['User'])) {
         });
         
         $("#medidaSelect").change(function(){
-            var valorUnidade = $("#medidaSelect").val();
-            $("#valor_unidade").val(valorUnidade);
+            var objectValue = $("#medidaSelect").val();
+            var objectText = $("#medidaSelect option:selected").text();
+            $("#valor_unidade").val(objectValue);
+            $("#descricao").val(objectText);
 		});
 	});
 
@@ -198,6 +207,8 @@ if (isset($_SESSION['User'])) {
         success: function(r) {
             $('#carrinho_compras').load('./Views/Pedidos/CarrinhoCompras.php');
             $("#produtoSelect").val("").change();
+            $("#medidaSelect").prop('disabled', true);
+            $("#descricao").val("");
             $("#valor_unidade").val("");
             $("#quantidade").val("");
             alertify.success("ITEM ADICIONADO");

@@ -19,19 +19,12 @@ if (isset($_SESSION['User'])) {
 				</div>
 			</div>
 		</div>
-
-		<!-- MODAL EDITAR PEDIDO -->
-		<div id="modalEditarPedido"></div>
-		<!-- MODAL VISUALIZAR PEDIDO -->
-		<div id="modalVisualizarPedido"></div>
-
 	</body>	
 </html>
 
 <script type="text/javascript">
 	$(document).ready(function($) {
 		$('#tabelaPedidos').load('./Views/Pedidos/TabelaPedidos.php');
-		$('#modalEditarPedido').load('./Views/Pedidos/ModalEditarPedido.php');
 		$('#modalVisualizarPedido').load('./Views/Pedidos/ModalVisualizarPedido.php');
 	});
 

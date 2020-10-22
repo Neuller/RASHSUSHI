@@ -25,7 +25,6 @@ $result = mysqli_query($conexao, $sql);
 					<td>NÚMERO DO PEDIDO</td>
 					<td>CLIENTE</td>
 					<td>IMPRIMIR</td>
-					<td>EDITAR</td>
 					<td>VISUALIZAR</td>
 					<td>EXCLUIR</td>
 				</tr>
@@ -42,9 +41,6 @@ $result = mysqli_query($conexao, $sql);
 						<td>'.'<a href="./Procedimentos/Pedidos/CriarComprovante.php?idPedido='.$mostrar[0].'" target="_BLANK" class="btn btn-danger btn-sm" title="IMPRIMIR">
 						<span class="glyphicon glyphicon-print"></span>
 						</a>'.'</td>
-						<td>'.'<span class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editarPedido" title="EDITAR" onclick="preencherModalEditar('.$mostrar[0].')">
-						<span class="glyphicon glyphicon-pencil"></span>
-						</span>'.'</td>
 						<td>'.'<span class="btn btn-default btn-sm" data-toggle="modal" data-target="#visualizarPedido" title="VISUALIZAR" onclick="preencherModalVisualizar('.$mostrar[0].')">
 						<span class="glyphicon glyphicon-search"></span>
 						</span>'.'</td>		
