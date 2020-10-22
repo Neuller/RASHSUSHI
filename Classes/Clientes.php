@@ -2,7 +2,7 @@
 class clientes{
 public function cadastrarCliente($dados){
 	$c = new conectar();
-	$conexao = $c->conexao();
+	$conexao = $c -> conexao();
 
 	$sql = "INSERT into clientes (id_usuario, nome, cpf, cnpj, cep, bairro, uf, endereco, numero, complemento, telefone, telefone2, celular, celular2, email) 
 	VALUES ('$dados[0]','$dados[1]', '$dados[2]','$dados[3]', '$dados[4]', 
@@ -12,9 +12,9 @@ public function cadastrarCliente($dados){
 }
 public function obterDadosCliente($idCliente){
 	$c = new conectar();
-	$conexao = $c->conexao();
+	$conexao = $c -> conexao();
 
-	$sql = "SELECT id_usuario, nome, cpf, cnpj, cep, bairro, uf, endereco, numero, complemento, telefone, telefone2, celular, celular2, email 
+	$sql = "SELECT id_cliente, id_usuario, nome, cpf, cnpj, cep, bairro, uf, endereco, numero, complemento, telefone, telefone2, celular, celular2, email 
 	FROM clientes 
 	WHERE id_cliente = '$idCliente' ";
 
@@ -23,26 +23,27 @@ public function obterDadosCliente($idCliente){
 
 	$dados = array(
 		'id_cliente' => $mostrar[0],
-		'nome' => $mostrar[1],
-		'cpf' => $mostrar[2],
-		'cnpj' => $mostrar[3],
-		'cep' => $mostrar[4],
-		'bairro' => $mostrar[5],
-		'uf' => $mostrar[6],
-		'endereco' => $mostrar[7],
-		'numero' => $mostrar[8],
-		'complemento' => $mostrar[9],
-		'telefone' => $mostrar[10],
-		'telefone2' => $mostrar[11],
-		'celular' => $mostrar[12],
-		'celular2' => $mostrar[13],
-		'email' => $mostrar[14]
+		'id_usuario' => $mostrar[1],
+		'nome' => $mostrar[2],
+		'cpf' => $mostrar[3],
+		'cnpj' => $mostrar[4],
+		'cep' => $mostrar[5],
+		'bairro' => $mostrar[6],
+		'uf' => $mostrar[7],
+		'endereco' => $mostrar[8],
+		'numero' => $mostrar[9],
+		'complemento' => $mostrar[10],
+		'telefone' => $mostrar[11],
+		'telefone2' => $mostrar[12],
+		'celular' => $mostrar[13],
+		'celular2' => $mostrar[14],
+		'email' => $mostrar[15]
 	);
 	return $dados;
 }
-public function atualizarCliente($dados){
+public function editarCliente($dados){
 	$c = new conectar();
-	$conexao = $c->conexao();
+	$conexao = $c -> conexao();
 
 	$sql = "UPDATE clientes 
 	SET nome = '$dados[1]', 
@@ -58,14 +59,14 @@ public function atualizarCliente($dados){
 	telefone2 = '$dados[11]',
 	celular = '$dados[12]',
 	celular2 = '$dados[13]',
-	email = '$dados[14]',
-	WHERE id_cliente = '$dados[0]' ";
+	email = '$dados[14]'
+	WHERE id_cliente = '$dados[0]'";
 
 	echo mysqli_query($conexao, $sql);
 }
 public function excluirCliente($idcliente){
 	$c = new conectar();
-	$conexao = $c->conexao();
+	$conexao = $c -> conexao();
 
 	$sql = "DELETE from clientes WHERE id_cliente = '$idcliente' ";
 

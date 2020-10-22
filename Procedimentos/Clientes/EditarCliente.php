@@ -6,7 +6,7 @@ require_once "../../Classes/Clientes.php";
 $obj = new clientes();
 
 $dados = array(
-$_POST['idclienteU'],
+$_POST['idClienteU'],
 $_POST['nomeU'] = strtoupper($_POST['nomeU']),
 $_POST['cpfU'] = strtoupper($_POST['cpfU']),
 $_POST['cnpjU'] = strtoupper($_POST['cnpjU']),
@@ -23,5 +23,5 @@ $_POST['celular2U'] = strtoupper($_POST['celular2U']),
 $_POST['emailU'] = strtoupper($_POST['emailU'])
 );
 
-echo $obj-> atualizarCliente($dados);
+echo $obj-> editarCliente($dados);
 ?>

@@ -8,7 +8,7 @@
 }
 .btnEditar{
     margin: 25px;
-    float: right;
+    float: left !important;
 }
 .btnAdicionar{
     margin: 25px;
@@ -20,7 +20,7 @@
 }
 .btnLeft{
     margin: 25px;
-    float: right;
+    float: left !important;
 }
 .btnRadio{
     margin: 05px;

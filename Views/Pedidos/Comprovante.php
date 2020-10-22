@@ -37,6 +37,10 @@ $data_hora = $mostrar[8];
 
         <div class="col-md-12 col-sm-12 col-xs-12">
             <form>
+                <div class="formulario">
+                    <span class="titulo">DADOS DO CLIENTE</span>
+                    <hr>
+                </div>
                 <?php
                 $sql = "SELECT nome, cpf, cnpj, cep, bairro, uf , endereco, numero, complemento, celular
                 FROM clientes WHERE id_cliente = '$idCliente'";
@@ -45,8 +49,6 @@ $data_hora = $mostrar[8];
                 while ($dadosCliente = mysqli_fetch_row($result)) {
                 ?>
                     <div class="formulario">
-                        <span class="titulo">DADOS DO CLIENTE</span>
-                        <hr>
                         <!-- NOME -->
                         <div><?php echo $dadosCliente[0]; ?></div>
                         <!-- CPF -->
@@ -57,6 +59,8 @@ $data_hora = $mostrar[8];
                     <div class="formulario">
                         <span class="titulo">DADOS DA ENTREGA</span>
                         <hr>
+                    </div>
+                    <div class="formulario">
                         <!-- CEP -->
                         <div><?php echo $dadosCliente[3]; ?></div>
                         <!-- ENDERECO -->
@@ -69,6 +73,11 @@ $data_hora = $mostrar[8];
                         <div><?php echo $dadosCliente[8]; ?></div>
                     </div>
                 <?php } ?>
+
+                <div class="formulario">
+                    <span class="titulo">DADOS DO(s) PRODUTO(s)</span>
+                    <hr>
+                </div>
                 <?php 
                     $sql="SELECT pe.id_pedido, pe.id_cliente, pe.id_produto, pe.id_usuario, pe.descricao, pe.quantidade_itens, pe.valor_total,
                     pe.status, pe.data_hora_pedido, comb.descricao, comb.quantidade_pecas, comb.valor_total
@@ -81,8 +90,6 @@ $data_hora = $mostrar[8];
                     while($produto = mysqli_fetch_row($resultado)){
                 ?>
                     <div class="formulario">
-                        <span class="titulo">DADOS DO(s) PRODUTO(s)</span>
-                        <hr>
                         <!-- DESCRIÇÃO -->
                         <div><?php echo $produto[4] ?></div>
                         <!-- QUANTIDADE DE ITENS -->
@@ -97,16 +104,14 @@ $data_hora = $mostrar[8];
                     $resultado = mysqli_query($conexao, $sql);
                     while ($total = mysqli_fetch_row($resultado)) {
                     $valorTotal = $total[0];
-                ?>               
+                ?> 
                     <div class="formulario">
-                        <span class="titulo">DADOS DO PEDIDO</span>
-                        <hr>
                         <div class="itemForm">
-                            <span>DATA/HORA</span>
+                            <span class="subItemForm">DATA/HORA</span>
                             <div><?php echo $objUtils -> data($data_hora) ?></div>
                         </div>
                         <div class="itemForm">
-                            <span>VALOR TOTAL</span>
+                            <span class="subItemForm">VALOR TOTAL</span>
                             <div><?php echo "R$ ".$valorTotal ?></div>
                         </div>
                     </div>

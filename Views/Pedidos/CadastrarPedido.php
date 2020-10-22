@@ -246,6 +246,7 @@ if (isset($_SESSION['User'])) {
             url: "./Procedimentos/Pedidos/LimparCarrinho.php",
             success: function(r) {
                 $('#carrinho_compras').load('./Views/Pedidos/CarrinhoCompras.php');
+                alertify.success("ITENS REMOVIDOS");
             }
         });
     });

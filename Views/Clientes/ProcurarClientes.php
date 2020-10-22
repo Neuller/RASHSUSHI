@@ -37,7 +37,7 @@ if (isset($_SESSION['User'])) {
 				url: "./Procedimentos/Clientes/ObterDadosCliente.php",
 				success: function(r) {
 					dado = jQuery.parseJSON(r);
-					$('#idclienteU').val(dado['id_cliente']);
+					$('#idClienteU').val(dado['id_cliente']);
 					$('#nomeU').val(dado['nome']);
 					$('#cpfU').val(dado['cpf']);
 					$('#cnpjU').val(dado['cnpj']);
@@ -64,18 +64,21 @@ if (isset($_SESSION['User'])) {
 				url: "./Procedimentos/Clientes/ObterDadosCliente.php",
 				success: function(r) {
 					dado = jQuery.parseJSON(r);
-					$('#idclienteView').val(dado['ID_Cliente']);
-					$('#nomeView').val(dado['Nome']);
-					$('#cpfView').val(dado['CPF']);
-					$('#cnpjView').val(dado['CNPJ']);
-					$('#cepView').val(dado['CEP']);
-					$('#bairroView').val(dado['Bairro']);
-					$('#enderecoView').val(dado['Endereco']);
-					$('#numeroView').val(dado['Numero']);
-					$('#complementoView').val(dado['Complemento']);
-					$('#telefoneView').val(dado['Telefone']);
-					$('#celularView').val(dado['Celular']);
-					$('#emailView').val(dado['Email']);
+					$('#idClienteV').val(dado['id_cliente']);
+					$('#nomeV').val(dado['nome']);
+					$('#cpfV').val(dado['cpf']);
+					$('#cnpjV').val(dado['cnpj']);
+					$('#cepV').val(dado['cep']);
+					$('#bairroV').val(dado['bairro']);
+					$('#ufV').val(dado['uf']);
+					$('#enderecoV').val(dado['endereco']);
+					$('#numeroV').val(dado['numero']);
+					$('#complementoV').val(dado['complemento']);
+					$('#telefoneV').val(dado['telefone']);
+					$('#telefone2V').val(dado['telefone2']);
+					$('#celularV').val(dado['celular']);
+					$('#celular2V').val(dado['celular2']);
+					$('#emailV').val(dado['email']);
 				}
 			});
 		}

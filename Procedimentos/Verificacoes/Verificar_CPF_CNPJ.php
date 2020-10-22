@@ -1,7 +1,7 @@
 <?php
 require_once "../../Classes/Conexao.php";
 $c = new conectar();
-$conexao = $c->conexao();
+$conexao = $c -> conexao();
 
 if(isset($_POST['CPF']) || isset($_POST['CNPJ'])){
     $cpfPostado = $_POST['CPF'];
@@ -11,7 +11,7 @@ if(isset($_POST['CPF']) || isset($_POST['CNPJ'])){
     // 0 SIGNIFICA NAO CADASTRADO
     // 1 SIGNIFICA CADASTRADO
 
-    if(($cpfPostado == "000.000.000-00") || ($cnpjPostado == "00.000.000/0000-00")){
+    if(($cpfPostado == $cpfPostado) || ($cpfPostado == "000.000.000-00") || ($cnpjPostado == "00.000.000/0000-00") || ($cnpjPostado == $cnpjPostado)){
         echo json_encode(0);
     }else if($cpfPostado != ""){
         $sql = "SELECT * FROM {$tabela} WHERE cpf = '{$cpfPostado}'";

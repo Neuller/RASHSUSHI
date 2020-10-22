@@ -9,12 +9,13 @@
     text-align: center !important;
 }
 .formulario{
-    margin-bottom: 25px !important;
-}
-.bolder{
-    font-weight: bold !important;
+    margin-bottom: 15px !important;
 }
 .itemForm{
+    margin-bottom: 5px !important;
+}
+.subItemForm{
     margin-top: 5px !important;
     margin-bottom: 5px !important;
+    font-weight: bold !important;
 }

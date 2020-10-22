@@ -163,7 +163,7 @@ if (isset($_SESSION['User'])) {
 			$('.celular2').mask('(99) 9 9999-9999');
 
 			$(".cep").change(function(){
-				var cep = frmClientes.cep.value;
+				var cep = $("#cep").val();
 				var urlPesquisaCep = "https://viacep.com.br/ws/"+cep+"/json";
 				
 				$.ajax({
@@ -186,10 +186,10 @@ if (isset($_SESSION['User'])) {
 		});
 
 		$('#btnCadastrar').click(function() {
-				var nome = frmClientes.nome.value;
-				var cpf = frmClientes.cpf.value;
-				var cnpj = frmClientes.cnpj.value;
-				var celular = frmClientes.celular.value;
+				var nome = $("#nome").val();
+				var cpf = $("#cpf").val();
+				var cnpj = $("#cnpj").val();
+				var celular = $("#celular").val();
 				var tabela = "clientes";
 
 				if ((nome == "") || (celular == "")) {
