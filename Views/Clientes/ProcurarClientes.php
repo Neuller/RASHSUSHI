@@ -20,24 +20,17 @@ if (isset($_SESSION['User'])) {
 				</div>
 			</div>
 		</div>
-
-		<!-- MODAL EDITAR CLIENTE -->
-		<div id="modalEditarCliente"></div>
-		<!-- MODAL VISUALIZAR CLIENTE -->
-		<div id="modalVisualizarCliente"></div>
-
 	</body>	
 </html>
 
 <script type="text/javascript">
 	$(document).ready(function($) {
 		$('#tabelaClientes').load('./Views/Clientes/TabelaClientes.php');
-		$('#modalEditarCliente').load('./Views/Clientes/ModalEditarCliente.php');
-		$('#modalVisualizarCliente').load('./Views/Clientes/ModalVisualizarCliente.php');
 	});
 
 		// PREENCHER MODAL DE EDIÇÂO
 		function adicionarDadosEditar(idCliente) {
+			$('#conteudo').load('./Views/Clientes/ModalEditarCliente.php');
 			$.ajax({
 				type: "POST",
 				data: "idCliente=" + idCliente,
@@ -64,6 +57,7 @@ if (isset($_SESSION['User'])) {
 		}
 		// PREENCHER MODAL DE VISUALIZAÇÃO
 		function adicionarDadosVisualizar(idCliente) {
+			$('#conteudo').load('./Views/Clientes/ModalVisualizarCliente.php');
 			$.ajax({
 				type: "POST",
 				data: "idCliente=" + idCliente,

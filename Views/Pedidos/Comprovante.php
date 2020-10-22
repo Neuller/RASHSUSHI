@@ -25,13 +25,18 @@ $data_hora = $mostrar[8];
 
 <html>
 <title>COMPROVANTE DE PEDIDO - RASHSUSHI</title>
-
-    <body class="container">
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../Css/Comprovante.css">
+    </head>
+    <body class="container comprovante">
         <div class="text-center" align="center">
-            
+            <div>
+                <img src="../../Img/RASHSUSHI_LOGO.png" width="200" widht="200">
+            </div>
         </div>
+
         <div class="col-md-12 col-sm-12 col-xs-12">
-            <form class="dadosFormulario">
+            <form>
                 <?php
                 $sql = "SELECT nome, cpf, cnpj, cep, bairro, uf , endereco, numero, complemento, celular
                 FROM clientes WHERE id_cliente = '$idCliente'";
@@ -39,75 +44,73 @@ $data_hora = $mostrar[8];
                 $result = mysqli_query($conexao, $sql);
                 while ($dadosCliente = mysqli_fetch_row($result)) {
                 ?>
-                    <div>
-                        <div>
-                            <span>NOME:</span>
-                            <span><?php echo $dadosCliente[0]; ?></span>
+                    <div class="formulario">
+                        <span class="titulo">DADOS DO CLIENTE</span>
+                        <hr>
+                        <!-- NOME -->
+                        <div><?php echo $dadosCliente[0]; ?></div>
+                        <!-- CPF -->
+                        <div><?php echo $dadosCliente[1]; ?></div>
+                        <!-- CELULAR -->
+                        <div><?php echo $dadosCliente[9]; ?></div>
+                    </div>
+                    <div class="formulario">
+                        <span class="titulo">DADOS DA ENTREGA</span>
+                        <hr>
+                        <!-- CEP -->
+                        <div><?php echo $dadosCliente[3]; ?></div>
+                        <!-- ENDERECO -->
+                        <div><?php echo $dadosCliente[6]; ?></div>
+                        <!-- BAIRRO -->
+                        <div><?php echo $dadosCliente[4]; ?></div>
+                        <!-- NUMERO -->
+                        <div><?php echo $dadosCliente[7]; ?></div>
+                        <!-- COMPLEMENTO -->
+                        <div><?php echo $dadosCliente[8]; ?></div>
+                    </div>
+                <?php } ?>
+                <?php 
+                    $sql="SELECT pe.id_pedido, pe.id_cliente, pe.id_produto, pe.id_usuario, pe.descricao, pe.quantidade_itens, pe.valor_total,
+                    pe.status, pe.data_hora_pedido, comb.descricao, comb.quantidade_pecas, comb.valor_total
+                    FROM pedidos AS pe
+                    INNER JOIN produtos_combinado AS comb
+                    ON pe.id_produto = comb.id_produto
+                    and pe.id_pedido='$idPedido'";
+                                    
+                    $resultado = mysqli_query($conexao, $sql);
+                    while($produto = mysqli_fetch_row($resultado)){
+                ?>
+                    <div class="formulario">
+                        <span class="titulo">DADOS DO(s) PRODUTO(s)</span>
+                        <hr>
+                        <!-- DESCRIÇÃO -->
+                        <div><?php echo $produto[4] ?></div>
+                        <!-- QUANTIDADE DE ITENS -->
+                        <div>QTDE: <?php echo $produto[5] ?></div>
+                        <!-- VALOR -->
+                        <div>VALOR: R$ <?php echo $produto[6] ?></div>
+                    </div>              
+                <?php } ?> 
+
+                <?php
+                    $sql = "SELECT SUM(valor_total) FROM pedidos WHERE id_pedido = '$idPedido'";
+                    $resultado = mysqli_query($conexao, $sql);
+                    while ($total = mysqli_fetch_row($resultado)) {
+                    $valorTotal = $total[0];
+                ?>               
+                    <div class="formulario">
+                        <span class="titulo">DADOS DO PEDIDO</span>
+                        <hr>
+                        <div class="itemForm">
+                            <span>DATA/HORA</span>
+                            <div><?php echo $objUtils -> data($data_hora) ?></div>
                         </div>
-                        <div>
-                            <span>CPF:</span>
-                            <span><?php echo $dadosCliente[1]; ?></span>
-                        </div>
-                        <div>
-                            <span>CELULAR:</span>
-                            <span><?php echo $informacoesCliente[9]; ?></span>
+                        <div class="itemForm">
+                            <span>VALOR TOTAL</span>
+                            <div><?php echo "R$ ".$valorTotal ?></div>
                         </div>
                     </div>
                 <?php } ?>
-                <div class="dadosProdutosServicos">               
-                    <?php 
-                        $sql="SELECT ve.ID_Venda,
-                        ve.ID_Cliente,
-                        ve.ID_Produto,
-                        ve.ID_Usuario,
-                        ve.ValorTotal,
-                        ve.DataVenda,
-                        pro.Codigo,
-                        pro.Descricao,
-                        pro.Garantia,
-                        pro.Preco
-                        FROM vendas AS ve
-                        INNER JOIN produtosnserv AS pro
-                        ON ve.ID_Produto = pro.ID_Produto
-                        and ve.ID_Venda='$idVenda'";
-                                    
-                        $resultado = mysqli_query($conexao, $sql);
-                        
-                        while($produtoPortal = mysqli_fetch_row($resultado)){
-                    ?>
-                    <div>
-                        <ul>
-                            <li>
-                                <span>CÓDIGO: <?php echo $produtoPortal[6] ?></span>
-                                <br>
-                                <span>DESCRIÇÃO: <?php echo $produtoPortal[7] ?></span>
-                                <br>
-                                <span>VALOR: R$ <?php echo $produtoPortal[9] ?></span>
-                                <br>
-                                <span>GARANTIA: <?php echo $produtoPortal[8] ?></span>
-                            </li>
-                        </ul>
-                    </div>              
-                    <?php			    
-                    }
-                    ?> 
-                    
-                    <div>
-                        <span>DATA DA VENDA:</span>
-                        <span><?php echo $objUtils->data($data_hora) ?></span>
-                    </div>              
-                    <?php
-                        $sql = "SELECT SUM(valor_total) FROM pedidos WHERE id_pedido = '$idPedido'";
-                        $resultado = mysqli_query($conexao, $sql);
-                        while ($total = mysqli_fetch_row($resultado)) {
-                        $valorTotal = $total[0];
-                    ?>               
-                    <div>
-                        <span>VALOR TOTAL:</span>
-                        <span><?php echo "R$ ".$valorTotal ?></span>
-                    </div>
-                    <?php } ?>
-                </div>
             </form>
         </div>
     </body>

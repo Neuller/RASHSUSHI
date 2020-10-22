@@ -1,156 +1,154 @@
-<div class="modal fade" id="editarCliente" tabindex="-1" role="dialog" aria-labelledby="modalEditar">
-
-	<div class="modal-dialog modal-lg" role="document" data-keyboard="true">
-
-		<div class="col-md-12 col-sm-12 col-xs-12">
-
-			<div class="modal-content teste col-md-12 col-sm-12 col-xs-12">
-
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="CLOSE"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title text-center" id="myModalLabel">EDITAR</h4>
-				</div>
-				<!-- FORMULÁRIO -->
-				<div class="modal-body">
-					<form id="frmClientesU">
-						<!-- FORMULÁRIO DADOS PESSOAIS -->
-						<div class='col-md-12 col-sm-12 col-xs-12'>
-							<div class="text-left">
-								<h4><strong>DADOS PESSOAIS</strong><span class="glyphicon glyphicon-user ml-15"></span></h4>
-							</div>
-							<hr>
-						</div>
-						<!-- ID -->
-						<div>
-							<input type="text" hidden="" id="idclienteU" name="idclienteU">
-						</div>
-						<!-- NOME -->
-						<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
-							<div>
-								<label>NOME COMPLETO<span class="required">*</span></label>
-									<input type="text" class="form-control input-sm align text-uppercase" id="nomeU" name="nomeU" maxlenght="50">
-							</div>
-						</div>
-						<!-- CPF -->
-						<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
-							<div>
-								<label>CPF</label>
-								<input type="text" class="form-control input-sm align cpf text-uppercase" id="cpfU" name="cpfU">
-							</div>
-						</div>
-						<!-- CNPJ -->
-						<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
-							<div>
-								<label>CNPJ</label>
-								<input type="text" class="form-control input-sm align cnpj text-uppercase" id="cnpjU" name="cnpjU">
-							</div>
-						</div>
-						<!-- E-MAIL -->
-						<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
-							<div>
-								<label>E-MAIL</label>
-								<input type="text" class="form-control input-sm align text-uppercase" placeholder="exemplo@exemplo.com" id="emailU" name="emailU">
-							</div>
-						</div>
-
-						<!-- FORMULÁRIO ENDEREÇO -->
-						<div class='separador col-md-12 col-sm-12 col-xs-12'>
-							<div class="text-left">
-								<h4><strong>ENDEREÇO</strong><span class="glyphicon glyphicon-home ml-15"></span></h4>
-							</div>
-							<hr>
-						</div>
-						<!-- CEP -->
-						<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
-							<div>
-								<label>CEP</label>
-								<input type="text" class="form-control input-sm align cep text-uppercase" placeholder="#####-###" id="cepU" name="cepU">
-							</div>
-						</div>
-						<!-- BAIRRO -->
-						<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
-							<div>
-								<label>BAIRRO</label>
-								<input type="text" class="form-control input-sm align text-uppercase" id="bairroU" name="bairroU">
-							</div>
-						</div>
-						<!-- ENDEREÇO -->
-						<div class="mb-20px col-md-8 col-sm-8 col-xs-8 itensFormularioCadastro">
-							<div>
-								<label>ENDEREÇO</label>
-								<input type="text" class="form-control input-sm align text-uppercase" id="enderecoU" name="enderecoU">
-							</div>
-						</div>
-						<!-- UF -->
-						<div class="mb-20px col-md-4 col-sm-4 col-xs-4 itensFormularioCadastro">
-							<div>
-								<label>UF</label>
-								<input type="text" class="form-control input-sm align text-uppercase" id="ufU" name="ufU">
-							</div>
-						</div>
-						<!-- NÚMERO -->
-						<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
-							<div>
-								<label>NÚMERO</label>
-								<input type="text" class="form-control input-sm align text-uppercase" id="numeroU" name="numeroU">
-							</div>
-						</div>
-						<!-- COMPLEMENTO -->
-						<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
-							<div>
-								<label>COMPLEMENTO</label>
-								<input type="text" class="form-control input-sm align text-uppercase" id="complementoU" name="complementoU">
-							</div>
-						</div>
-
-						<!-- FORMULÁRIO TELEFONES -->
-						<div class='separador col-md-12 col-sm-12 col-xs-12'>
-							<div class="text-left">
-								<h4><strong>TELEFONES</strong><span class="glyphicon glyphicon-phone-alt ml-15"></span></h4>
-							</div>
-							<hr>
-						</div>
-						<!-- TELEFONE -->
-						<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
-							<div>
-								<label>TELEFONE</label>
-								<input type="text" class="form-control input-sm align telefone text-uppercase" placeholder="(##) ####-####" id="telefoneU" name="telefoneU">
-							</div>
-						</div>
-						<!-- CELULAR -->
-						<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
-							<div>
-								<label>CELULAR<span class="required">*</span></label>
-								<input type="text" class="form-control input-sm align celular text-uppercase" placeholder="(##) # ####-####" id="celularU" name="celularU">
-							</div>
-						</div>
-						<!-- TELEFONE 2 -->
-						<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
-							<div>
-								<label>TELEFONE</label>
-								<input type="text" class="form-control input-sm align telefone text-uppercase" placeholder="(##) ####-####" id="telefone2U" name="telefone2U">
-							</div>
-						</div>
-						<!-- CELULAR 2 -->
-						<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
-							<div>
-								<label>CELULAR</label>
-								<input type="text" class="form-control input-sm align celular text-uppercase" placeholder="(##) # ####-####" id="celular2U" name="celular2U">
-							</div>
-						</div>
-						<!-- BOTÃO EDITAR -->
-						<div class="btnEditar">
-							<span class="btn btn-warning" id="btnEditar" title="EDITAR" data-dismiss="modal">EDITAR</span>
-						</div>
-					</form>
-				</div>
-
-			</div>
-
+<div class="container">
+	<div class="cabecalho bgGradient">
+		<div class="text-center textCabecalho_White opacidade">
+			<h3><strong>EDITAR CLIENTE</strong></h3>
 		</div>
-
 	</div>
 
+	<div id="editarCliente" tabindex="-1" role="dialog" aria-labelledby="modalEditar">
+		<div class="modal-dialog modal-lg" role="document" data-keyboard="true">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="modal-content col-md-12 col-sm-12 col-xs-12">
+					<div class="modal-header">
+						<button type="button" id="btnClose" class="close" data-dismiss="modal" aria-label="Close" title="FECHAR"><span aria-hidden="true">&times;</span></button>
+					</div>
+					<div class="modal-body">
+						<form id="frmClientesU">
+							<!-- FORMULÁRIO DADOS PESSOAIS -->
+							<div class='col-md-12 col-sm-12 col-xs-12'>
+								<div class="text-left">
+									<h4><strong>DADOS PESSOAIS</strong><span class="glyphicon glyphicon-user ml-15"></span></h4>
+								</div>
+								<hr>
+							</div>
+							<!-- ID -->
+							<div>
+								<input type="text" hidden="" id="idclienteU" name="idclienteU">
+							</div>
+							<!-- NOME -->
+							<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
+								<div>
+									<label>NOME COMPLETO<span class="required">*</span></label>
+										<input type="text" class="form-control input-sm align text-uppercase" id="nomeU" name="nomeU" maxlenght="50">
+								</div>
+							</div>
+							<!-- CPF -->
+							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+								<div>
+									<label>CPF</label>
+									<input type="text" class="form-control input-sm align cpf text-uppercase" id="cpfU" name="cpfU">
+								</div>
+							</div>
+							<!-- CNPJ -->
+							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+								<div>
+									<label>CNPJ</label>
+									<input type="text" class="form-control input-sm align cnpj text-uppercase" id="cnpjU" name="cnpjU">
+								</div>
+							</div>
+							<!-- E-MAIL -->
+							<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
+								<div>
+									<label>E-MAIL</label>
+									<input type="text" class="form-control input-sm align text-uppercase" placeholder="exemplo@exemplo.com" id="emailU" name="emailU">
+								</div>
+							</div>
+
+							<!-- FORMULÁRIO ENDEREÇO -->
+							<div class='separador col-md-12 col-sm-12 col-xs-12'>
+								<div class="text-left">
+									<h4><strong>ENDEREÇO</strong><span class="glyphicon glyphicon-home ml-15"></span></h4>
+								</div>
+								<hr>
+							</div>
+							<!-- CEP -->
+							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+								<div>
+									<label>CEP</label>
+									<input type="text" class="form-control input-sm align cep text-uppercase" placeholder="#####-###" id="cepU" name="cepU">
+								</div>
+							</div>
+							<!-- BAIRRO -->
+							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+								<div>
+									<label>BAIRRO</label>
+									<input type="text" class="form-control input-sm align text-uppercase" id="bairroU" name="bairroU">
+								</div>
+							</div>
+							<!-- ENDEREÇO -->
+							<div class="mb-20px col-md-8 col-sm-8 col-xs-8 itensFormularioCadastro">
+								<div>
+									<label>ENDEREÇO</label>
+									<input type="text" class="form-control input-sm align text-uppercase" id="enderecoU" name="enderecoU">
+								</div>
+							</div>
+							<!-- UF -->
+							<div class="mb-20px col-md-4 col-sm-4 col-xs-4 itensFormularioCadastro">
+								<div>
+									<label>UF</label>
+									<input type="text" class="form-control input-sm align text-uppercase" id="ufU" name="ufU">
+								</div>
+							</div>
+							<!-- NÚMERO -->
+							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+								<div>
+									<label>NÚMERO</label>
+									<input type="text" class="form-control input-sm align text-uppercase" id="numeroU" name="numeroU">
+								</div>
+							</div>
+							<!-- COMPLEMENTO -->
+							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+								<div>
+									<label>COMPLEMENTO</label>
+									<input type="text" class="form-control input-sm align text-uppercase" id="complementoU" name="complementoU">
+								</div>
+							</div>
+
+							<!-- FORMULÁRIO TELEFONES -->
+							<div class='separador col-md-12 col-sm-12 col-xs-12'>
+								<div class="text-left">
+									<h4><strong>TELEFONES</strong><span class="glyphicon glyphicon-phone-alt ml-15"></span></h4>
+								</div>
+								<hr>
+							</div>
+							<!-- TELEFONE -->
+							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+								<div>
+									<label>TELEFONE</label>
+									<input type="text" class="form-control input-sm align telefone text-uppercase" placeholder="(##) ####-####" id="telefoneU" name="telefoneU">
+								</div>
+							</div>
+							<!-- CELULAR -->
+							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+								<div>
+									<label>CELULAR<span class="required">*</span></label>
+									<input type="text" class="form-control input-sm align celular text-uppercase" placeholder="(##) # ####-####" id="celularU" name="celularU">
+								</div>
+							</div>
+							<!-- TELEFONE 2 -->
+							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+								<div>
+									<label>TELEFONE</label>
+									<input type="text" class="form-control input-sm align telefone text-uppercase" placeholder="(##) ####-####" id="telefone2U" name="telefone2U">
+								</div>
+							</div>
+							<!-- CELULAR 2 -->
+							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+								<div>
+									<label>CELULAR</label>
+									<input type="text" class="form-control input-sm align celular text-uppercase" placeholder="(##) # ####-####" id="celular2U" name="celular2U">
+								</div>
+							</div>
+							<!-- BOTÃO EDITAR -->
+							<div class="btnEditar">
+								<span class="btn btn-warning" id="btnEditar" title="EDITAR" data-dismiss="modal">EDITAR</span>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <script type="text/javascript">
@@ -222,4 +220,13 @@
 			} 
 		}); 
 	});
+
+	$('#btnClose').click(function() {
+		$('#conteudo').load("./Views/Clientes/ProcurarClientes.php");	
+	});
 </script>
+<style>
+	.cabecalho {
+		margin-bottom: 50px;
+	}
+</style>
