@@ -40,8 +40,6 @@
 <link rel="stylesheet" type="text/css" href="./Css/Spacing.css">
 <link rel="stylesheet" type="text/css" href="./Css/Index.css">
 <link rel="stylesheet" type="text/css" href="./Css/Principal.css">
-<link rel="stylesheet" type="text/css" href="./Css/Clientes.css">
-<link rel="stylesheet" type="text/css" href="./Css/Servicos.css">
 
 
 

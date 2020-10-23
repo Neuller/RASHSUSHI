@@ -10,6 +10,6 @@
 .bgGray{
 	background-color: #e6e6e6;
 }
-.bgGradientFaleConosco{
-	background: linear-gradient(to bottom, #19406e, #ffffff);
+.bgGradientLinear{
+	background: linear-gradient(to bottom, #e6e6e6, #ffffff);
 }

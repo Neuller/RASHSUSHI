@@ -118,6 +118,7 @@ if (isset($_SESSION['User'])) {
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <a id="cadastrarProduto" class="dropdown-item" href="#">CADASTRAR PRODUTO</a>
           <a id="cadastrarCombinado" class="dropdown-item" href="#">CADASTRAR COMBINADO</a>
+          <a id="procurarCombinado" class="dropdown-item" href="#">PROCURAR COMBINADO <span class="required">- VERSÃO COMPLETA</span></a>
           <a id="procurarProduto" class="dropdown-item" href="#">PROCURAR PRODUTO</a>
         </div>
       </div>
@@ -204,7 +205,7 @@ if (isset($_SESSION['User'])) {
 
 <script type="text/javascript">
   $(document).ready(function($) {
-    
+    $('#conteudo').load("./Views/Inicio/Inicio.php");	
   });
   
 	// MENU LATERAL
@@ -212,12 +213,10 @@ if (isset($_SESSION['User'])) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
   });
-
 	// INICIO
 	$("#inicio").click(function(e) {
 		$('#conteudo').load("./Views/Inicio/Inicio.php");	
   });
-
 	// LOGO
 	$("#logoDireito").click(function(e) {
 		$('#conteudo').load("./Views/Inicio/Inicio.php");	
@@ -240,6 +239,9 @@ if (isset($_SESSION['User'])) {
   $("#cadastrarCombinado").click(function(e) {
     $('#conteudo').load("./Views/Combinados/CadastrarCombinado.php");	
   });
+  $("#procurarCombinado").click(function(e) {
+    $('#conteudo').load("./Views/Combinados/ProcurarCombinado.php");	
+  });
   // ENTREGADORES
   $("#cadastrarEntregador").click(function(e) {
     $('#conteudo').load("./Views/Entregadores/CadastrarEntregador.php");	
@@ -259,6 +261,9 @@ if (isset($_SESSION['User'])) {
   $("#cadastrarProduto").click(function(e) {
     $('#conteudo').load("./Views/Produtos/CadastrarProduto.php");	
   });
+  $("#procurarProduto").click(function(e) {
+    $('#conteudo').load("./Views/Produtos/ProcurarProduto.php");	
+  });
   // USUÁRIOS
   $("#cadastrarUsuario").click(function(e) {
       $('#conteudo').load("./Views/Usuarios/CadastrarUsuario.php");	
@@ -267,13 +272,10 @@ if (isset($_SESSION['User'])) {
   $("#cadastrarVeiculo").click(function(e) {
       $('#conteudo').load("./Views/Veiculos/CadastrarVeiculo.php");	
   });
-    
-
-	
 </script>
 
 <?php
 } else {
-	header("location:./index.php");
+	header("location: ./index.php");
 }
 ?>

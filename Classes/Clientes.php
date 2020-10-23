@@ -10,6 +10,7 @@ public function cadastrarCliente($dados){
 	
 	return mysqli_query($conexao, $sql);
 }
+
 public function obterDadosCliente($idCliente){
 	$c = new conectar();
 	$conexao = $c -> conexao();
@@ -41,6 +42,7 @@ public function obterDadosCliente($idCliente){
 	);
 	return $dados;
 }
+
 public function editarCliente($dados){
 	$c = new conectar();
 	$conexao = $c -> conexao();
@@ -64,6 +66,7 @@ public function editarCliente($dados){
 
 	echo mysqli_query($conexao, $sql);
 }
+
 public function excluirCliente($idcliente){
 	$c = new conectar();
 	$conexao = $c -> conexao();

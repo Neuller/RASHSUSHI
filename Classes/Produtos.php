@@ -29,22 +29,23 @@ public function obterDadosProdutos($idProduto){
 	);
 	return $dados;
 }
+
 public function editarProduto($dados){
 	$c = new conectar();
 	$conexao = $c->conexao();
 
-	$sql = "UPDATE produtosnserv SET Codigo = '$dados[1]', Descricao = '$dados[2]', Garantia = '$dados[3]',
-	Preco = '$dados[4]', PrecoInstalacao = '$dados[5]', Estoque = '$dados[6]', NF = '$dados[7]', NCM = '$dados[8]'
-    WHERE ID_Produto = '$dados[0]'
-    AND ID_Categoria = '$dados[9]'";
+	$sql = "UPDATE produtos SET id_categoria = '$dados[1]', descricao = '$dados[2]', quantidade = '$dados[3]',
+	valor_unidade = '$dados[4]'
+    WHERE id_produto = '$dados[0]'";
 
 	echo mysqli_query($conexao, $sql);
 }
+
 public function excluirProduto($idProduto){
 	$c = new conectar();
-	$conexao = $c->conexao();
+	$conexao = $c -> conexao();
 
-	$sql = "DELETE from produtosnserv WHERE ID_Produto = '$idProduto' ";
+	$sql = "DELETE from produtos WHERE id_produto = '$idProduto' ";
 
 	return mysqli_query($conexao, $sql);
 }

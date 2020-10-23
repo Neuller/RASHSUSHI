@@ -1,4 +1,3 @@
-<!-- VERIFICA SESSÃO LOGADA -->
 <?php
 session_start();
 if (isset($_SESSION['User'])) {
@@ -6,146 +5,99 @@ if (isset($_SESSION['User'])) {
 
 <!DOCTYPE html>
 <html>
-
 	<head>
-		<!-- MENU -->
+		<link rel="stylesheet" type="text/css" href="./Css/Inicio.css">
 		<?php require_once "../../Classes/Conexao.php";
 		$c = new conectar();
-		$conexao = $c->conexao();
-
-		$sql = "SELECT ID_Status, Nome_Status FROM status";
-
-		$result = mysqli_query($conexao, $sql);
+		$conexao = $c -> conexao();
 		?>
 	</head>
 
 	<body>
 		<div class="container">
 			<!-- FALE CONOSCO -->
-			<div class="cabecalho bgGray">
-				<div class="text-center textCabecalho opacidade">
+			<div class="cabecalho bgGradient">
+				<div class="text-center textCabecalho_White opacidade">
 					<h3><strong>FALE CONOSCO</strong></h3>
 				</div>
 			</div>
-			<!-- TELEFONES -->
-			<div class="contatos">
-				<article class="conteudo bgGradientFaleConosco">
-					<div class="text-center">
-						<section class="conteudoContatos">
-							<i class="fas fa-phone fa-4x textContatos"></i>
-						</section>
-					</div>
-					<div class="text-center">
-						<section class="conteudoContatos">
-							<div class="text-center">
-								<p class="h5 textContatos">(31) 3390-1115</p>
-								<p class="h5 textContatos">(31) 3043-4397</p>
-							</div>
-						</section>
-					</div>
-				</article>
+
+			<div class="faleConosco">
+				<!-- CELULARES -->
+				<div class="contatos">
+					<article class="conteudo bgGradientLinear">
+						<div class="text-center">
+							<section class="conteudoContatos">
+								<i class="fab fa-whatsapp fa-4x textContatos"></i>
+							</section>
+						</div>
+						<div class="text-center">
+							<section class="conteudoContatos">
+								<div class="text-center">
+									<p class="h5 textContatos">(31) 9 9344-0749</p>
+								</div>
+							</section>
+						</div>
+					</article>
+				</div>
+				<!-- ENDEREÇO -->
+				<div class="contatos">
+					<article class="conteudo bgGradientLinear">
+						<div class="text-center">
+							<section class="conteudoContatos">
+								<i class="fas fa-home fa-4x textContatos"></i>
+							</section>
+						</div>
+						<div class="text-center">
+							<section class="conteudoContatos">
+								<div class="text-center">
+									<p class="h5 textContatos">Rua dos Antúrios - 293</p>
+									<p class="h5 textContatos">Sapucaias - Contagem/MG</p>
+								</div>
+							</section>
+						</div>
+					</article>
+				</div>
+				<!-- E-MAIL -->
+				<div class="contatos">
+					<article class="conteudo bgGradientLinear">
+						<div class="text-center">
+							<section class="conteudoContatos">
+								<i class="fas fa-envelope fa-4x textContatos"></i>
+							</section>
+						</div>
+						<div class="text-center">
+							<section class="conteudoContatos">
+								<div class="text-center">
+									<p class="h5 textContatos">andre.dekooh@hotmail.com</p>
+								</div>
+							</section>
+						</div>
+					</article>
+				</div>
 			</div>
-			<!-- CELULARES -->
-			<div class="contatos">
-				<article class="conteudo bgGradientFaleConosco">
-					<div class="text-center">
-						<section class="conteudoContatos">
-							<i class="fab fa-whatsapp fa-4x textContatos"></i>
-						</section>
-					</div>
-					<div class="text-center">
-						<section class="conteudoContatos">
-							<div class="text-center">
-								<p class="h5 textContatos">(31) 9 9392-0260</p>
-								<p class="h5 textContatos">(31) 9 9165-4448</p>
-								<p class="h5 textContatos">(31) 9 9246-6484</p>
-							</div>
-						</section>
-					</div>
-				</article>
-			</div>
-			<!-- ENDEREÇO -->
-			<div class="contatos">
-				<article class="conteudo bgGradientFaleConosco">
-					<div class="text-center">
-						<section class="conteudoContatos">
-							<i class="fas fa-home fa-4x textContatos"></i>
-						</section>
-					</div>
-					<div class="text-center">
-						<section class="conteudoContatos">
-							<div class="text-center">
-								<p class="h5 textContatos">Rua Cel. João Camargos - 255</p>
-								<p class="h5 textContatos">LOJA 01 - Contagem/MG</p>
-							</div>
-						</section>
-					</div>
-				</article>
-			</div>
-			<!-- E-MAIL -->
-			<div class="contatos">
-				<article class="conteudo bgGradientFaleConosco">
-					<div class="text-center">
-						<section class="conteudoContatos">
-							<i class="fas fa-envelope fa-4x textContatos"></i>
-						</section>
-					</div>
-					<div class="text-center">
-						<section class="conteudoContatos">
-							<div class="text-center">
-								<p class="h5 textContatos">Nserv@hotmail.com</p>
-							</div>
-						</section>
-					</div>
-				</article>
-			</div>
-			<!-- SERVIÇOS DO MÊS -->
+
+			<!-- PEDIDOS DO MÊS -->
 			<div>
-				<div class="servicosMes bgGray">
-					<div class="text-center textCabecalho opacidade">
-						<h3><strong>SERVIÇOS DO MÊS</strong></h3>
+				<div class="pedidosMes cabecalho bgGradient">
+					<div class="text-center textCabecalho_White opacidade">
+						<h3><strong>PEDIDOS DO MÊS</strong></h3>
 					</div>
 				</div>
-				<!-- TABELA DE SERVIÇOS -->
-				<div class="row">
+				<!-- TABELA -->
+				<div >
 					<div class="col-sm-12" align="center">
-						<div id="tabelaUltimosServicos"></div>
-					</div>
-				</div>
-			</div>
-			<!-- VENDAS DO MÊS -->
-			<div>
-				<div class="vendasMes bgGray">
-					<div class="text-center textCabecalho opacidade">
-						<h3><strong>VENDAS DO MÊS</strong></h3>
-					</div>
-				</div>
-				<!-- TABELA DE VENDAS -->
-				<div class="row">
-					<div class="col-sm-12" align="center">
-						<div id="tabelaVendasMes"></div>
+						<div id="tabelaPedidosMes"></div>
 					</div>
 				</div>
 			</div>
 		</div>
-
-		<!-- MODAL EDITAR SERVIÇO -->
-		<div id="modalEditarServico"></div>
-
-		<!-- MODAL VISUALIZAR SERVIÇO -->
-		<div id="modalVisualizarServico"></div>
-
 	</body>
+</html>
 
-	</html>
-
-	<!-- SCRIPT -->
-	<script type="text/javascript">
+<script type="text/javascript">
 		$(document).ready(function() {
-			$('#tabelaUltimosServicos').load('./Views/Inicio/tabelaUltimosServicos.php');
-			$('#tabelaVendasMes').load('./Views/Inicio/tabelaVendasMes.php');
-			$('#modalVisualizarServico').load('./Views/Servicos/ModalVisualizarServico.php');
-			$('#modalEditarServico').load('./Views/Servicos/ModalEditarServico.php');
+			$('#tabelaPedidosMes').load('./Views/Inicio/TabelaPedidosMes.php');
 		});
 		// MODAL EDITAR SERVIÇOS
 		function adicionarDados(idServico) {
@@ -259,25 +211,16 @@ if (isset($_SESSION['User'])) {
 				}
 			});
 		}
-	</script>
+</script>
 
-	<style>
-		.mb-20px {
-			margin-bottom: 20px;
-		}
+<style>
+	.cabecalho {
+		margin-bottom: 50px;
+	}
+</style>
 
-		.mb-15px {
-			margin-bottom: 15px;
-		}
-
-		.cabecalho {
-			margin-bottom: 50px;
-		}
-	</style>
-
-<!-- SE NÂO ESTIVAR LOGADO RETORNA À PÁGINA INICIAL -->
 <?php
 } else {
-	header("location:./index.php");
+	header("location: ./index.php");
 }
 ?>

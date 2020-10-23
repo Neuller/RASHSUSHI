@@ -209,7 +209,6 @@
 							data: dados,
 							url: "./Procedimentos/Clientes/EditarCliente.php",
 							success: function(r) {
-								debugger;
 								if (r == 1) {
 									$('#conteudo').load("./Views/Clientes/ProcurarClientes.php");
 									alertify.success("REGISTRO ATUALIZADO");

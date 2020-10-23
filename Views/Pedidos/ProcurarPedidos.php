@@ -25,28 +25,36 @@ if (isset($_SESSION['User'])) {
 <script type="text/javascript">
 	$(document).ready(function($) {
 		$('#tabelaPedidos').load('./Views/Pedidos/TabelaPedidos.php');
-		$('#modalVisualizarPedido').load('./Views/Pedidos/ModalVisualizarPedido.php');
 	});
 
-	// PREENCHER MODAL EDITAR
-	function preencherModalEditar(idPedido) {
-		$.ajax({
-			type: "POST",
-			data: "idPedido=" + idPedido,
-			url: "./Procedimentos/Pedidos/ObterDadosPedido.php",
-			success: function(r) {
-				dado = jQuery.parseJSON(r);
-			}
-		});
-	}
 	// PREENCHER MODAL VISUALIZAR
 	function preencherModalVisualizar(idPedido) {
+		$('#conteudo').load('./Views/Pedidos/ModalVisualizarPedido.php');
 		$.ajax({
 			type: "POST",
 			data: "idPedido=" + idPedido,
 			url: "./Procedimentos/Pedidos/ObterDadosPedido.php",
 			success: function(r) {
 				dado = jQuery.parseJSON(r);
+				$('#idPedidoV').val(dado['id_pedido']);
+				$.ajax({
+					type: "POST",
+					data: "idCliente=" + dado.id_cliente,
+					url: './Procedimentos/Clientes/ObterDadosCliente.php',
+				}).then(function(data) {
+					var result = JSON.parse(data);
+					$('#nomeV').val(result.nome);
+					$('#cpfV').val(result.cpf);
+					$('#cnpjV').val(result.cnpj);
+					$('#telefoneV').val(result.telefone);
+					$('#celularV').val(result.celular);
+				});
+				$('#descricaoV').val(dado['descricao']);
+				$('#quantidadeV').val(dado['quantidade']);
+				$('#valor_unidadeV').val(dado['valor_unidade']);
+				$('#statusV').val(dado['status']);
+				$('#data_horaV').val(dado['data_hora_pedido']);
+				$('#valor_totalV').val(dado['valor_total']);
 			}
 		});
 	}

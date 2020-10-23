@@ -20,6 +20,7 @@ class pedidos {
         }
         return $r;
     }
+
     public function criarComprovante(){
         $c = new conectar();
         $conexao = $c -> conexao();
@@ -35,6 +36,32 @@ class pedidos {
             return $id + 1;
         }
     }
+
+    public function obterDadosPedido($idPedido){
+        $c = new conectar();
+        $conexao = $c -> conexao();
+    
+        $sql = "SELECT id_pedido, id_cliente, id_produto, id_usuario, descricao, quantidade_itens, valor_total, status, data_hora_pedido
+        FROM pedidos 
+        WHERE id_pedido = '$idPedido' ";
+    
+        $result = mysqli_query($conexao, $sql);
+        $mostrar = mysqli_fetch_row($result);
+    
+        $dados = array(
+            'id_pedido' => $mostrar[0],
+            'id_cliente' => $mostrar[1],
+            'id_produto' => $mostrar[2],
+            'id_usuario' => $mostrar[3],
+            'descricao' => $mostrar[4],
+            'quantidade_itens' => $mostrar[5],
+            'valor_total' => $mostrar[6],
+            'status' => $mostrar[7],
+            'data_hora_pedido' => $mostrar[8]
+        );
+        return $dados;
+    }
+
     public function excluirPedido($idPedido){
         $c = new conectar();
         $conexao = $c -> conexao();

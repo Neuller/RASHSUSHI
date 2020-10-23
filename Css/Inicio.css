@@ -1,0 +1,31 @@
+.faleConosco{
+    text-align: center !important;
+    width: 100% !important;
+}
+.contatos{
+    width: 30% !important;
+    float: left !important;
+    padding: 0% 2% !important;
+    text-align: center !important;
+}
+.conteudo{
+    border-radius: 25px !important;
+    height: 150px !important;
+}
+.textContatos{
+	color: #000 !important;
+}
+.conteudoContatos{
+    margin: 15px !important;
+    flex-wrap: wrap !important;
+    display: inline-flex !important;
+}
+.pedidosMes{
+    width: 100% !important;
+	float: left !important;
+	text-align: center !important;
+    margin-top: 25px !important;
+}
+#tabelaPedidosMes{
+    margin-top: 25px !important;
+}

@@ -102,7 +102,6 @@ if (isset($_SESSION['User'])) {
                                 <input type="number" class="form-control input-sm text-uppercase quantidade" id="quantidade" name="quantidade" maxlenght="100">
                             </div>
                         </div>
-						
 					</form>
 				</div>
             </div>
