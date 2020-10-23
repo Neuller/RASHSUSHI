@@ -15,68 +15,6 @@ if (isset($_SESSION['User'])) {
 
 	<body>
 		<div class="container">
-			<!-- FALE CONOSCO -->
-			<div class="cabecalho bgGradient">
-				<div class="text-center textCabecalho_White opacidade">
-					<h3><strong>FALE CONOSCO</strong></h3>
-				</div>
-			</div>
-
-			<div class="faleConosco">
-				<!-- CELULARES -->
-				<div class="contatos">
-					<article class="conteudo bgGradientLinear">
-						<div class="text-center">
-							<section class="conteudoContatos">
-								<i class="fab fa-whatsapp fa-4x textContatos"></i>
-							</section>
-						</div>
-						<div class="text-center">
-							<section class="conteudoContatos">
-								<div class="text-center">
-									<p class="h5 textContatos">(31) 9 9344-0749</p>
-								</div>
-							</section>
-						</div>
-					</article>
-				</div>
-				<!-- ENDEREÇO -->
-				<div class="contatos">
-					<article class="conteudo bgGradientLinear">
-						<div class="text-center">
-							<section class="conteudoContatos">
-								<i class="fas fa-home fa-4x textContatos"></i>
-							</section>
-						</div>
-						<div class="text-center">
-							<section class="conteudoContatos">
-								<div class="text-center">
-									<p class="h5 textContatos">Rua dos Antúrios - 293</p>
-									<p class="h5 textContatos">Sapucaias - Contagem/MG</p>
-								</div>
-							</section>
-						</div>
-					</article>
-				</div>
-				<!-- E-MAIL -->
-				<div class="contatos">
-					<article class="conteudo bgGradientLinear">
-						<div class="text-center">
-							<section class="conteudoContatos">
-								<i class="fas fa-envelope fa-4x textContatos"></i>
-							</section>
-						</div>
-						<div class="text-center">
-							<section class="conteudoContatos">
-								<div class="text-center">
-									<p class="h5 textContatos">andre.dekooh@hotmail.com</p>
-								</div>
-							</section>
-						</div>
-					</article>
-				</div>
-			</div>
-
 			<!-- PEDIDOS DO MÊS -->
 			<div>
 				<div class="pedidosMes cabecalho bgGradient">
@@ -211,6 +149,27 @@ if (isset($_SESSION['User'])) {
 				}
 			});
 		}
+
+	// CANCELAR
+	function cancelar(idPedido) {
+		alertify.confirm('ATENÇÃO', 'DESEJA CANCELAR O PEDIDO?', function() {
+			$.ajax({
+				type: "POST",
+				data: "idPedido=" + idPedido,
+				url: "./Procedimentos/Pedidos/CancelarPedido.php",
+				success: function(r) {
+					if (r == 1) {
+						$('#tabelaPedidos').load("./Views/Inicio/TabelaPedidosMes.php");
+						alertify.success("PEDIDO CANCELADO");
+					} else {
+						alertify.error("NÃO FOI POSSÍVEL CANCELAR O PEDIDO");
+					}
+				}
+			});
+		}, function() {
+			alertify.error('OPERAÇÃO CANCELADA')
+		});
+	}
 </script>
 
 <style>

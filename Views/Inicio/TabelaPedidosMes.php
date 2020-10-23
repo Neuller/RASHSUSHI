@@ -27,6 +27,7 @@ $result = mysqli_query($conexao, $sql);
                     <tr>
                         <td>NÚMERO DO PEDIDO</td>
                         <td>CLIENTE</td>
+                        <td>STATUS</td>
                         <td>IMPRIMIR</td>
                         <td>VISUALIZAR</td>
                         <td>CANCELAR</td>
@@ -41,6 +42,7 @@ $result = mysqli_query($conexao, $sql);
                             <tr>
                             <td>'.$mostrar[0].'</td>
                             <td>'.$objUtils->obterNomeCliente($mostrar[1]).'</td>
+                            <td>'.$mostrar[5].'</td>
                             <td>'.'<a href="./Procedimentos/Pedidos/CriarComprovante.php?idPedido='.$mostrar[0].'" target="_BLANK" class="btn btn-danger btn-sm" title="IMPRIMIR">
                             <span class="glyphicon glyphicon-print"></span>
                             </a>'.'</td>
