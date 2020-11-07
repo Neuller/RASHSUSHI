@@ -10,7 +10,7 @@ $objUtils = new utilitarios();
 
 $dataAtual = date('m');
 
-$sql = "SELECT id_pedido, id_cliente, id_produto, id_usuario, valor_total, status, data_hora_pedido
+$sql = "SELECT id_pedido, id_cliente, id_produto, id_usuario, valor_total, status, data_hora_pedido, endereco_entrega
 FROM pedidos
 WHERE MONTH(data_hora_pedido) = ".$dataAtual."
 GROUP BY id_pedido
@@ -41,7 +41,7 @@ $result = mysqli_query($conexao, $sql);
                             '
                             <tr>
                             <td>'.$mostrar[0].'</td>
-                            <td>'.$objUtils->obterNomeCliente($mostrar[1]).'</td>
+                            <td>'.$objUtils->obterCelularCliente($mostrar[1]).'</td>
                             <td>'.$mostrar[5].'</td>
                             <td>'.'<a href="./Procedimentos/Pedidos/CriarComprovante.php?idPedido='.$mostrar[0].'" target="_BLANK" class="btn btn-danger btn-sm" title="IMPRIMIR">
                             <span class="glyphicon glyphicon-print"></span>

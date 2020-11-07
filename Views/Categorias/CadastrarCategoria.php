@@ -30,7 +30,7 @@ if (isset($_SESSION['User'])) {
 								</div>
 							</div>
 							<!-- BOTÂO CADASTRAR -->
-							<div class="btnCadastrar">
+							<div class="col-md-12 col-sm-12 col-xs-12 itensFormulario btnLeft">
 								<span class="btn btn-primary" id="btnCadastrar" title="CADASTRAR">CADASTRAR</span>
 							</div>
 					</form>

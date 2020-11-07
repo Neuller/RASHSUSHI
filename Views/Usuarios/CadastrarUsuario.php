@@ -20,7 +20,7 @@ if (isset($_SESSION['User'])) {
 							<!-- FORMULÁRIO DADOS PESSOAIS -->
 							<div class='col-md-12 col-sm-12 col-xs-12'>
 								<div class="text-left">
-									<h4><strong>DADOS PESSOAIS</strong><span class="glyphicon glyphicon-user ml-15"></span></h4>
+									<h4><strong>DADOS PESSOAIS </strong><span class="glyphicon glyphicon-user ml-15"></span></h4>
 								</div>
 								<hr>
 							</div>
@@ -49,7 +49,7 @@ if (isset($_SESSION['User'])) {
 							<!-- FORMULÁRIO ENDEREÇO -->
 							<div class='separador col-md-12 col-sm-12 col-xs-12'>
 								<div class="text-left">
-									<h4><strong>ENDEREÇO</strong><span class="glyphicon glyphicon-home ml-15"></span></h4>
+									<h4><strong>ENDEREÇO </strong><span class="glyphicon glyphicon-home ml-15"></span></h4>
 								</div>
 								<hr>
 							</div>
@@ -99,7 +99,7 @@ if (isset($_SESSION['User'])) {
 							<!-- FORMULÁRIO TELEFONES -->
 							<div class='separador col-md-12 col-sm-12 col-xs-12'>
 								<div class="text-left">
-									<h4><strong>TELEFONES</strong><span class="glyphicon glyphicon-phone-alt ml-15"></span></h4>
+									<h4><strong>TELEFONES </strong><span class="glyphicon glyphicon-phone-alt ml-15"></span></h4>
 								</div>
 								<hr>
 							</div>
@@ -135,7 +135,7 @@ if (isset($_SESSION['User'])) {
                             <!-- FORMULÁRIO DADOS DE ACESSO -->
 							<div class='separador col-md-12 col-sm-12 col-xs-12'>
 								<div class="text-left">
-									<h4><strong>DADOS DE ACESSO</strong><span class="glyphicon glyphicon-cloud ml-15"></span></h4>
+									<h4><strong>DADOS DE ACESSO </strong><span class="glyphicon glyphicon-cloud ml-15"></span></h4>
 								</div>
 								<hr>
 							</div>
@@ -172,7 +172,7 @@ if (isset($_SESSION['User'])) {
 								</div>
 							</div>
 							<!-- BOTÂO CADASTRAR -->
-							<div class="btnCadastrar">
+							<div class="col-md-12 col-sm-12 col-xs-12 itensFormulario btnLeft">
 								<span class="btn btn-primary" id="btnCadastrar" title="CADASTRAR">CADASTRAR</span>
 							</div>
 					</form>

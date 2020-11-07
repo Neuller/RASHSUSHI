@@ -21,14 +21,14 @@ if (isset($_SESSION['User'])) {
 							<!-- FORMULÁRIO DADOS PESSOAIS -->
 							<div class='col-md-12 col-sm-12 col-xs-12'>
 								<div class="text-left">
-									<h4><strong>DADOS PESSOAIS</strong><span class="glyphicon glyphicon-user ml-15"></span></h4>
+									<h4><strong>DADOS PESSOAIS </strong><span class="glyphicon glyphicon-user ml-15"></span></h4>
 								</div>
 								<hr>
 							</div>
 							<!-- NOME -->
 							<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
 								<div>
-									<label>NOME COMPLETO<span class="required">*</span></label>
+									<label>NOME COMPLETO</label>
 									<input type="text" class="form-control input-sm text-uppercase" id="nome" name="nome" maxlenght="100">
 								</div>
 							</div>
@@ -57,7 +57,7 @@ if (isset($_SESSION['User'])) {
 							<!-- FORMULÁRIO ENDEREÇO -->
 							<div class='separador col-md-12 col-sm-12 col-xs-12'>
 								<div class="text-left">
-									<h4><strong>ENDEREÇO</strong><span class="glyphicon glyphicon-home ml-15"></span></h4>
+									<h4><strong>ENDEREÇO </strong><span class="glyphicon glyphicon-home ml-15"></span></h4>
 								</div>
 								<hr>
 							</div>
@@ -107,7 +107,7 @@ if (isset($_SESSION['User'])) {
 							<!-- FORMULÁRIO TELEFONES -->
 							<div class='separador col-md-12 col-sm-12 col-xs-12'>
 								<div class="text-left">
-									<h4><strong>TELEFONES</strong><span class="glyphicon glyphicon-phone-alt ml-15"></span></h4>
+									<h4><strong>TELEFONES </strong><span class="glyphicon glyphicon-phone-alt ml-15"></span></h4>
 								</div>
 								<hr>
 							</div>
@@ -140,7 +140,7 @@ if (isset($_SESSION['User'])) {
 								</div>
 							</div>
 							<!-- BOTÂO CADASTRAR -->
-							<div class="btnCadastrar">
+							<div class="col-md-12 col-sm-12 col-xs-12 itensFormulario btnLeft">
 								<span class="btn btn-primary" id="btnCadastrar" title="CADASTRAR">CADASTRAR</span>
 							</div>
 					</form>
@@ -186,14 +186,13 @@ if (isset($_SESSION['User'])) {
 		});
 
 		$('#btnCadastrar').click(function() {
-				var nome = $("#nome").val();
 				var cpf = $("#cpf").val();
 				var cnpj = $("#cnpj").val();
 				var celular = $("#celular").val();
 				var tabela = "clientes";
 
-				if ((nome == "") || (celular == "")) {
-					alertify.error("PREENCHA TODOS OS CAMPOS OBRIGATÓRIOS");
+				if (celular == "") {
+					alertify.error("PREENCHA O CAMPO 'CELULAR'");
 					return false;
 				}
 

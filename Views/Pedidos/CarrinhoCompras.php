@@ -12,7 +12,7 @@ session_start();
                         <td>DESCRIÇÃO</td>
                         <td>VALOR UN</td>
                         <td>QUANTIDADE</td>
-                        <td>EXCLUIR</td>
+                        <td>REMOVER</td>
                     </tr>
                 </thead>
                 <?php
@@ -40,16 +40,15 @@ session_start();
                     }
                 endif;
                 ?>
-                <tr>
-                    <td>VALOR TOTAL: <?php echo "R$ " . $valorTotal; ?></td>
-                </tr>
             </table>
         </div>
     </body>
 </html>
 
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function($) {
+        valorTotal = "<?php echo @$valorTotal ?>";
+        $("#valor_total").val(valorTotal);
     });
 
     function remover(index) {
@@ -59,6 +58,7 @@ session_start();
             url: "./Procedimentos/Pedidos/Remover.php",
             success: function(r) {
                 $('#carrinho_compras').load('./Views/Pedidos/CarrinhoCompras.php');
+                $("#valor_total").trigger('change');
                 alertify.success("ITEM REMOVIDO");
             }
         });

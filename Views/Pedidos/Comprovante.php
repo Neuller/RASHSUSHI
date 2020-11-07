@@ -117,6 +117,12 @@ $data_hora = $mostrar[8];
                     </div>
                 <?php } ?>
             </form>
+
+            <div class="text-center qrCode" align="center">
+                <div>
+                    <img src="../../Img/QRCODE.png" width="150" widht="150">
+                </div>
+            </div>
         </div>
     </body>
 </html>

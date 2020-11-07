@@ -130,6 +130,8 @@ if (isset($_SESSION['User'])) {
               </a>
 			  <!-- LISTA RELATORIOS -->
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">GERAR RELATORIO DIÁRIO</a>
+                <a class="dropdown-item" href="#">GERAR RELATORIO SEMANAL <span class="required">- VERSÃO COMPLETA</span></a>
                 <a class="dropdown-item" href="#">GERAR RELATORIO MENSAL <span class="required">- VERSÃO COMPLETA</span></a>
               </div>
 			</div>

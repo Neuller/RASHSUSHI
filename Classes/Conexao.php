@@ -6,7 +6,7 @@ class conectar{
 	private $bd = "rash_sushi";
 
 	public function conexao(){
-		$conexao = mysqli_connect($this->servidor, $this->usuario, $this->senha, $this->bd);
+		$conexao = mysqli_connect($this -> servidor, $this -> usuario, $this -> senha, $this -> bd);
 		return $conexao;
 	}
 }

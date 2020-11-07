@@ -25,8 +25,7 @@ $result=mysqli_query($conexao,$sql);
 			<thead>
 				<tr>
 					<td>NOME</td>
-					<td>CPF</td>
-					<td>CNPJ</td>
+					<td>CELULAR</td>
 					<td>EDITAR</td>
 					<td>VISUALIZAR</td>
 					<td>EXCLUIR</td>
@@ -40,8 +39,7 @@ $result=mysqli_query($conexao,$sql);
 						'
 						<tr>
 						<td>'.$mostrar[1].'</td>
-						<td>'.$mostrar[2].'</td>
-						<td>'.$mostrar[3].'</td>
+						<td>'.$mostrar[12].'</td>
 						<td>'.'<span class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editarCliente" title="EDITAR" onclick="adicionarDadosEditar('.$mostrar[0].')">
 						<span class="glyphicon glyphicon-pencil"></span>
 						</span>'.'</td>

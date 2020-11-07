@@ -9,6 +9,7 @@ $idCliente = $_POST['clienteSelect'];
 $idProduto = $_POST['produtoSelect'];
 $quantidade = $_POST['quantidade'];
 $valor_unidade = $_POST['valor_unidade'];
+$endereco_entrega = $_POST['enderecoEntrega'];
 
 $sql = "SELECT nome FROM clientes WHERE id_cliente = '$idCliente'";
 
@@ -24,7 +25,8 @@ $item = $idProduto . "||" .
 	$nomeCliente . "||" .
 	$quantidade . "||" .
 	$quantidade * $valor_unidade . "||" .
-	$idCliente;
+	$idCliente . "||" .
+	$endereco_entrega;
 
 $_SESSION['tabelaTemporaria'][] = $item;
 ?>

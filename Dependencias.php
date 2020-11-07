@@ -22,7 +22,6 @@
 <script src="./Lib/bootstrap/js/bootstrap.js"></script>
 <script src="./Lib/alertifyjs/alertify.js"></script>
 <script src="./Lib/select2/js/select2.js"></script>
-<script src="./Js/Funcoes.js"></script>
 
 <link rel="stylesheet" type="text/css" href="./Lib/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="./Lib/bootstrap_bundle/css/bootstrap.min.css">
@@ -36,10 +35,9 @@
 <link rel="stylesheet" type="text/css" href="./Css/Backgrounds.css">
 <link rel="stylesheet" type="text/css" href="./Css/All.css">
 <link rel="stylesheet" type="text/css" href="./Css/Menu.css">
-<link rel="stylesheet" type="text/css" href="./Css/Botoes.css">
-<link rel="stylesheet" type="text/css" href="./Css/Spacing.css">
 <link rel="stylesheet" type="text/css" href="./Css/Index.css">
 <link rel="stylesheet" type="text/css" href="./Css/Principal.css">
+<link rel="stylesheet" type="text/css" href="./Css/Botoes.css">
 
 
 

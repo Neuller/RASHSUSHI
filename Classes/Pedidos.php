@@ -1,20 +1,27 @@
 <?php 
 class pedidos {
-    public function cadastrarPedido(){
+    public function cadastrarPedido($dados){
         $c = new conectar();
         $conexao = $c -> conexao();
 
-        $data_hora = date('Y-m-d H:i:s');
+        date_default_timezone_set('America/Fortaleza');
+        $dataHora = date('Y-m-d H:i:s');
         $idPedido = self::criarComprovante();
-        $dados = $_SESSION['tabelaTemporaria'];
-        $idUsuario = $_SESSION['User'];
+        $dadosTabela = $_SESSION['tabelaTemporaria'];
+        $idUsuario = $_SESSION['IDUser'];
+        $enderecoEntrega = $dados[0];
+        $troco = $dados[1];
+        $valorPagamento = $dados[2];
+        $formaPagamento = $dados[3];
         $r = 0;
 
-        for ($i = 0; $i < count($dados) ; $i++) { 
-            $d = explode("||", $dados[$i]);
+        for ($i = 0; $i < count($dadosTabela) ; $i++) { 
+            $d = explode("||", $dadosTabela[$i]);
 
-            $sql="INSERT INTO pedidos (id_pedido, id_cliente, id_produto, id_usuario, descricao, quantidade_itens, valor_total, status, data_hora_pedido)
-            VALUES ('$idPedido', '$d[6]', '$d[0]', '$idUsuario', '$d[1]', '$d[4]', '$d[5]', 'EM ABERTO', '$data_hora')";
+            $sql="INSERT INTO pedidos (id_pedido, id_cliente, id_produto, id_usuario, descricao, quantidade_itens, 
+            valor_total, status, data_hora_pedido, endereco_entrega, troco, valor_pagamento, forma_pagamento)
+            VALUES ('$idPedido', '$d[6]', '$d[0]', '$idUsuario', '$d[1]', '$d[4]', '$d[5]', 'EM ABERTO', '$dataHora', '$enderecoEntrega', 
+            '$troco', '$valorPagamento', '$formaPagamento')";
 
             $r = $r + $result = mysqli_query($conexao,$sql);
         }
@@ -41,7 +48,7 @@ class pedidos {
         $c = new conectar();
         $conexao = $c -> conexao();
     
-        $sql = "SELECT id_pedido, id_cliente, id_produto, id_usuario, descricao, quantidade_itens, valor_total, status, data_hora_pedido
+        $sql = "SELECT id_pedido, id_cliente, id_produto, id_usuario, descricao, quantidade_itens, valor_total, status, data_hora_pedido, endereco_entrega
         FROM pedidos 
         WHERE id_pedido = '$idPedido' ";
     
@@ -57,7 +64,8 @@ class pedidos {
             'quantidade_itens' => $mostrar[5],
             'valor_total' => $mostrar[6],
             'status' => $mostrar[7],
-            'data_hora_pedido' => $mostrar[8]
+            'data_hora_pedido' => $mostrar[8],
+            'endereco_entrega' => $mostrar[9]
         );
         return $dados;
     }

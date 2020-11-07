@@ -29,7 +29,7 @@
 							<!-- NOME -->
 							<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormulario">
 								<div>
-									<label>NOME COMPLETO<span class="required">*</span></label>
+									<label>NOME COMPLETO</label>
 										<input type="text" class="form-control input-sm align text-uppercase" id="nomeU" name="nomeU" maxlenght="50">
 								</div>
 							</div>
@@ -184,14 +184,13 @@
 	});
 
 	$('#btnEditar').click(function() {
-		var nome = $("#nomeU").val();
 		var cpf = $("#cpfU").val();
 		var cnpj = $("#cnpjU").val();
 		var celular = $("#celularU").val();
 		var tabela = "clientes";
 
-		if ((nome == "") || (celular == "")) {
-			alertify.error("PREENCHA TODOS OS CAMPOS OBRIGATÓRIOS");
+		if (celular == "") {
+			alertify.error("PREENCHA O CAMPO 'CELULAR'");
 			return false;
 		}
 

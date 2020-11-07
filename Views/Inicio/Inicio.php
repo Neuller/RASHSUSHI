@@ -159,7 +159,7 @@ if (isset($_SESSION['User'])) {
 				url: "./Procedimentos/Pedidos/CancelarPedido.php",
 				success: function(r) {
 					if (r == 1) {
-						$('#tabelaPedidos').load("./Views/Inicio/TabelaPedidosMes.php");
+						$('#tabelaPedidosMes').load("./Views/Inicio/TabelaPedidosMes.php");
 						alertify.success("PEDIDO CANCELADO");
 					} else {
 						alertify.error("NÃO FOI POSSÍVEL CANCELAR O PEDIDO");

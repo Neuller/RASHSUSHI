@@ -24,40 +24,57 @@ if (isset($_SESSION['User'])) {
 						<!-- DADOS DO CLIENTE -->
                         <div class='col-md-12 col-sm-12 col-xs-12'>
                             <div class="text-left">
-                                <h4><strong>DADOS DO CLIENTE</strong><span class="glyphicon glyphicon-user ml-15"></span></h4>
+                                <h4><strong>DADOS DO CLIENTE </strong><span class="glyphicon glyphicon-user"></span></h4>
                             </div>
                             <hr>
                         </div>
                         <!-- CLIENTE -->
-                        <div class="mb-20px col-md-8 col-sm-8 col-xs-8 itensFormularioCadastro">
+                        <div class="col-md-6 col-sm-6 col-xs-6 itensFormulario">
                             <div>
                                 <label>CLIENTE<span class="required">*</span></label>
                                 <select class="form-control input-sm" id="clienteSelect" name="clienteSelect">
                                     <option value="">SELECIONE UM CLIENTE</option>
                                     <?php
-                                    $sql = "SELECT id_cliente, nome FROM clientes ORDER BY id_cliente DESC";
+                                    $sql = "SELECT id_cliente, nome, celular FROM clientes ORDER BY id_cliente DESC";
                                     $result = mysqli_query($conexao, $sql);
-
+                                    
                                     while ($cliente = mysqli_fetch_row($result)) :
+                                        $celular = preg_replace("/[^0-9]/", "", $cliente[2]);
                                     ?>
-                                        <option value="<?php echo $cliente[0] ?>"><?php echo $cliente[1] ?></option>
+                                        <option value="<?php echo $cliente[0] ?>"><?php echo $celular ?></option>
                                     <?php endwhile; ?>
                                 </select>
                             </div>
                         </div>
                         <!-- CADASTRAR CLIENTE -->
-                        <div>
-                            <span class="btn btn-success glyphicon glyphicon-plus ml-15" id="btnCadastrarCliente" title="CADASTRAR CLIENTE"></span>
+                        <div class="col-md-12 col-sm-12 col-xs-12 itensFormulario btnLeft">
+                            <span class="btn btn-success glyphicon glyphicon-plus" id="btnCadastrarCliente" title="CADASTRAR CLIENTE"></span>
                         </div>
+
+                        <!-- LOCAL DE ENTREGA -->
+                        <div class='col-xs-12 col-md-12 col-sm-12 separador'>
+                            <div class="text-left">
+                                <h4><strong>LOCAL DE ENTREGA </strong><span class="glyphicon glyphicon-map-marker"></span></h4>
+                            </div>
+                            <hr>
+                        </div>
+                        <!-- ENDEREÇO -->
+                        <div class="col-xs-12 col-md-12 col-sm-12 itensFormulario">
+                            <div>
+                                <label>ENDEREÇO</label>
+                                <input type="text" class="form-control input-sm text-uppercase" id="enderecoEntrega" name="enderecoEntrega" maxlenght="500">
+                            </div>
+                        </div>
+
                         <!-- DADOS DO PEDIDO -->
                         <div class='col-xs-12 col-md-12 col-sm-12 separador'>
                             <div class="text-left">
-                                <h4><strong>DADOS DO PEDIDO</strong><span class="glyphicon glyphicon-shopping-cart ml-15"></span></h4>
+                                <h4><strong>DADOS DO PEDIDO </strong><span class="glyphicon glyphicon-shopping-cart"></span></h4>
                             </div>
                             <hr>
                         </div>
                         <!-- PRODUTO -->
-                        <div class="mb-20px col-xs-6 col-md-6 col-sm-6 itensFormularioCadastro">
+                        <div class="col-xs-6 col-md-6 col-sm-6 itensFormulario">
                             <div>
                                 <label>PRODUTO<span class="required">*</span></label>
                                 <select class="form-control input-sm" id="produtoSelect" name="produtoSelect">
@@ -73,7 +90,7 @@ if (isset($_SESSION['User'])) {
                             </div>
                         </div>
                         <!-- MEDIDA -->
-                        <div class="mb-20px col-xs-6 col-md-6 col-sm-6 itensFormularioCadastro">
+                        <div class="col-xs-6 col-md-6 col-sm-6 itensFormulario">
                             <div>
                                 <label>MEDIDA<span class="required">*</span></label>
                                 <select class="form-control input-sm" id="medidaSelect" name="medidaSelect">
@@ -82,42 +99,82 @@ if (isset($_SESSION['User'])) {
                             </div>
                         </div>
                         <!-- DESCRIÇÃO DO PRODUTO -->
-                        <div class="mb-20px col-xs-6 col-md-6 col-sm-6 itensFormularioCadastro">
+                        <div class="col-xs-6 col-md-6 col-sm-6 itensFormulario">
                             <div>
                                 <label>DESCRIÇÃO</label>
-                                <input readonly type="text" class="form-control input-sm text-uppercase" id="descricao" name="descricao" maxlenght="100">
+                                <input readonly type="text" class="form-control input-sm text-uppercase" id="descricao" name="descricao" maxlenght="500">
                             </div>
                         </div>
                         <!-- VALOR UNITÁRIO -->
-                        <div class="mb-20px col-xs-3 col-md-3 col-sm-3 itensFormularioCadastro">
+                        <div class="col-xs-3 col-md-3 col-sm-3 itensFormulario">
                             <div>
                                 <label>VALOR UNITÁRIO</label>
                                 <input readonly type="text" class="form-control input-sm text-uppercase" id="valor_unidade" name="valor_unidade" maxlenght="100">
                             </div>
                         </div>
                         <!-- QUANTIDADE -->
-                        <div class="mb-20px col-xs-3 col-md-3 col-sm-3 itensFormularioCadastro">
+                        <div class="col-xs-3 col-md-3 col-sm-3 itensFormulario">
                             <div>
-                                <label>QUANTIDADE<span class="required">*</span></label>
+                                <label>QUANTIDADE</label>
                                 <input type="number" class="form-control input-sm text-uppercase quantidade" id="quantidade" name="quantidade" maxlenght="100">
                             </div>
+                        </div>
+
+                        <!-- BOTÂO ADICIONAR/LIMPAR -->
+                        <div class="col-md-12 col-sm-12 col-xs-12 itensFormulario btnLeft">
+                            <span class="btn btn-success" id="btnAdicionar" title="ADICIONAR">ADICIONAR</span>
+                            <span class="btn btn-warning" id="btnLimpar" title="LIMPAR">LIMPAR</span>
+                        </div>
+                        <!-- CARRINHO -->
+                        <div class="col-sm-12" align="center">
+                            <div id="carrinho_compras"></div>
+                        </div>
+
+                        <!-- FORMA DE PAGAMENTO -->
+                        <div class='col-xs-12 col-md-12 col-sm-12 separador'>
+                            <div class="text-left">
+                                <h4><strong>FORMA DE PAGAMENTO </strong><span class="glyphicon glyphicon-bitcoin"></span></h4>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="col-xs-6 col-md-6 col-sm-6 itensFormulario">
+                            <div>
+                                <label>SELECIONE UMA FORMA DE PAGAMENTO</label>
+                                <select class="form-control input-sm" id="formaPagamento" name="formaPagamento">
+                                    <option value="">SELECIONE UMA FORMA DE PAGAMENTO</option>
+                                    <option value="CARTAO">CARTÃO DE CREDITO/DÉBITO</option>
+                                    <option value="DINHEIRO">DINHEIRO</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- VALOR TOTAL -->
+                        <div class="col-xs-2 col-md-2 col-sm-2 itensFormulario">
+                            <div>
+                                <label>VALOR TOTAL</label>
+                                <input readonly type="number" class="form-control input-sm text-uppercase" id="valor_total" name="valor_total">
+                            </div>
+                        </div>
+                        <!-- VALOR DO PAGAMENTO -->
+                        <div class="col-xs-2 col-md-2 col-sm-2 itensFormulario">
+                            <div>
+                                <label>VALOR DO PAGAMENTO</label>
+                                <input type="number" class="form-control input-sm text-uppercase" id="valorPagamento" name="valorPagamento">
+                            </div>
+                        </div>
+                        <!-- TROCO -->
+                        <div class="col-xs-2 col-md-2 col-sm-2 itensFormulario">
+                            <div>
+                                <label>TROCO</label>
+                                <input readonly type="text" class="form-control input-sm text-uppercase" id="troco" name="troco" maxlenght="100">
+                            </div>
+                        </div>
+                        <!-- BOTÂO CADASTRAR -->
+                        <div class="col-md-12 col-sm-12 col-xs-12 itensFormulario btnLeft">
+                            <span class="btn btn-primary" id="btnCadastrar" title="CADASTRAR">CADASTRAR</span>
                         </div>
 					</form>
 				</div>
             </div>
-            <!-- BOTÂO ADICIONAR/LIMPAR -->
-			<div class="btnAdicionar">
-                <span class="btn btn-success" id="btnAdicionar" title="ADICIONAR">ADICIONAR</span>
-                <span class="btn btn-warning" id="btnLimpar" title="LIMPAR">LIMPAR</span>
-			</div>
-            <!-- CARRINHO -->
-            <div class="col-sm-12" align="center">
-                <div id="carrinho_compras"></div>
-            </div>
-            <!-- BOTÂO CADASTRAR -->
-			<div class="btnCadastrar">
-				<span class="btn btn-primary" id="btnCadastrar" title="CADASTRAR">CADASTRAR</span>
-			</div>
 		</div>
 	</body>
 </html>
@@ -129,6 +186,20 @@ if (isset($_SESSION['User'])) {
         $('#medidaSelect').select2();
         $('#carrinho_compras').load('./Views/Pedidos/CarrinhoCompras.php');
         $("#medidaSelect").prop('disabled', true);
+
+        $("#clienteSelect").change(function(){
+            const cliente = $("#clienteSelect").val();
+            $.ajax({
+                type: "POST",
+                data: "idCliente=" + cliente,
+                url: "./Procedimentos/Clientes/ObterDadosCliente.php",
+                success:function(r){
+                    dados = jQuery.parseJSON(r);
+                    const enderecoEntrega = dados.endereco + " " + dados.numero + " " + dados.bairro
+                    $("#enderecoEntrega").val(enderecoEntrega);
+                }
+                });
+		});
 
         $("#produtoSelect").change(function(){
             $("#medidaSelect").prop('disabled', false);
@@ -180,39 +251,39 @@ if (isset($_SESSION['User'])) {
 	});
 
     $('#btnAdicionar').click(function() {
-    var produto = $("#produtoSelect").val();
-    var quantidade = $("#quantidade").val();
-    var medida = $("#medidaSelect").val();
+        var produto = $("#produtoSelect").val();
+        var quantidade = $("#quantidade").val();
+        var medida = $("#medidaSelect").val();
 
-    if (produto == "") {
-        alertify.error("SELECIONE UM PRODUTO");
-        return false;
-    }
-    if (medida == "") {
-        alertify.error("SELECIONE UMA MEDIDA");
-        return false;
-    }
-    if (quantidade == "") {
-        alertify.error("SELECIONE UMA QUANTIDADE");
-        return false;
-    }
-
-    dados = $('#frmPedido').serialize();
-
-    $.ajax({
-        type: "POST",
-        data: dados,
-        url: "./Procedimentos/Pedidos/AdicionarAoCarrinho.php",
-        success: function(r) {
-            $('#carrinho_compras').load('./Views/Pedidos/CarrinhoCompras.php');
-            $("#produtoSelect").val("").change();
-            $("#medidaSelect").prop('disabled', true);
-            $("#descricao").val("");
-            $("#valor_unidade").val("");
-            $("#quantidade").val("");
-            alertify.success("ITEM ADICIONADO");
+        if (produto == "") {
+            alertify.error("SELECIONE UM PRODUTO");
+            return false;
         }
-    });
+        if (medida == "") {
+            alertify.error("SELECIONE UMA MEDIDA");
+            return false;
+        }
+        if (quantidade == "") {
+            alertify.error("SELECIONE UMA QUANTIDADE");
+            return false;
+        }
+
+        dados = $('#frmPedido').serialize();
+
+        $.ajax({
+            type: "POST",
+            data: dados,
+            url: "./Procedimentos/Pedidos/AdicionarAoCarrinho.php",
+            success: function(r) {
+                $('#carrinho_compras').load('./Views/Pedidos/CarrinhoCompras.php');
+                $("#produtoSelect").val("").change();
+                $("#medidaSelect").prop('disabled', true);
+                $("#descricao").val("");
+                $("#valor_unidade").val("");
+                $("#quantidade").val("");
+                alertify.success("ITEM ADICIONADO");
+            }
+        });
     });
 
     $('#btnCadastrar').click(function() {
@@ -223,7 +294,11 @@ if (isset($_SESSION['User'])) {
 			return false;
 		}
         
+        dados = $('#frmPedido').serialize();
+
         $.ajax({
+            type: "POST",
+            data: dados,
             url: "./Procedimentos/Pedidos/CadastrarPedido.php",
             success: function(r) {
                 if (r > 0) {
@@ -245,6 +320,7 @@ if (isset($_SESSION['User'])) {
             url: "./Procedimentos/Pedidos/LimparCarrinho.php",
             success: function(r) {
                 $('#carrinho_compras').load('./Views/Pedidos/CarrinhoCompras.php');
+                $("#valor_total").trigger('change');
                 alertify.success("ITENS REMOVIDOS");
             }
         });
@@ -252,6 +328,35 @@ if (isset($_SESSION['User'])) {
 
     $('#btnCadastrarCliente').click(function() {
         $('#conteudo').load("./Views/Clientes/CadastrarClientes.php");	
+    });
+
+    $("#valorPagamento").change(function(){
+        var valorTotal = $("#valor_total").val();
+        var valorPagto = $("#valorPagamento").val();
+        var valorTotalFormat = parseFloat(valorTotal);
+        var valorPagtoFormat = parseFloat(valorPagto);
+
+        if(valorPagtoFormat < valorTotalFormat){
+            alertify.error("VALOR INVÁLIDO");
+            $("#troco").val("");
+            $("#valorPagamento").val("");
+			return false;
+        }else{
+            const troco = valorPagtoFormat - valorTotalFormat;
+            var eNaN = Number.isNaN(troco);
+            if(eNaN == true){
+                $("#troco").val("");
+                $("#valorPagamento").val("");
+                return false;
+            }else{
+                $("#troco").val(troco.toFixed(2));
+            }
+        }
+    });
+    
+    $('#valor_total').change(function() {
+        $("#valorPagamento").val("");
+        $("#troco").val("");
     });
 </script>
 <style>

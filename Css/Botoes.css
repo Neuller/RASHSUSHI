@@ -1,34 +1,47 @@
 .btnGroup{
-    margin: 25px;
-    float: right;
+    margin: 25px !important;
+    float: right !important;
 }
 .btnCadastrar{
-    margin: 25px;
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
     float: left !important;
 }
 .btnEditar{
-    margin: 25px;
+    margin: 25px !important;
     float: left !important;
 }
 .btnAdicionar{
-    margin: 25px;
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
     float: left !important;
 }
 .btnLimpar{
-    margin: 25px;
+    margin: 25px !important;
     float: left !important;
 }
 .btnLeft{
-    margin: 25px;
+    margin: 25px !important;
     float: left !important;
 }
 .btnRadio{
-    margin: 05px;
+    margin: 05px !important;
 }
 .btns{
-    margin-top: 15px;
-    float: right;
+    margin-top: 15px !important;
+    float: right !important;
 }
 .btnMenu{
-    float: right;
+    float: right !important;
+}
+.btnAdicionarCliente{
+    margin: 25px !important;
+    float: left !important;
+}
+
+/* BOTOES ALINHADO A ESQUERDA */
+.btnLeft{
+    margin-top: 25px !important;
+    margin-bottom: 25px !important;
+    float: left !important;
 }
