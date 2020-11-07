@@ -11,7 +11,8 @@ $conexao = $c->conexao();
 
 $idPedido = $_GET['idPedido'];
 
-$sql = "SELECT id_pedido, id_cliente, id_produto, id_usuario, descricao, quantidade_itens, valor_total, status, data_hora_pedido
+$sql = "SELECT id_pedido, id_cliente, id_produto, id_usuario, id_entregador, descricao, quantidade_itens, valor_total, 
+status, data_hora_pedido, endereco_entrega, troco, valor_pagamento, forma_pagamento
 FROM pedidos 
 WHERE id_pedido = '$idPedido'";
 
@@ -20,7 +21,12 @@ $result = mysqli_query($conexao, $sql);
 $mostrar = mysqli_fetch_row($result);
 
 $idCliente = $mostrar[1];
-$data_hora = $mostrar[8];
+$idEntregador = $mostrar[4];
+$data_hora = $mostrar[9];
+$enderecoEntrega = $mostrar[10];
+$troco = $mostrar[11];
+$valorPagamento = $mostrar[12];
+$formaPagamento = $mostrar[13];
 ?>
 
 <html>
@@ -30,15 +36,24 @@ $data_hora = $mostrar[8];
     </head>
     <body class="container comprovante">
         <div class="text-center" align="center">
+            <!-- LOGO -->
             <div>
-                <img src="../../Img/RASHSUSHI_LOGO.png" width="200" widht="200">
+                <img src="../../Img/RASHSUSHI_LOGO.png" width="150" widht="150">
+            </div>
+            <!-- INFORMACOES DA EMPRESA -->
+            <div class="informacoesEmpresa">
+                <div class="">-- RASH SUSHI --</div>
+                <div class="">39.664.307/0001-22</div>
+                <div class="">RUA DOS ANTÚRIOS, 293</div>      
+                <div class="">SAPUCAIAS, CONTAGEM - MG</div>
+                <div class="">(31) 9 9344-0749</div>          
             </div>
         </div>
 
         <div class="col-md-12 col-sm-12 col-xs-12">
             <form>
                 <div class="formulario">
-                    <span class="titulo">DADOS DO CLIENTE</span>
+                    <span class="titulo">INFORMAÇÕES DO CLIENTE</span>
                     <hr>
                 </div>
                 <?php
@@ -57,8 +72,13 @@ $data_hora = $mostrar[8];
                         <div><?php echo $dadosCliente[9]; ?></div>
                     </div>
                     <div class="formulario">
-                        <span class="titulo">DADOS DA ENTREGA</span>
+                        <span class="titulo">INFORMAÇÕES DA ENTREGA</span>
                         <hr>
+                    </div>
+                    <!-- ENTREGADOR -->
+                    <div class="itemForm">
+                        <span class="subItemForm">ENTREGADOR</span>
+                        <div><?php echo $objUtils -> obterNomeEntregador($idEntregador) ?></div>
                     </div>
                     <div class="formulario">
                         <!-- CEP -->
@@ -75,7 +95,7 @@ $data_hora = $mostrar[8];
                 <?php } ?>
 
                 <div class="formulario">
-                    <span class="titulo">DADOS DO(s) PRODUTO(s)</span>
+                    <span class="titulo">INFORMAÇÕES DO(s) PRODUTO(s)</span>
                     <hr>
                 </div>
                 <?php 
@@ -106,22 +126,46 @@ $data_hora = $mostrar[8];
                     $valorTotal = $total[0];
                 ?> 
                     <div class="formulario">
+                        <!-- DATA HORA -->
                         <div class="itemForm">
                             <span class="subItemForm">DATA/HORA</span>
                             <div><?php echo $objUtils -> data($data_hora) ?></div>
                         </div>
+                        <!-- FORMA DE PAGAMENTO -->
+                        <div class="itemForm">
+                            <span class="subItemForm">FORMA DE PAGAMENTO</span>
+                            <div><?php echo $formaPagamento ?></div>
+                        </div>
+                        <!-- VALOR TOTAL -->
                         <div class="itemForm">
                             <span class="subItemForm">VALOR TOTAL</span>
                             <div><?php echo "R$ ".$valorTotal ?></div>
                         </div>
+                        <!-- VALOR DO PAGAMENTO -->
+                        <div class="itemForm">
+                            <span class="subItemForm">VALOR DO PAGAMENTO</span>
+                            <div><?php echo "R$ ".$valorPagamento ?></div>
+                        </div>
+                        <!-- TROCO -->
+                        <div class="itemForm">
+                            <span class="subItemForm">TROCO</span>
+                            <div><?php echo "R$ ".$troco ?></div>
+                        </div>
                     </div>
                 <?php } ?>
             </form>
-
+            
+            <!-- QR CODE -->
             <div class="text-center qrCode" align="center">
                 <div>
-                    <img src="../../Img/QRCODE.png" width="150" widht="150">
+                    <img src="../../Img/QRCODE.png" width="100" widht="100">
                 </div>
+            </div>
+            <!-- AGRADECIMENTOS -->
+            <div class="text-center agradecimentos" align="center">
+                <div>--------------------------------------------------</div>
+                <div>AGRADECEMOS A PREFERÊNCIA</div>
+                <div>VOLTE SEMPRE</div>
             </div>
         </div>
     </body>

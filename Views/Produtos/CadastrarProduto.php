@@ -23,14 +23,14 @@ if (isset($_SESSION['User'])) {
 					<form id="frmProduto">
 						<div>
 							<!-- DESCRIÇÃO -->
-							<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
+							<div class="col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
 								<div>
 									<label>DESCRIÇÃO<span class="required">*</span></label>
 									<input type="text" class="form-control input-sm text-uppercase" id="descricao" name="descricao" maxlenght="100">
 								</div>
 							</div>
                             <!-- CATEGORIA -->
-                            <div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+                            <div class="col-md-4 col-sm-4 col-xs-4 itensFormularioCadastro">
                                 <div>
                                     <label>CATEGORIA<span class="required">*</span></label>
                                     <select class="form-control input-sm" id="categoriaSelect" name="categoriaSelect">
@@ -47,14 +47,14 @@ if (isset($_SESSION['User'])) {
                                 </div>
                             </div>
                             <!-- QUANTIDADE -->
-                            <div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+                            <div class="col-md-4 col-sm-4 col-xs-4 itensFormularioCadastro">
                                 <div>
                                     <label>QUANTIDADE</label>
                                     <input type="number" class="form-control input-sm estoque text-uppercase" id="quantidade" name="quantidade" maxlenght="100">
                                 </div>
                             </div>
                             <!-- VALOR UNIDADE -->
-                            <div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+                            <div class="col-md-4 col-sm-4 col-xs-4 itensFormularioCadastro">
                                 <div>
                                     <label>VALOR UNITÁRIO<span class="required">*</span></label>
                                     <input type="number" class="form-control input-sm text-uppercase" id="valor_unidade" name="valor_unidade" maxlenght="100">

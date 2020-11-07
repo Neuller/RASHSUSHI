@@ -38,6 +38,7 @@
 <link rel="stylesheet" type="text/css" href="./Css/Index.css">
 <link rel="stylesheet" type="text/css" href="./Css/Principal.css">
 <link rel="stylesheet" type="text/css" href="./Css/Botoes.css">
+<link rel="stylesheet" type="text/css" href="./Css/Formularios.css">
 
 
 

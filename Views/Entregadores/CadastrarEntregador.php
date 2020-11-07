@@ -31,28 +31,28 @@ if (isset($_SESSION['User'])) {
 								<hr>
 							</div>
 							<!-- NOME -->
-							<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
+							<div class="col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
 								<div>
 									<label>NOME COMPLETO<span class="required">*</span></label>
 									<input type="text" class="form-control input-sm text-uppercase" id="nome" name="nome" maxlenght="100">
 								</div>
 							</div>
 							<!-- CPF -->
-							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+							<div class="col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
 								<div>
 									<label>CPF</label>
 									<input type="text" class="form-control input-sm align cpf text-uppercase" placeholder="###.###.###-##" id="cpf" name="cpf" maxlenght="100">
 								</div>
 							</div>
 							<!-- CNPJ -->
-							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+							<div class="col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
 								<div>
 									<label>CNPJ</label>
 									<input type="text" class="form-control input-sm align cnpj text-uppercase" placeholder="##.###.###/####-##" id="cnpj" name="cnpj" maxlenght="100">
 								</div>
 							</div>
 							<!-- E-MAIL -->
-							<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
+							<div class="col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
 								<div>
 									<label>E-MAIL</label>
 									<input type="text" class="form-control input-sm align text-uppercase" placeholder="exemplo@exemplo.com" id="email" name="email" maxlenght="100">
@@ -67,42 +67,42 @@ if (isset($_SESSION['User'])) {
 								<hr>
 							</div>
 							<!-- CEP -->
-							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+							<div class="col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
 								<div>
 									<label>CEP</label>
 									<input type="text" class="form-control input-sm align cep text-uppercase" placeholder="#####-###" id="cep" name="cep" maxlenght="100">
 								</div>
 							</div>
 							<!-- BAIRRO -->
-							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+							<div class="col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
 								<div>
 									<label>BAIRRO</label>
 									<input type="text" class="form-control input-sm align text-uppercase" id="bairro" name="bairro" maxlenght="100">
 								</div>
 							</div>
 							<!-- ENDEREÇO -->
-							<div class="mb-20px col-md-8 col-sm-8 col-xs-8 itensFormularioCadastro">
+							<div class="col-md-8 col-sm-8 col-xs-8 itensFormularioCadastro">
 								<div>
 									<label>ENDEREÇO</label>
 									<input type="text" class="form-control input-sm align text-uppercase" id="endereco" name="endereco" maxlenght="100">
 								</div>
 							</div>
 							<!-- UF -->
-							<div class="mb-20px col-md-4 col-sm-4 col-xs-4 itensFormularioCadastro">
+							<div class="col-md-4 col-sm-4 col-xs-4 itensFormularioCadastro">
 								<div>
 									<label>UF</label>
 									<input type="text" class="form-control input-sm align text-uppercase" id="uf" name="uf" maxlenght="100">
 								</div>
 							</div>
 							<!-- NÚMERO -->
-							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+							<div class="col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
 								<div>
 									<label>NÚMERO</label>
 									<input type="text" class="form-control input-sm align text-uppercase" id="numero" name="numero" maxlenght="100">
 								</div>
 							</div>
 							<!-- COMPLEMENTO -->
-							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+							<div class="col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
 								<div>
 									<label>COMPLEMENTO</label>
 									<input type="text" class="form-control input-sm align text-uppercase" id="complemento" name="complemento" maxlenght="100">
@@ -117,28 +117,28 @@ if (isset($_SESSION['User'])) {
 								<hr>
 							</div>
 							<!-- TELEFONE -->
-							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+							<div class="col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
 								<div>
 									<label>TELEFONE</label>
 									<input type="text" class="form-control input-sm align telefone text-uppercase" placeholder="(##) ####-####" id="telefone" name="telefone" maxlenght="100">
 								</div>
 							</div>
 							<!-- CELULAR -->
-							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+							<div class="col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
 								<div>
 									<label>CELULAR<span class="required">*</span></label>
 									<input type="text" class="form-control input-sm align celular text-uppercase" placeholder="(##) # ####-####" id="celular" name="celular" maxlenght="100">
 								</div>
 							</div>
 							<!-- TELEFONE 2 -->
-							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+							<div class="col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
 								<div>
 									<label>TELEFONE 2</label>
 									<input type="text" class="form-control input-sm align telefone2 text-uppercase" placeholder="(##) ####-####" id="telefone2" name="telefone2" maxlenght="100">
 								</div>
 							</div>
 							<!-- CELULAR 2 -->
-							<div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+							<div class="col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
 								<div>
 									<label>CELULAR 2</label>
 									<input type="text" class="form-control input-sm align celular2 text-uppercase" placeholder="(##) # ####-####" id="celular2" name="celular2" maxlenght="100">
@@ -152,7 +152,7 @@ if (isset($_SESSION['User'])) {
 								</div>
 								<hr>
 							</div>
-                            <div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+                            <div class="col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
                                 <div>
                                     <label>VEÍCULO</label>
                                     <select class="form-control input-sm" id="veiculoSelect" name="veiculoSelect">
@@ -241,7 +241,8 @@ if (isset($_SESSION['User'])) {
                                         url: "./Procedimentos/Entregadores/CadastrarEntregador.php",
                                         success: function(r) {
                                             if (r == 1) {
-                                                $('#frmEntregador')[0].reset();
+												$('#frmEntregador')[0].reset();
+												$("#veiculoSelect").val("").change();
                                                 alertify.success("CADASTRO REALIZADO");
                                             } else {
                                                 alertify.error("NÃO FOI POSSÍVEL CADASTRAR");
@@ -262,6 +263,7 @@ if (isset($_SESSION['User'])) {
 						success: function(r) {
 							if (r == 1) {
 								$('#frmEntregador')[0].reset();
+								$("#veiculoSelect").val("").change();
 								alertify.success("CADASTRO REALIZADO");
 							} else {
 								alertify.error("NÃO FOI POSSÍVEL CADASTRAR");

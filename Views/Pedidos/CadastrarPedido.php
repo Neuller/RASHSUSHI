@@ -24,7 +24,7 @@ if (isset($_SESSION['User'])) {
 						<!-- DADOS DO CLIENTE -->
                         <div class='col-md-12 col-sm-12 col-xs-12'>
                             <div class="text-left">
-                                <h4><strong>DADOS DO CLIENTE </strong><span class="glyphicon glyphicon-user"></span></h4>
+                                <h4><strong>INFORMAÇÔES DO CLIENTE </strong><span class="glyphicon glyphicon-user"></span></h4>
                             </div>
                             <hr>
                         </div>
@@ -54,22 +54,38 @@ if (isset($_SESSION['User'])) {
                         <!-- LOCAL DE ENTREGA -->
                         <div class='col-xs-12 col-md-12 col-sm-12 separador'>
                             <div class="text-left">
-                                <h4><strong>LOCAL DE ENTREGA </strong><span class="glyphicon glyphicon-map-marker"></span></h4>
+                                <h4><strong>INFORMAÇÔES DA ENTREGA </strong><span class="glyphicon glyphicon-map-marker"></span></h4>
                             </div>
                             <hr>
                         </div>
                         <!-- ENDEREÇO -->
                         <div class="col-xs-12 col-md-12 col-sm-12 itensFormulario">
                             <div>
-                                <label>ENDEREÇO</label>
+                                <label>ENDEREÇO<span class="required">*</span></label>
                                 <input type="text" class="form-control input-sm text-uppercase" id="enderecoEntrega" name="enderecoEntrega" maxlenght="500">
+                            </div>
+                        </div>
+                        <!-- ENTREGADOR -->
+                        <div class="col-xs-6 col-md-6 col-sm-6 itensFormulario">
+                            <div>
+                                <label>ENTREGADOR</label>
+                                <select class="form-control input-sm" id="entregadorSelect" name="entregadorSelect">
+                                    <option value="">SELECIONE O ENTREGADOR</option>
+                                    <?php
+                                    $sql = "SELECT id_entregador, nome FROM entregadores ORDER BY id_entregador DESC";
+                                    $result = mysqli_query($conexao, $sql);
+                                    while ($entregador = mysqli_fetch_row($result)) :
+                                    ?>
+                                        <option value="<?php echo $entregador[0] ?>"><?php echo $entregador[1] ?></option>
+                                    <?php endwhile; ?>
+                                </select>
                             </div>
                         </div>
 
                         <!-- DADOS DO PEDIDO -->
                         <div class='col-xs-12 col-md-12 col-sm-12 separador'>
                             <div class="text-left">
-                                <h4><strong>DADOS DO PEDIDO </strong><span class="glyphicon glyphicon-shopping-cart"></span></h4>
+                                <h4><strong>INFORMAÇÕES DO PEDIDO </strong><span class="glyphicon glyphicon-shopping-cart"></span></h4>
                             </div>
                             <hr>
                         </div>
@@ -133,7 +149,7 @@ if (isset($_SESSION['User'])) {
                         <!-- FORMA DE PAGAMENTO -->
                         <div class='col-xs-12 col-md-12 col-sm-12 separador'>
                             <div class="text-left">
-                                <h4><strong>FORMA DE PAGAMENTO </strong><span class="glyphicon glyphicon-bitcoin"></span></h4>
+                                <h4><strong>INFORMAÇÔES DO PAGAMENTO </strong><span class="glyphicon glyphicon-bitcoin"></span></h4>
                             </div>
                             <hr>
                         </div>
@@ -197,6 +213,9 @@ if (isset($_SESSION['User'])) {
                     dados = jQuery.parseJSON(r);
                     const enderecoEntrega = dados.endereco + " " + dados.numero + " " + dados.bairro
                     $("#enderecoEntrega").val(enderecoEntrega);
+                },
+                error: function (error) {
+                    $("#enderecoEntrega").val("teste");
                 }
                 });
 		});
@@ -287,10 +306,11 @@ if (isset($_SESSION['User'])) {
     });
 
     $('#btnCadastrar').click(function() {
-		var cliente = $("#clienteSelect").val();
+        var cliente = $("#clienteSelect").val();
+        var enderecoEntrega = $("#enderecoEntrega").val();
         
-        if (cliente == "") {
-			alertify.error("SELECIONE UM CLIENTE");
+        if ((cliente == "") || (enderecoEntrega == "")) {
+			alertify.error("PREENCHA TODOS OS CAMPOS OBRIGATÓRIOS");
 			return false;
 		}
         
@@ -303,9 +323,16 @@ if (isset($_SESSION['User'])) {
             success: function(r) {
                 if (r > 0) {
                     $('#carrinho_compras').load('./Views/Pedidos/CarrinhoCompras.php');
-                    $("#clienteSelect").val("").change();
                     $('#frmPedido')[0].reset();
+                    $("#clienteSelect").val("").change();
+                    $("#enderecoEntrega").val("").change();
                     alertify.success("CADASTRO REALIZADO");
+                    alertify.confirm('ATENÇÃO', 'DESEJA IMPRIMIR COMPROVANTE?', function(){
+                        alertify.confirm().close();
+                        window.open("./Procedimentos/Pedidos/CriarComprovante.php?idPedido=" + cliente);
+                    }, function(){
+                        // alertify.error('OPERAÇÃO CANCELADA');
+                    });
                 } else if (r == 0) {
                     alertify.alert("ATENÇÃO", "O CARRINHO ESTÁ VAZIO.");
                 } else {
