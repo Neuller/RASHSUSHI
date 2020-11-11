@@ -78,6 +78,10 @@ if (isset($_SESSION['User'])) {
 			alertify.error('OPERAÇÃO CANCELADA')
 		});
 	}
+	// VERSÃO COMPLETA
+	function versaoCompleta() {
+		alertify.alert('ATENÇÃO', 'FUNCIONALIDADE DISPONÍVEL APENAS NA VERSÃO COMPLETA');
+	}
 </script>
 <style>
 	.cabecalho {

@@ -75,11 +75,17 @@ $formaPagamento = $mostrar[13];
                         <span class="titulo">INFORMAÇÕES DA ENTREGA</span>
                         <hr>
                     </div>
+
                     <!-- ENTREGADOR -->
-                    <div class="itemForm">
-                        <span class="subItemForm">ENTREGADOR</span>
-                        <div><?php echo $objUtils -> obterNomeEntregador($idEntregador) ?></div>
-                    </div>
+                    <?php if (($idEntregador != "") && ($idEntregador != NULL) && ($idEntregador != "0") && ($idEntregador != 0)){
+                        echo 
+                        "<div class='itemForm'>
+                            <span class='subItemForm'>ENTREGADOR</span>
+                            <div>".$objUtils -> obterNomeEntregador($idEntregador)."</div>
+                        </div>";   
+                        }
+                    ?>
+
                     <div class="formulario">
                         <!-- CEP -->
                         <div><?php echo $dadosCliente[3]; ?></div>
@@ -131,11 +137,17 @@ $formaPagamento = $mostrar[13];
                             <span class="subItemForm">DATA/HORA</span>
                             <div><?php echo $objUtils -> data($data_hora) ?></div>
                         </div>
+
                         <!-- FORMA DE PAGAMENTO -->
-                        <div class="itemForm">
-                            <span class="subItemForm">FORMA DE PAGAMENTO</span>
-                            <div><?php echo $formaPagamento ?></div>
-                        </div>
+                        <?php if (($formaPagamento == "DINHEIRO") || ($formaPagamento == "CARTAO")){
+                            echo 
+                            "<div class='itemForm'>
+                                <span class='subItemForm'>FORMA DE PAGAMENTO</span>
+                                <div>".$formaPagamento."</div>
+                            </div>";   
+                            }
+                        ?>
+
                         <!-- VALOR TOTAL -->
                         <div class="itemForm">
                             <span class="subItemForm">VALOR TOTAL</span>

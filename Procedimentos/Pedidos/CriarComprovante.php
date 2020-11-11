@@ -18,7 +18,7 @@ function file_get_contents_curl($url) {
     return $dados;
 }
 
-$html = file_get_contents("http://localhost/RashSushi/Views/Pedidos/Comprovante.php?idPedido=".$idPedido);
+$html = file_get_contents("http://localhost/RashSushi/Views/Pedidos/CupomFiscal.php?idPedido=".$idPedido);
 
 $pdf = new DOMPDF();
  
