@@ -46,7 +46,7 @@ $result = mysqli_query($conexao, $sql);
                             <td>'.'<a href="./Procedimentos/Pedidos/CriarComprovante.php?idPedido='.$mostrar[0].'" target="_BLANK" class="btn btn-danger btn-sm" title="IMPRIMIR">
                             <span class="glyphicon glyphicon-print"></span>
                             </a>'.'</td>
-                            <td>'.'<span class="btn btn-default btn-sm" data-toggle="modal" data-target="#visualizarPedido" title="VISUALIZAR" onclick="preencherModalVisualizar('.$mostrar[0].')">
+                            <td>'.'<span class="btn btn-default btn-sm" data-toggle="modal" data-target="#visualizarPedido" title="VISUALIZAR" onclick="versaoCompleta()">
                             <span class="glyphicon glyphicon-search"></span>
                             </span>'.'</td>		
                             <td>'.'<span class="btn btn-danger btn-sm" title="CANCELAR" onclick="cancelar('.$mostrar[0].')">

@@ -174,7 +174,7 @@ if (isset($_SESSION['User'])) {
                         <div class="col-xs-2 col-md-2 col-sm-2 itensFormulario">
                             <div>
                                 <label>VALOR DO PAGAMENTO</label>
-                                <input type="number" class="form-control input-sm text-uppercase" id="valorPagamento" name="valorPagamento">
+                                <input type="number" class="form-control input-sm text-uppercase" id="valorPagamento" name="valorPagamento" maxlenght="10">
                             </div>
                         </div>
                         <!-- TROCO -->

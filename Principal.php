@@ -82,7 +82,7 @@ if (isset($_SESSION['User'])) {
               </a>
 			  <!-- LISTA FINANCEIRO -->
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">CADASTRAR COMPRA</a><a class="dropdown-item" href="#"></a>
+              <a id="cadastrarFinanca" class="dropdown-item" href="#">CADASTRAR FINANÇA</a><a class="dropdown-item" href="#"></a>
               </div>
         </div>
 
@@ -247,6 +247,10 @@ if (isset($_SESSION['User'])) {
   // ENTREGADORES
   $("#cadastrarEntregador").click(function(e) {
     $('#conteudo').load("./Views/Entregadores/CadastrarEntregador.php");	
+  });
+  // FINANCEIRO
+  $("#cadastrarFinanca").click(function(e) {
+    $('#conteudo').load("./Views/Financeiro/CadastrarFinanca.php");	
   });
   // FORNECEDORES
   $("#cadastrarFornecedor").click(function(e) {
