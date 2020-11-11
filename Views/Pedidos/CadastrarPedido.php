@@ -70,7 +70,7 @@ if (isset($_SESSION['User'])) {
                             <div>
                                 <label>ENTREGADOR</label>
                                 <select class="form-control input-sm" id="entregadorSelect" name="entregadorSelect">
-                                    <option value="">SELECIONE O ENTREGADOR</option>
+                                    <option value="">SELECIONE UM ENTREGADOR</option>
                                     <?php
                                     $sql = "SELECT id_entregador, nome FROM entregadores ORDER BY id_entregador DESC";
                                     $result = mysqli_query($conexao, $sql);
@@ -79,6 +79,13 @@ if (isset($_SESSION['User'])) {
                                         <option value="<?php echo $entregador[0] ?>"><?php echo $entregador[1] ?></option>
                                     <?php endwhile; ?>
                                 </select>
+                            </div>
+                        </div>
+                        <!-- TAXA DO ENTREGADOR -->
+                        <div id="divTaxaEntregador" class="col-xs-6 col-md-6 col-sm-6 itensFormulario">
+                            <div>
+                                <label>TAXA DO ENTREGADOR</label>
+                                <input type="number" class="form-control input-sm text-uppercase" id="taxaEntregador" name="taxaEntregador" maxlenght="10">
                             </div>
                         </div>
 
@@ -202,6 +209,7 @@ if (isset($_SESSION['User'])) {
         $('#medidaSelect').select2();
         $('#carrinho_compras').load('./Views/Pedidos/CarrinhoCompras.php');
         $("#medidaSelect").prop('disabled', true);
+        $("#divTaxaEntregador").hide();
 
         $("#clienteSelect").change(function(){
             const cliente = $("#clienteSelect").val();
@@ -218,6 +226,17 @@ if (isset($_SESSION['User'])) {
                     $("#enderecoEntrega").val("teste");
                 }
                 });
+		});
+
+        $("#entregadorSelect").change(function(){
+            var entregador = $("#entregadorSelect").val();
+            if(entregador != ""){
+                $("#divTaxaEntregador").show();
+                $("#divTaxaEntregador").val("");
+            }else{
+                $("#divTaxaEntregador").hide();
+                $("#divTaxaEntregador").val("");
+            }
 		});
 
         $("#produtoSelect").change(function(){

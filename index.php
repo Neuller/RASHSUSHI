@@ -35,20 +35,20 @@ if (mysqli_num_rows($result) > 0) {
 					</div>
 					<!-- FORMULÁRIO -->
 					<form id="frmLogin" class="col-md-12 col-sm-12 col-xs-12">
-						<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
+						<div class="col-md-12 col-sm-12 col-xs-12 itensFormulario">
 							<div>
 								<label>USUÁRIO<span class="required">*</span></label>
 								<input type="text" class="form-control input-sm text-uppercase" id="usuario" name="usuario">
 							</div>
 						</div>
-						<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
+						<div class="col-md-12 col-sm-12 col-xs-12 itensFormulario">
 							<div>
 								<label>SENHA<span class="required">*</span></label>
 								<input type="password" class="form-control input-sm text-uppercase" id="senha" name="senha">
 							</div>
 						</div>
 						<!-- BOTOES -->
-						<div class="btns">
+						<div class="btnLeft">
 							<span class="btn btn-primary btn-sm" id="entrar" title="ENTRAR">ENTRAR</span>
 							<?php if (!$validar) : ?>
 								<a href="./Registrar.php" class="btn btn-danger btn-sm" id="registrar" title="REGISTRAR">REGISTRAR</a>

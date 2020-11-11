@@ -101,7 +101,7 @@ if (isset($_SESSION['User'])) {
 			<!-- PEDIDOS -->
             <div class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			  	PEDIDOS
+			  	      PEDIDOS
               </a>
 			  <!-- LISTA PEDIDOS -->
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

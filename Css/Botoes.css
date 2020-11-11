@@ -45,3 +45,12 @@
     margin-bottom: 25px !important;
     float: left !important;
 }
+
+/* EFEITO BOTAO BUSINESS*/
+.effectBusiness{
+    color: #000000 !important;
+}
+.effectBusiness:hover{
+    color: #ff6200 !important;
+    box-shadow: 0 0 10px #ff6200, 0 0 20px #ff6200, 0 0 50px #ff6200 !important;
+}
