@@ -63,61 +63,31 @@ if (isset($_SESSION['User'])) {
 	});
 
     $('#btnCadastrar').click(function() {
-				var nome = frmFinanca.nome.value;
-				var cpf = frmFinanca.cpf.value;
-				var cnpj = frmFinanca.cnpj.value;
-				var celular = frmFinanca.celular.value;
-                var tabela = "fornecedores";
+		var descricao = $("#descricao").val();
+		var tipo = $("#tipoFinanca").val();
+		var valor = $("#valor").val();
 
-				if ((nome == "") || (celular == "")) {
-					alertify.error("PREENCHA TODOS OS CAMPOS OBRIGATÓRIOS");
-					return false;
-				}
-                
-                if ((cpf != "") || (cnpj != "")){
-                    $.ajax({ 
-					type: 'POST',
-					data:{"CPF" : cpf, "CNPJ" : cnpj, "TABELA" : tabela},
-					url: './Procedimentos/Verificacoes/Verificar_CPF_CNPJ.php', 
-                        success: function(r) { 
-                            data = $.parseJSON(r);
-                            if (data == 0) {
-                                dados = $('#frmFinanca').serialize();
-                                    $.ajax({
-                                        type: "POST",
-                                        data: dados,
-                                        url: "./Procedimentos/Fornecedores/CadastrarFornecedor.php",
-                                        success: function(r) {
-                                            if (r == 1) {
-                                                $('#frmFinanca')[0].reset();
-                                                alertify.success("CADASTRO REALIZADO");
-                                            } else {
-                                                alertify.error("NÃO FOI POSSÍVEL CADASTRAR");
-                                            }
-                                        }
-                                    });
-                            }else{
-                                alertify.error("CPF OU CNPJ JÁ CADASTRADO");
-                            }
-                        }
-				    });
-                }else{
-                    dados = $('#frmFinanca').serialize();
-                    $.ajax({
-						type: "POST",
-						data: dados,
-						url: "./Procedimentos/Fornecedores/CadastrarFornecedor.php",
-						success: function(r) {
-							if (r == 1) {
-								$('#frmFinanca')[0].reset();
-								alertify.success("CADASTRO REALIZADO");
-							} else {
-								alertify.error("NÃO FOI POSSÍVEL CADASTRAR");
-							}
-						}
-					});
+		if ((descricao == "") || (tipo == "") || (valor == "")) {
+			alertify.error("PREENCHA TODOS OS CAMPOS OBRIGATÓRIOS");
+			return false;
+		}
+
+		dados = $('#frmFinanca').serialize();
+
+		$.ajax({
+            type: "POST",
+            data: dados,
+            url: "./Procedimentos/Financeiro/CadastrarFinanca.php",
+            success: function(r) {
+                if (r == 1) {
+                    $('#frmFinanca')[0].reset();
+                    alertify.success("CADASTRO REALIZADO");
+                } else {
+                    alertify.error("NÃO FOI POSSÍVEL CADASTRAR");
                 }
-			});
+            }
+		});
+	});
 </script>
 
 <style>

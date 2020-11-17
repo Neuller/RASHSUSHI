@@ -301,7 +301,7 @@ if (isset($_SESSION['User'])) {
             alertify.error("SELECIONE UMA MEDIDA");
             return false;
         }
-        if (quantidade == "") {
+        if ((quantidade == "") || (quantidade == 0)) {
             alertify.error("SELECIONE UMA QUANTIDADE");
             return false;
         }
@@ -347,8 +347,10 @@ if (isset($_SESSION['User'])) {
                     $("#enderecoEntrega").val("").change();
                     alertify.success("CADASTRO REALIZADO");
                     alertify.confirm('ATENÇÃO', 'DESEJA IMPRIMIR COMPROVANTE?', function(){
+                        const ultimoPedido = r;
+                        debugger;
                         alertify.confirm().close();
-                        window.open("./Procedimentos/Pedidos/CriarComprovante.php?idPedido=" + cliente);
+                        window.open("./Procedimentos/Pedidos/CriarComprovante.php?idPedido=" + ultimoPedido);
                     }, function(){
                         // alertify.error('OPERAÇÃO CANCELADA');
                     });

@@ -18,49 +18,49 @@ if (isset($_SESSION['User'])) {
 					<form id="frmVeiculo">
 						<div>
 							<!-- MARCA/MODELO -->
-							<div class="col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
+							<div class="col-md-12 col-sm-12 col-xs-12 itensFormulario">
 								<div>
 									<label>MARCA/MODELO<span class="required">*</span></label>
 									<input type="text" class="form-control input-sm text-uppercase" id="marcaModelo" name="marcaModelo" maxlenght="100">
 								</div>
 							</div>
                             <!-- ESPÉCIE -->
-							<div class="col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+							<div class="col-md-6 col-sm-6 col-xs-6 itensFormulario">
 								<div>
 									<label>ESPÉCIE</label>
 									<input type="text" class="form-control input-sm text-uppercase" id="especie" name="especie" maxlenght="100">
 								</div>
 							</div>
                             <!-- PLACA -->
-							<div class="col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+							<div class="col-md-6 col-sm-6 col-xs-6 itensFormulario">
 								<div>
 									<label>PLACA</label>
 									<input type="text" class="form-control input-sm align text-uppercase" id="placa" name="placa" maxlenght="100">
 								</div>
 							</div>
 							<!-- CHASSI -->
-							<div class="col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+							<div class="col-md-6 col-sm-6 col-xs-6 itensFormulario">
 								<div>
 									<label>CHASSI</label>
 									<input type="text" class="form-control input-sm align text-uppercase" id="chassi" name="chassi" maxlenght="100">
 								</div>
 							</div>
 							<!-- RENAVAM -->
-							<div class="col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+							<div class="col-md-6 col-sm-6 col-xs-6 itensFormulario">
 								<div>
 									<label>RENAVAM</label>
 									<input type="text" class="form-control input-sm align text-uppercase" id="renavam" name="renavam" maxlenght="100">
 								</div>
 							</div>
                             <!-- COR -->
-							<div class="col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+							<div class="col-md-6 col-sm-6 col-xs-6 itensFormulario">
 								<div>
 									<label>COR</label>
 									<input type="text" class="form-control input-sm align text-uppercase" id="cor" name="cor" maxlenght="100">
 								</div>
 							</div>
 							<!-- ANO -->
-							<div class="col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+							<div class="col-md-6 col-sm-6 col-xs-6 itensFormulario">
 								<div>
 									<label>ANO</label>
 									<input type="number" class="form-control input-sm align text-uppercase" id="ano" name="ano" maxlenght="10">

@@ -19,14 +19,20 @@ class pedidos {
         for ($i = 0; $i < count($dadosTabela) ; $i++) { 
             $d = explode("||", $dadosTabela[$i]);
 
-            $sql="INSERT INTO pedidos (id_pedido, id_cliente, id_produto, id_usuario, id_entregador, descricao, quantidade_itens, 
+            $sql = "INSERT INTO pedidos (id_pedido, id_cliente, id_produto, id_usuario, id_entregador, descricao, quantidade_itens, 
             valor_total, status, data_hora_pedido, endereco_entrega, troco, valor_pagamento, forma_pagamento)
             VALUES ('$idPedido', '$d[6]', '$d[0]', '$idUsuario', '$idEntregador','$d[1]', '$d[4]', '$d[5]', 'EM ABERTO', '$dataHora', '$enderecoEntrega', 
             '$troco', '$valorPagamento', '$formaPagamento')";
 
-            $r = $r + $result = mysqli_query($conexao,$sql);
+            $r = $r + $result = mysqli_query($conexao, $sql);
         }
-        return $r;
+
+        $sql = "SELECT max(id_pedido) FROM pedidos";
+
+        $result = mysqli_query($conexao, $sql);
+        $ultimoPedido = mysqli_fetch_row($result)[0];
+
+        return $ultimoPedido;
     }
 
     public function criarComprovante(){

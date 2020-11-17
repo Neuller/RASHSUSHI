@@ -23,7 +23,7 @@ if (isset($_SESSION['User'])) {
 					<form id="frmCombinado">
 						<div>
                             <!-- PRODUTO -->
-							<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
+							<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormulario">
 								<div>
                                     <label>PRODUTO<span class="required">*</span></label>
                                     <select class="form-control descricao input-sm" id="produtoSelect" name="produtoSelect">
@@ -40,7 +40,7 @@ if (isset($_SESSION['User'])) {
 								</div>
 							</div>
 							<!-- DESCRIÇÃO -->
-							<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
+							<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormulario">
                                 <hr>
 								<div>
 									<label>DESCRIÇÃO</label>
@@ -48,14 +48,14 @@ if (isset($_SESSION['User'])) {
 								</div>
 							</div>
                             <!-- NÚMERO DE PEÇAS -->
-                            <div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+                            <div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormulario">
                                 <div>
                                     <label>NÚMERO DE PEÇAS<span class="required">*</span></label>
                                     <input type="number" class="form-control quantidade_pecas input-sm estoque text-uppercase" id="quantidade_pecas" name="quantidade_pecas" maxlenght="100">
                                 </div>
                             </div>
                             <!-- VALOR TOTAL -->
-                            <div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormularioCadastro">
+                            <div class="mb-20px col-md-6 col-sm-6 col-xs-6 itensFormulario">
                                 <div>
                                     <label>VALOR TOTAL<span class="required">*</span></label>
                                     <input type="number" class="form-control input-sm text-uppercase" id="valor_total" name="valor_total" maxlenght="100">
