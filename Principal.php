@@ -83,6 +83,7 @@ if (isset($_SESSION['User'])) {
 			  <!-- LISTA FINANCEIRO -->
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a id="cadastrarFinanca" class="dropdown-item" href="#">CADASTRAR FINANÇA</a><a class="dropdown-item" href="#"></a>
+              <a id="" class="dropdown-item" href="#">FLUXO DE CAIXA <span class="required">- VERSÃO COMPLETA</span></a>
               </div>
         </div>
 
@@ -130,9 +131,9 @@ if (isset($_SESSION['User'])) {
               </a>
 			  <!-- LISTA RELATORIOS -->
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">GERAR RELATORIO DIÁRIO</a>
-                <a class="dropdown-item" href="#">GERAR RELATORIO SEMANAL <span class="required">- VERSÃO COMPLETA</span></a>
-                <a class="dropdown-item" href="#">GERAR RELATORIO MENSAL <span class="required">- VERSÃO COMPLETA</span></a>
+                <a id="relatorioDiario" class="dropdown-item" href="#">GERAR RELATORIO DIÁRIO</a>
+                <a id="relatorioSemanal" class="dropdown-item" href="#">GERAR RELATORIO SEMANAL <span class="required">- VERSÃO COMPLETA</span></a>
+                <a id="relatorioMensal" class="dropdown-item" href="#">GERAR RELATORIO MENSAL <span class="required">- VERSÃO COMPLETA</span></a>
               </div>
 			</div>
 
@@ -159,12 +160,24 @@ if (isset($_SESSION['User'])) {
           <a id="procurarVeiculo" class="dropdown-item" href="#">PROCURAR VEÍCULOS <span class="required">- VERSÃO COMPLETA</span></a>
         </div>
       </div>
-			
+
+      <!-- OPÇÕES -->
+      <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			  	OPÇÕES
+        </a>
+        <!-- CADASTRAR MELHORIAS -->
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <a id="cadastrarMelhoria" class="dropdown-item" href="#">CADASTRAR MELHORIAS</a>
+        </div>
+      </div>
+
 			<div class="dropdown-divider"></div>
+      <!-- SAIR -->
 			<div>
 				<a style="color: red" href="./Procedimentos/Sair.php" class="dropdown-item" href="#" title="SAIR"><span class="glyphicon glyphicon-off"></span> SAIR</a>
 			</div>
-      </div>
+    </div>
       
       <!-- DESENVOLVIDO POR -->
       <div class="navbar development">
@@ -256,6 +269,10 @@ if (isset($_SESSION['User'])) {
   $("#cadastrarFornecedor").click(function(e) {
     $('#conteudo').load("./Views/Fornecedores/CadastrarFornecedor.php");	
   });
+  // MELHORIAS
+  $("#cadastrarMelhoria").click(function(e) {
+    $('#conteudo').load("./Views/Melhorias/CadastrarMelhoria.php");	
+  });
   // PEDIDOS
   $("#cadastrarPedido").click(function(e) {
     $('#conteudo').load("./Views/Pedidos/CadastrarPedido.php");	
@@ -269,6 +286,10 @@ if (isset($_SESSION['User'])) {
   });
   $("#procurarProduto").click(function(e) {
     $('#conteudo').load("./Views/Produtos/ProcurarProduto.php");	
+  });
+  // RELATÓRIOS 
+  $("#relatorioDiario").click(function(e) {
+      $('#conteudo').load("./Views/Relatorios/GerarRelatorioDiario.php");	
   });
   // USUÁRIOS
   $("#cadastrarUsuario").click(function(e) {

@@ -6,6 +6,7 @@ class pedidos {
 
         date_default_timezone_set('America/Sao_Paulo');
         $dataHora = date('Y-m-d H:i:s');
+        $data = date('Y-m-d');
         $idPedido = self::criarComprovante();
         $dadosTabela = $_SESSION['tabelaTemporaria'];
         $idUsuario = $_SESSION['IDUser'];
@@ -20,9 +21,9 @@ class pedidos {
             $d = explode("||", $dadosTabela[$i]);
 
             $sql = "INSERT INTO pedidos (id_pedido, id_cliente, id_produto, id_usuario, id_entregador, descricao, quantidade_itens, 
-            valor_total, status, data_hora_pedido, endereco_entrega, troco, valor_pagamento, forma_pagamento)
+            valor_total, status, data_hora_pedido, endereco_entrega, troco, valor_pagamento, forma_pagamento, data)
             VALUES ('$idPedido', '$d[6]', '$d[0]', '$idUsuario', '$idEntregador','$d[1]', '$d[4]', '$d[5]', 'EM ABERTO', '$dataHora', '$enderecoEntrega', 
-            '$troco', '$valorPagamento', '$formaPagamento')";
+            '$troco', '$valorPagamento', '$formaPagamento', '$data')";
 
             $r = $r + $result = mysqli_query($conexao, $sql);
         }

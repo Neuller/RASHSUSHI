@@ -219,14 +219,19 @@ if (isset($_SESSION['User'])) {
                 url: "./Procedimentos/Clientes/ObterDadosCliente.php",
                 success:function(r){
                     dados = jQuery.parseJSON(r);
-                    const enderecoEntrega = dados.endereco + " " + dados.numero + " " + dados.bairro
-                    $("#enderecoEntrega").val(enderecoEntrega);
-                },
-                error: function (error) {
-                    $("#enderecoEntrega").val("teste");
+                    var endereco = (dados.endereco == null) ? "" : dados.endereco;
+                    var numero = (dados.numero == null) ? "" : dados.numero;
+                    var bairro = (dados.bairro == null) ? "" : dados.bairro;
+                    var enderecoEntrega = "";
+
+                    enderecoEntrega = (endereco == "") ? "" : endereco + " ";
+                    numeroEntrega = (numero == "") ? "" : numero + " ";
+                    bairroEntrega = (bairro == "") ? "" : bairro;
+                    enderecoEntregaCompleto = enderecoEntrega + numeroEntrega + bairroEntrega;
+                    $("#enderecoEntrega").val(enderecoEntregaCompleto);
                 }
-                });
-		});
+		    });
+        });
 
         $("#entregadorSelect").change(function(){
             var entregador = $("#entregadorSelect").val();
@@ -328,8 +333,12 @@ if (isset($_SESSION['User'])) {
         var cliente = $("#clienteSelect").val();
         var enderecoEntrega = $("#enderecoEntrega").val();
         
-        if ((cliente == "") || (enderecoEntrega == "")) {
-			alertify.error("PREENCHA TODOS OS CAMPOS OBRIGATÓRIOS");
+        if (cliente == "") {
+			alertify.error("SELECIONE UM CLIENTE");
+			return false;
+		}
+        if (enderecoEntrega == "") {
+			alertify.error("PREENCHA O CAMPO 'ENDEREÇO'");
 			return false;
 		}
         
@@ -345,10 +354,11 @@ if (isset($_SESSION['User'])) {
                     $('#frmPedido')[0].reset();
                     $("#clienteSelect").val("").change();
                     $("#enderecoEntrega").val("").change();
+                    $("#divTaxaEntregador").hide();
                     alertify.success("CADASTRO REALIZADO");
+                    // IMPRIMIR COMPROVANTE?
                     alertify.confirm('ATENÇÃO', 'DESEJA IMPRIMIR COMPROVANTE?', function(){
                         const ultimoPedido = r;
-                        debugger;
                         alertify.confirm().close();
                         window.open("./Procedimentos/Pedidos/CriarComprovante.php?idPedido=" + ultimoPedido);
                     }, function(){
