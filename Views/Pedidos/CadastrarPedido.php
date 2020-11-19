@@ -51,22 +51,36 @@ if (isset($_SESSION['User'])) {
                             <span class="btn btn-success glyphicon glyphicon-plus" id="btnCadastrarCliente" title="CADASTRAR CLIENTE"></span>
                         </div>
 
+                        <!-- REALIZAR ENTREGA? -->
+                        <div class="col-xs-12 col-md-12 col-sm-12 itensFormulario">
+                            <div>
+                                <label>REALIZAR ENTREGA?<span class="required">*</span></label>
+                            </div>
+                            <div class="form-check-inline" id="realizarEntrega">
+                                <label class="form-check-label btnRadio">
+                                    <input type="radio" class="form-check-input" name="realizarEntrega" value="1">SIM
+                                </label>
+                                <label class="form-check-label btnRadio">
+                                    <input type="radio" class="form-check-input" name="realizarEntrega" value="0">NÃO
+                                </label>
+                            </div>
+                        </div>
                         <!-- LOCAL DE ENTREGA -->
-                        <div class='col-xs-12 col-md-12 col-sm-12 separador'>
+                        <div id="divEntrega" class='col-xs-12 col-md-12 col-sm-12 separador'>
                             <div class="text-left">
                                 <h4><strong>INFORMAÇÔES DA ENTREGA </strong><span class="glyphicon glyphicon-map-marker"></span></h4>
                             </div>
                             <hr>
                         </div>
                         <!-- ENDEREÇO -->
-                        <div class="col-xs-12 col-md-12 col-sm-12 itensFormulario">
+                        <div id="divEndereco" class="col-xs-12 col-md-12 col-sm-12 itensFormulario">
                             <div>
                                 <label>ENDEREÇO<span class="required">*</span></label>
                                 <input type="text" class="form-control input-sm text-uppercase" id="enderecoEntrega" name="enderecoEntrega" maxlenght="500">
                             </div>
                         </div>
                         <!-- ENTREGADOR -->
-                        <div class="col-xs-6 col-md-6 col-sm-6 itensFormulario">
+                        <div id="divEntregador" class="col-xs-6 col-md-6 col-sm-6 itensFormulario">
                             <div>
                                 <label>ENTREGADOR</label>
                                 <select class="form-control input-sm" id="entregadorSelect" name="entregadorSelect">
@@ -99,7 +113,7 @@ if (isset($_SESSION['User'])) {
                         <!-- PRODUTO -->
                         <div class="col-xs-6 col-md-6 col-sm-6 itensFormulario">
                             <div>
-                                <label>PRODUTO<span class="required">*</span></label>
+                                <label>PRODUTO</label>
                                 <select class="form-control input-sm" id="produtoSelect" name="produtoSelect">
                                     <option value="">SELECIONE UM PRODUTO</option>
                                     <?php
@@ -115,9 +129,9 @@ if (isset($_SESSION['User'])) {
                         <!-- MEDIDA -->
                         <div class="col-xs-6 col-md-6 col-sm-6 itensFormulario">
                             <div>
-                                <label>MEDIDA<span class="required">*</span></label>
+                                <label>MEDIDA</label>
                                 <select class="form-control input-sm" id="medidaSelect" name="medidaSelect">
-                                    <option value="">SELECIONE UMA MEDIDA</option>
+                                    <option value="">SELECIONE UMA OPÇÃO DE MEDIDA</option>
                                 </select>
                             </div>
                         </div>
@@ -209,6 +223,9 @@ if (isset($_SESSION['User'])) {
         $('#medidaSelect').select2();
         $('#carrinho_compras').load('./Views/Pedidos/CarrinhoCompras.php');
         $("#medidaSelect").prop('disabled', true);
+        $("#divEntrega").hide();
+        $("#divEndereco").hide();
+        $("#divEntregador").hide();
         $("#divTaxaEntregador").hide();
 
         $("#clienteSelect").change(function(){
@@ -231,6 +248,26 @@ if (isset($_SESSION['User'])) {
                     $("#enderecoEntrega").val(enderecoEntregaCompleto);
                 }
 		    });
+        });
+
+        $("#realizarEntrega").change(function(){
+            const realizarEntrega = $("input[name='realizarEntrega']:checked").val();
+            if(realizarEntrega == "1"){
+                $("#divEntrega").show();
+                $("#divEndereco").show();
+                $("#divEntregador").show();
+                $("#enderecoEntrega").val("");
+                $("#entregadorSelect").val("");
+                $("#taxaEntregador").val("");
+            }else{
+                $("#divEntrega").hide();
+                $("#divEndereco").hide();
+                $("#divEntregador").hide();
+                $("#divTaxaEntregador").hide();
+                $("#enderecoEntrega").val("");
+                $("#entregadorSelect").val("");
+                $("#taxaEntregador").val("");
+            }
         });
 
         $("#entregadorSelect").change(function(){
@@ -332,18 +369,25 @@ if (isset($_SESSION['User'])) {
     $('#btnCadastrar').click(function() {
         var cliente = $("#clienteSelect").val();
         var enderecoEntrega = $("#enderecoEntrega").val();
-        
+        var realizarEntrega = $("input[name='realizarEntrega']:checked").val();
+
         if (cliente == "") {
 			alertify.error("SELECIONE UM CLIENTE");
 			return false;
-		}
-        if (enderecoEntrega == "") {
-			alertify.error("PREENCHA O CAMPO 'ENDEREÇO'");
+        }
+        if ((realizarEntrega == "") || (realizarEntrega === undefined)) {
+			alertify.error("PREENCHA TODOS OS CAMPOS OBRIGATÓRIOS");
 			return false;
-		}
+        }
+        if(realizarEntrega == "1"){
+            if (enderecoEntrega == "") {
+                alertify.error("PREENCHA O CAMPO 'ENDEREÇO'");
+                return false;
+            }
+        } 
         
         dados = $('#frmPedido').serialize();
-
+debugger;
         $.ajax({
             type: "POST",
             data: dados,

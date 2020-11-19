@@ -31,7 +31,7 @@ if (isset($_SESSION['User'])) {
 						</div>
 						<!-- BOTÂO CADASTRAR -->
 						<div class="col-md-12 col-sm-12 col-xs-12 itensFormulario btnLeft">
-							<span class="btn btn-primary" id="btnGerar" title="GERAR">GERAR</span>
+							<span class="btn btn-success" id="btnGerar" title="GERAR">GERAR</span>
 					    </div>
 	    			</form>
 				</div>

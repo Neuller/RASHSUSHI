@@ -32,7 +32,7 @@ $formaPagamento = $mostrar[13];
 <html>
 <title>COMPROVANTE DE PEDIDO - RASHSUSHI</title>
     <head>
-        <link rel="stylesheet" type="text/css" href="../../Css/Comprovante.css">
+        <link rel="stylesheet" type="text/css" href="../../Css/CupomFiscal.css">
     </head>
     <body class="container comprovante">
         <div class="text-center" align="center">

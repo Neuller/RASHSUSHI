@@ -39,6 +39,11 @@
     float: left !important;
 }
 
+/* RADIO BUTTON */
+.btnRadio{
+    margin: 5px;
+}
+
 /* BOTOES ALINHADO A ESQUERDA */
 .btnLeft{
     margin-top: 25px !important;
