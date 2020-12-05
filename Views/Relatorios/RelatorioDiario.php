@@ -40,9 +40,9 @@ $totalPedidos = mysqli_fetch_assoc($result);
 
         <div class="col-md-12 col-sm-12 col-xs-12">
             <form>
-                <!-- INFORMAÇÕES GERAIS -->
+                <!-- PEDIDOS -->
                 <div class="formulario">
-                    <span class="titulo">INFORMAÇÕES GERAIS</span>
+                    <span class="titulo">PEDIDOS</span>
                     <hr>
                 </div>
                 <!-- NÚMERO DE PEDIDOS -->
@@ -52,8 +52,24 @@ $totalPedidos = mysqli_fetch_assoc($result);
                     $qtdPedidos = mysqli_fetch_row($resultado);
                 ?> 
                 <div class="itemForm">
-                    <span class="subItemForm">NÚMERO DE PEDIDOS</span>
-                    <div><?php echo $qtdPedidos[0]?></div>
+                    <span class="subItemForm">NÚMERO DE PEDIDOS: </span>
+                    <span><?php echo $qtdPedidos[0]?></span>
+                </div>
+                <!-- TOTAL DE PEDIDOS -->
+                <?php
+                    $sql = "SELECT SUM(valor_total) FROM pedidos WHERE data = '$data'";
+                    $resultado = mysqli_query($conexao, $sql);
+                    $valorTotalPedidos = mysqli_fetch_row($resultado);
+                ?> 
+                <div class="itemForm">
+                    <span class="subItemForm">TOTAL DE PEDIDOS: </span>
+                    <span><?php echo $valorTotalPedidos[0]?></span>
+                </div>
+
+                <!-- ENTREGAS -->
+                <div class="formulario">
+                    <span class="titulo">ENTREGAS</span>
+                    <hr>
                 </div>
                 <!-- NÚMERO DE ENTREGAS -->
                 <?php
@@ -62,42 +78,47 @@ $totalPedidos = mysqli_fetch_assoc($result);
                     $qtdEntregas = mysqli_fetch_row($resultado);
                 ?> 
                 <div class="itemForm">
-                    <span class="subItemForm">NÚMERO DE ENTREGAS</span>
-                    <div><?php echo $qtdEntregas[0]?></div>
+                    <span class="subItemForm">NÚMERO DE ENTREGAS: </span>
+                    <span><?php echo $qtdEntregas[0]?></span>
                 </div>
-
-                <!-- TOTAL DÉBITOS -->
-                <div class="formulario">
-                    <span class="titulo">FINANCEIRO</span>
-                    <hr>
+                <!-- TAXA FIXA -->
+                <div class="itemForm">
+                    <span class="subItemForm">TAXA FIXA: </span>
+                    <span>A DESENVOLVER</span>
                 </div>
-                <!-- TAXA DE ENTREGA -->
+                <!-- TOTAL TAXA DE ENTREGA -->
                 <?php
                     $sql = "SELECT SUM(taxa_entrega) FROM pedidos WHERE data = '$data' AND realizar_entrega = 1";
                     $resultado = mysqli_query($conexao, $sql);
                     $taxaEntregas = mysqli_fetch_row($resultado);
                 ?> 
                 <div class="itemForm">
-                    <span class="subItemForm">TAXA DE ENTREGA</span>
-                    <div><?php echo $taxaEntregas[0]?></div>
+                    <span class="subItemForm">TOTAL TAXA DE ENTREGAS: </span>
+                    <span><?php echo $taxaEntregas[0]?></span>
                 </div>
-                <!-- VALOR TOTAL(BRUTO) DE PEDIDOS -->
-                <?php
-                    $sql = "SELECT SUM(valor_total) FROM pedidos WHERE data = '$data'";
-                    $resultado = mysqli_query($conexao, $sql);
-                    $valorTotalPedidos = mysqli_fetch_row($resultado);
-                ?> 
+
+                <!-- FINANCEIRO -->
+                <div class="formulario">
+                    <span class="titulo">FINANCEIRO</span>
+                    <hr>
+                </div>
+                <!-- CAIXA (INICIAL) -->
                 <div class="itemForm">
-                    <span class="subItemForm">VALOR TOTAL(BRUTO) DE PEDIDOS</span>
-                    <div><?php echo $valorTotalPedidos[0]?></div>
+                    <span class="subItemForm">CAIXA (INICIAL): </span>
+                    <span>A DESENVOLVER</span>
+                </div>
+                <!-- TOTAL DE TROCO -->
+                <div class="itemForm">
+                    <span class="subItemForm">TOTAL DE TROCO: </span>
+                    <span>A DESENVOLVER</span>
                 </div>
                 <!-- LUCRO TOTAL(LÍQUIDO) -->
                 <?php
                     $lucoTotalLiquido = $valorTotalPedidos[0] - $taxaEntregas[0];
                 ?> 
                 <div class="itemForm">
-                    <span class="subItemForm">LUCRO TOTAL(LÍQUIDO)</span>
-                    <div><?php echo $lucoTotalLiquido?></div>
+                    <span class="subItemForm">LÍQUIDO TOTAL: </span>
+                    <span><?php echo $lucoTotalLiquido?></span>
                 </div>
             </form>
         </div>

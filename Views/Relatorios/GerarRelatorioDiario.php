@@ -41,21 +41,33 @@ if (isset($_SESSION['User'])) {
 </html>
 
 <script type="text/javascript">
-	$(document).ready(function($) {
+$(document).ready(function($) {
+});
+
+$('#btnGerar').click(function() {
+	var data = $("#data").val();
+
+	if (data == "") {
+		alertify.error("SELECIONE UMA DATA");
+		return false;
+	}
+
+	$.ajax({
+		type: "POST",
+        data: data,
+        url: "./Procedimentos/Utilitarios/VerificarApontamentosDiario.php",
+        success: function(r) {
+			debugger;
+            if (r == 1) {
+				$('#frmRelatorioDiario')[0].reset();
+				window.open("./Procedimentos/Relatorios/CriarRelatorioDiario.php?data=" + data);
+                alertify.success("RELATÓRIO GERADO");
+            } else {
+                alertify.error("NÃO EXISTE APONTAMENTOS PARA DATA SELECIONADA");
+        	}
+        }
 	});
-
-    $('#btnGerar').click(function() {
-		var data = $("#data").val();
-
-		if (data == "") {
-			alertify.error("SELECIONE UMA DATA");
-			return false;
-		}
-
-        window.open("./Procedimentos/Relatorios/CriarRelatorioDiario.php?data=" + data);
-        $('#frmRelatorioDiario')[0].reset();
-        alertify.success("RELATÓRIO GERADO");
-	});
+});
 </script>
 <?php
 } else {

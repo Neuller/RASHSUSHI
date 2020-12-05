@@ -1,0 +1,545 @@
+<?php
+session_start();
+if (isset($_SESSION['User'])) {
+?>
+<!DOCTYPE html>
+<html>
+	<head>
+		<?php require_once "../../Classes/Conexao.php"; 
+		$c = new conectar();
+		$conexao = $c -> conexao();
+		?>
+    </head>
+	<body>
+		<div class="container">
+			<div class="cabecalho bgGradient">
+				<div class="text-center textCabecalho_White opacidade">
+					<h3><strong>ABRIR CAIXA</strong></h3>
+				</div>
+			</div>
+			<!-- FORMULÁRIO CONTABILIZAR NOTAS -->
+			<div class="divFormulario">
+				<div class="mx-auto">
+					<form id="frmContabilizarNotas">   
+                        <div class='col-md-12 col-sm-12 col-xs-12'>
+							<div class="text-left">
+								<h4><strong>ETAPA 1 - CONTABILIZAR NOTAS</strong></h4>
+							</div>
+							<hr>
+						</div>
+                        <!-- NOTA DE DOIS REAIS -->
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <article>
+                                <div class="text-center">
+                                    <section>
+                                        <img src="./Img/Financeiro/Notas/nota2.png" class="img-thumbnail" width="200px" height="150px">
+                                    </section>
+                                </div>
+                                <div class="text-center">
+                                    <section>
+                                        <div class="text-center">
+                                        <input type="number" class="form-control input-sm text-uppercase" id="nota2" name="nota2" maxlenght="10">
+                                        </div>
+                                    </section>
+                                </div>
+                            </article>
+                        </div>
+                        <!-- NOTA DE CINCO REAIS -->
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <article>
+                                <div class="text-center">
+                                    <section>
+                                        <img src="./Img/Financeiro/Notas/nota5.png" class="img-thumbnail" width="200px" height="150px">
+                                    </section>
+                                </div>
+                                <div class="text-center">
+                                    <section>
+                                        <div class="text-center">
+                                            <input type="number" class="form-control input-sm text-uppercase" id="nota5" name="nota5" maxlenght="10">
+                                        </div>
+                                    </section>
+                                </div>
+                            </article>
+                        </div>
+                        <!-- NOTA DE DEZ REAIS -->
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <article>
+                                <div class="text-center">
+                                    <section>
+                                        <img src="./Img/Financeiro/Notas/nota10.png" class="img-thumbnail" width="200px" height="150px">
+                                    </section>
+                                </div>
+                                <div class="text-center">
+                                    <section>
+                                        <div class="text-center">
+                                            <input type="number" class="form-control input-sm text-uppercase" id="nota10" name="nota10" maxlenght="10">
+                                        </div>
+                                    </section>
+                                </div>
+                            </article>
+                        </div>
+                        <!-- NOTA DE VINTE REAIS -->
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <article>
+                                <div class="text-center">
+                                    <section>
+                                        <img src="./Img/Financeiro/Notas/nota20.png" class="img-thumbnail" width="200px" height="150px">
+                                    </section>
+                                </div>
+                                <div class="text-center">
+                                    <section>
+                                        <div class="text-center">
+                                            <input type="number" class="form-control input-sm text-uppercase" id="nota20" name="nota20" maxlenght="10">
+                                        </div>
+                                    </section>
+                                </div>
+                            </article>
+                        </div>
+                        <!-- NOTA DE CINQUENTA REAIS -->
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <article>
+                                <div class="text-center">
+                                    <section>
+                                        <img src="./Img/Financeiro/Notas/nota50.png" class="img-thumbnail" width="200px" height="150px">
+                                    </section>
+                                </div>
+                                <div class="text-center">
+                                    <section>
+                                        <div class="text-center">
+                                            <input type="number" class="form-control input-sm text-uppercase" id="nota50" name="nota50" maxlenght="10">
+                                        </div>
+                                    </section>
+                                </div>
+                            </article>
+                        </div>
+                        <!-- NOTA DE CEM REAIS -->
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <article>
+                                <div class="text-center">
+                                    <section>
+                                        <img src="./Img/Financeiro/Notas/nota100.png" class="img-thumbnail" width="200px" height="150px">
+                                    </section>
+                                </div>
+                                <div class="text-center">
+                                    <section>
+                                        <div class="text-center">
+                                            <input type="number" class="form-control input-sm text-uppercase" id="nota100" name="nota100" maxlenght="10">
+                                        </div>
+                                    </section>
+                                </div>
+                            </article>
+                        </div>
+                        <!-- NOTA DE DUZENTOS REAIS -->
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <article>
+                                <div class="text-center">
+                                    <section>
+                                        <img src="./Img/Financeiro/Notas/nota200.png" class="img-thumbnail" width="200px" height="150px">
+                                    </section>
+                                </div>
+                                <div class="text-center">
+                                    <section>
+                                        <div class="text-center">
+                                            <input type="number" class="form-control input-sm text-uppercase" id="nota200" name="nota200" maxlenght="10">
+                                        </div>
+                                    </section>
+                                </div>
+                            </article>
+                        </div>
+                        <!-- QUANTIDADE DE NOTAS -->
+                        <div class="col-md-12 col-sm-12 col-xs-12 itensFormulario">
+                            <div>
+                                <label class="col-md-12 col-sm-12 col-xs-12">QUANTIDADE DE NOTAS</label>
+                                <input type="text" readonly class="col-md-4 col-sm-4 col-xs-4 form-control input-sm align text-uppercase" id="qtdNotas" name="qtdNotas">
+                            </div>
+                        </div>
+                        <!-- VALOR TOTAL -->
+                        <div class="col-md-12 col-sm-12 col-xs-12 itensFormulario">
+                            <div>
+                                <label class="col-md-12 col-sm-12 col-xs-12">VALOR TOTAL</label>
+                                <input type="text" readonly class="col-md-4 col-sm-4 col-xs-4 form-control input-sm align text-uppercase" id="valorTotalNotas" name="valorTotalNotas">
+                            </div>
+                        </div>
+                        <!-- BOTÂO AVANÇAR -->
+                        <div class="col-md-12 col-sm-12 col-xs-12 itensFormulario btnLeft">
+                            <span class="btn btn-success" id="btnAvancar1" title="AVANÇAR">AVANÇAR</span>
+                        </div>
+					</form>
+
+                    <!-- FORMULÁRIO CONTABILIZAR MOEDAS -->
+                    <form id="frmContabilizarMoedas">   
+                        <div class='col-md-12 col-sm-12 col-xs-12'>
+							<div class="text-left">
+								<h4><strong>ETAPA 2 - CONTABILIZAR MOEDAS</strong></h4>
+							</div>
+							<hr>
+						</div>
+						<!-- MOEDA DE CINCO CENTAVOS -->
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <article>
+                                <div class="text-center">
+                                    <section>
+                                        <img src="./Img/Financeiro/Moedas/moeda5.png" class="img-thumbnail" width="200px" height="150px">
+                                    </section>
+                                </div>
+                                <div class="text-center">
+                                    <section>
+                                        <div class="text-center">
+                                        <input type="number" class="form-control input-sm text-uppercase" id="moeda5" name="moeda5" maxlenght="10">
+                                        </div>
+                                    </section>
+                                </div>
+                            </article>
+                        </div>
+						<!-- MOEDA DE DEZ CENTAVOS -->
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <article>
+                                <div class="text-center">
+                                    <section>
+                                        <img src="./Img/Financeiro/Moedas/moeda10.png" class="img-thumbnail" width="200px" height="150px">
+                                    </section>
+                                </div>
+                                <div class="text-center">
+                                    <section>
+                                        <div class="text-center">
+                                        <input type="number" class="form-control input-sm text-uppercase" id="moeda10" name="moeda10" maxlenght="10">
+                                        </div>
+                                    </section>
+                                </div>
+                            </article>
+                        </div>
+						<!-- MOEDA DE VINTE E CINCO CENTAVOS -->
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <article>
+                                <div class="text-center">
+                                    <section>
+                                        <img src="./Img/Financeiro/Moedas/moeda25.png" class="img-thumbnail" width="200px" height="150px">
+                                    </section>
+                                </div>
+                                <div class="text-center">
+                                    <section>
+                                        <div class="text-center">
+                                        <input type="number" class="form-control input-sm text-uppercase" id="moeda25" name="moeda25" maxlenght="10">
+                                        </div>
+                                    </section>
+                                </div>
+                            </article>
+                        </div>
+						<!-- MOEDA DE CINQUENTA CENTAVOS -->
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <article>
+                                <div class="text-center">
+                                    <section>
+                                        <img src="./Img/Financeiro/Moedas/moeda50.png" class="img-thumbnail" width="200px" height="150px">
+                                    </section>
+                                </div>
+                                <div class="text-center">
+                                    <section>
+                                        <div class="text-center">
+                                        <input type="number" class="form-control input-sm text-uppercase" id="moeda50" name="moeda50" maxlenght="10">
+                                        </div>
+                                    </section>
+                                </div>
+                            </article>
+                        </div>
+						<!-- MOEDA DE UM REAL -->
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <article>
+                                <div class="text-center">
+                                    <section>
+                                        <img src="./Img/Financeiro/Moedas/moeda100.png" class="img-thumbnail" width="200px" height="150px">
+                                    </section>
+                                </div>
+                                <div class="text-center">
+                                    <section>
+                                        <div class="text-center">
+                                        <input type="number" class="form-control input-sm text-uppercase" id="moeda100" name="moeda100" maxlenght="10">
+                                        </div>
+                                    </section>
+                                </div>
+                            </article>
+                        </div>
+                        <!-- QUANTIDADE DE MOEDAS -->
+                        <div class="col-md-12 col-sm-12 col-xs-12 itensFormulario">
+                            <div>
+                                <label class="col-md-12 col-sm-12 col-xs-12">QUANTIDADE DE MOEDAS</label>
+                                <input type="text" readonly class="col-md-4 col-sm-4 col-xs-4 form-control input-sm align text-uppercase" id="qtdMoedas" name="qtdMoedas">
+                            </div>
+                        </div>
+                        <!-- VALOR TOTAL -->
+                        <div class="col-md-12 col-sm-12 col-xs-12 itensFormulario">
+							<div>
+								<label class="col-md-12 col-sm-12 col-xs-12">VALOR TOTAL</label>
+								<input type="text" readonly class="col-md-4 col-sm-4 col-xs-4 form-control input-sm align text-uppercase" id="valorTotalMoedas" name="valorTotalMoedas">
+							</div>
+						</div>
+                        <!-- BOTÂO AVANÇAR -->
+						<div class="col-md-12 col-sm-12 col-xs-12 itensFormulario btnLeft">
+							<span class="btn btn-success" id="btnAvancar2" title="AVANÇAR">AVANÇAR</span>
+						</div>
+					</form>
+
+                    <!-- FORMULÁRIO CONFIRMAR DADOS -->
+                    <form id="frmConfirmarDados">   
+                        <div class='col-md-12 col-sm-12 col-xs-12'>
+							<div class="text-left">
+								<h4><strong>ETAPA 3 - CONFIRMAR DADOS</strong></h4>
+							</div>
+							<hr>
+						</div>
+						<div class='col-md-12 col-sm-12 col-xs-12'>
+							<div class="text-left">
+								<h5><strong>CONTABILIZAR NOTAS</strong></h5>
+							</div>
+						</div>
+                        <!-- QUANTIDADE DE NOTAS -->
+                        <div class="col-md-6 col-sm-6 col-xs-6 itensFormulario">
+							<div>
+								<label>QUANTIDADE DE NOTAS</label>
+								<input type="text" readonly class="form-control input-sm align text-uppercase" id="totalQtdNotas" name="totalQtdNotas">
+							</div>
+						</div>
+                        <!-- VALOR TOTAL DE NOTAS -->
+                        <div class="col-md-6 col-sm-6 col-xs-6 itensFormulario">
+							<div>
+								<label>VALOR TOTAL</label>
+								<input type="text" readonly class="form-control input-sm align text-uppercase" id="totalNotas" name="totalNotas">
+							</div>
+						</div>
+                        <div class='col-md-12 col-sm-12 col-xs-12'>
+							<div class="text-left">
+								<h5><strong>CONTABILIZAR MOEDAS</strong></h5>
+							</div>
+						</div>
+                        <!-- QUANTIDADE DE MOEDAS -->
+                        <div class="col-md-6 col-sm-6 col-xs-6 itensFormulario">
+							<div>
+								<label>QUANTIDADE DE MOEDAS</label>
+								<input type="text" readonly class="form-control input-sm align text-uppercase" id="totalQtdMoedas" name="totalQtdMoedas">
+							</div>
+						</div>
+                        <!-- VALOR TOTAL DE MOEDAS -->
+                        <div class="col-md-6 col-sm-6 col-xs-6 itensFormulario">
+							<div>
+								<label>VALOR TOTAL</label>
+								<input type="text" readonly class="form-control input-sm align text-uppercase" id="totalMoedas" name="totalMoedas">
+							</div>
+						</div>
+                        <div class='col-md-12 col-sm-12 col-xs-12'>
+							<div class="text-left">
+								<h5><strong>CONFIRMAR DADOS</strong></h5>
+							</div>
+						</div>
+                        <!-- REFERÊNCIA -->
+                        <div class="col-md-6 col-sm-6 col-xs-6 itensFormulario">
+							<div>
+								<label>REFERÊNCIA</label>
+								<input type="text" readonly class="form-control input-sm align text-uppercase" id="data" name="data">
+							</div>
+						</div>
+                        <!-- VALOR TOTAL -->
+                        <div class="col-md-6 col-sm-6 col-xs-6 itensFormulario">
+							<div>
+								<label>CAPITAL INICIAL</label>
+								<input type="text" readonly class="form-control input-sm align text-uppercase" id="capitalInicial" name="capitalInicial">
+							</div>
+						</div>
+                        <!-- BOTÕES ABRIR CAIXA E CANCELAR -->
+						<div class="col-md-12 col-sm-12 col-xs-12 itensFormulario btnLeft">
+                            <span class="btn btn-danger" id="btnCancelar" title="CANCELAR">CANCELAR</span>
+							<span class="btn btn-success" id="btnAbrirCaixa" title="ABRIR CAIXA">ABRIR CAIXA</span>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
+
+<script type="text/javascript">
+	$(document).ready(function($) {
+        $('#frmContabilizarMoedas').hide();
+        $('#frmConfirmarDados').hide();
+    });
+    
+    // ETAPA 1
+    $('#nota2').change(function() {
+        const valorTotal = calcularTotalNotas();
+        $("#valorTotalNotas").val("R$ " + valorTotal + ",00");
+        const qtdNotas = calcularQtdNotas();
+        $("#qtdNotas").val(qtdNotas);
+    });
+    $('#nota5').change(function() {
+        const valorTotal = calcularTotalNotas();
+        $("#valorTotalNotas").val("R$ " + valorTotal + ",00");
+        const qtdNotas = calcularQtdNotas();
+        $("#qtdNotas").val(qtdNotas);
+    });
+    $('#nota10').change(function() {
+        const valorTotal = calcularTotalNotas();
+        $("#valorTotalNotas").val("R$ " + valorTotal + ",00");
+        const qtdNotas = calcularQtdNotas();
+        $("#qtdNotas").val(qtdNotas);
+    });
+    $('#nota20').change(function() {
+        const valorTotal = calcularTotalNotas();
+        $("#valorTotalNotas").val("R$ " + valorTotal + ",00");
+        const qtdNotas = calcularQtdNotas();
+        $("#qtdNotas").val(qtdNotas);
+    });
+    $('#nota50').change(function() {
+        const valorTotal = calcularTotalNotas();
+        $("#valorTotalNotas").val("R$ " + valorTotal + ",00");
+        const qtdNotas = calcularQtdNotas();
+        $("#qtdNotas").val(qtdNotas);
+    });
+    $('#nota100').change(function() {
+        const valorTotal = calcularTotalNotas();
+        $("#valorTotalNotas").val("R$ " + valorTotal + ",00");
+        const qtdNotas = calcularQtdNotas();
+        $("#qtdNotas").val(qtdNotas);
+    });
+    $('#nota200').change(function() {
+        const valorTotal = calcularTotalNotas();
+        $("#valorTotalNotas").val("R$ " + valorTotal + ",00");
+        const qtdNotas = calcularQtdNotas();
+        $("#qtdNotas").val(qtdNotas);
+    });
+    function calcularTotalNotas() {
+        const qtdNota2 = $("#nota2").val();
+        const qtdNota5 = $("#nota5").val();
+        const qtdNota10 = $("#nota10").val();
+        const qtdNota20 = $("#nota20").val();
+        const qtdNota50 = $("#nota50").val();
+        const qtdNota100 = $("#nota100").val();
+        const qtdNota200 = $("#nota200").val();
+
+        var nota2 = qtdNota2 * 2;
+        var nota5 = qtdNota5 * 5;
+        var nota10 = qtdNota10 * 10;
+        var nota20 = qtdNota20 * 20;
+        var nota50 = qtdNota50 * 50;
+        var nota100 = qtdNota100 * 100;
+        var nota200 = qtdNota200 * 200;
+
+        var valorTotal = nota2 + nota5 + nota10 + nota20 + nota50 + nota100 + nota200;
+        return valorTotal;
+    }
+    function calcularQtdNotas() {
+        const qtdNota2 = $("#nota2").val();
+        const qtdNota5 = $("#nota5").val();
+        const qtdNota10 = $("#nota10").val();
+        const qtdNota20 = $("#nota20").val();
+        const qtdNota50 = $("#nota50").val();
+        const qtdNota100 = $("#nota100").val();
+        const qtdNota200 = $("#nota200").val();
+
+        var qtdNotas = 0;
+        qtdNotas = qtdNota2 + qtdNota5 + qtdNota10 + qtdNota20 + qtdNota50 + qtdNota100 + qtdNota200;
+        return parseInt(qtdNotas);
+    }
+    $('#btnAvancar1').click(function() {
+        dadosfrmContabilizarNotas = $('#frmContabilizarNotas').serialize();
+        $('#frmContabilizarNotas').hide();
+        $('#frmContabilizarMoedas').show();
+    });
+
+    // ETAPA 2
+    $('#moeda5').change(function() {
+        const valorTotal = calcularTotalMoedas();
+        $("#valorTotalMoedas").val("R$ " + valorTotal);
+        const qtdMoedas = calcularQtdMoedas();
+        $("#qtdMoedas").val(qtdMoedas);
+	});
+	$('#moeda10').change(function() {
+        const valorTotal = calcularTotalMoedas();
+        $("#valorTotalMoedas").val("R$ " + valorTotal);
+        const qtdMoedas = calcularQtdMoedas();
+        $("#qtdMoedas").val(qtdMoedas);
+	});
+	$('#moeda25').change(function() {
+        const valorTotal = calcularTotalMoedas();
+        $("#valorTotalMoedas").val("R$ " + valorTotal);
+        const qtdMoedas = calcularQtdMoedas();
+        $("#qtdMoedas").val(qtdMoedas);
+	});
+	$('#moeda50').change(function() {
+        const valorTotal = calcularTotalMoedas();
+        $("#valorTotalMoedas").val("R$ " + valorTotal);
+        const qtdMoedas = calcularQtdMoedas();
+        $("#qtdMoedas").val(qtdMoedas);
+	});
+	$('#moeda100').change(function() {
+        const valorTotal = calcularTotalMoedas();
+        $("#valorTotalMoedas").val("R$ " + valorTotal);
+        const qtdMoedas = calcularQtdMoedas();
+        $("#qtdMoedas").val(qtdMoedas);
+    });
+    function calcularTotalMoedas() {
+        const qtdMoeda5 = $("#moeda5").val();
+        const qtdMoeda10 = $("#moeda10").val();
+        const qtdMoeda25 = $("#moeda25").val();
+        const qtdMoeda50 = $("#moeda50").val();
+        const qtdMoeda100 = $("#moeda100").val();
+
+        var moeda5 = qtdMoeda5 * 0.05;
+        var moeda10 = qtdMoeda10 * 0.10;
+        var moeda25 = qtdMoeda25 * 0.25;
+        var moeda50 = qtdMoeda50 * 0.50;
+        var moeda100 = qtdMoeda100 * 1;
+
+        var valorTotal = moeda5 + moeda10 + moeda25 + moeda50 + moeda100;
+        return parseFloat(valorTotal);
+    }
+    function calcularQtdMoedas() {
+        const qtdMoeda5 = $("#moeda5").val();
+        const qtdMoeda10 = $("#moeda10").val();
+        const qtdMoeda25 = $("#moeda25").val();
+        const qtdMoeda50 = $("#moeda50").val();
+        const qtdMoeda100 = $("#moeda100").val();
+
+        var qtdMoedas = 0;
+        qtdMoedas = qtdMoeda5 + qtdMoeda10 + qtdMoeda25 + qtdMoeda50 + qtdMoeda100;
+        return parseInt(qtdMoedas);
+    }
+    $('#btnAvancar2').click(function() {
+        dadosfrmContabilizarMoedas = $('#frmContabilizarMoedas').serialize();
+        $('#frmContabilizarNotas').hide();
+        $('#frmContabilizarMoedas').hide();
+        $('#frmConfirmarDados').show();
+        // DADOS CONTABILIZAR NOTAS
+        var totalNotas = $("#valorTotalNotas").val();
+        $("#totalNotas").val(totalNotas);
+        // DADOS CONTABILIZAR MOEDAS
+        var totalMoedas = $("#valorTotalMoedas").val();
+        $("#totalMoedas").val(totalMoedas);
+        // CONFIRMAR DADOS
+        moment.locale('pt-br');
+        var data = moment().format('DD/MM/YYYY');
+        $("#data").val(data);
+    });
+
+    // ETAPA 3
+    $('#btnCancelar').click(function() {	
+		
+	});
+    $('#btnAbrirCaixa').click(function() {	
+		// dados = $('#frmAbrirCaixaEtp3').serialize();
+        // $.ajax({
+		// 	type: "POST",
+		// 	data: dados,
+		// 	url: "./Procedimentos/Financeiro/AbrirCaixa.php",
+		// 	success: function(r) {
+        //         $('#frmAbrirCaixaEtp3')[0].reset();
+        //         alertify.success("CAIXA ABERTO");
+        //         $('#conteudo').load("./Views/Financeiro/FluxoCaixa.php");	
+		// 	}
+		// });
+	});
+</script>
+<?php
+} else {
+	header("location:./index.php");
+}
+?>

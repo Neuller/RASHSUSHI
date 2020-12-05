@@ -241,12 +241,6 @@ if (isset($_SESSION['User'])) {
 				}
 			});
 	</script>
-
-	<style>
-		.cabecalho {
-			margin-bottom: 50px;
-		}
-	</style>
 <?php
 } else {
 	header("location:./index.php");

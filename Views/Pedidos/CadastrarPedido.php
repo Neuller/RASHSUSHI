@@ -387,7 +387,7 @@ if (isset($_SESSION['User'])) {
         } 
         
         dados = $('#frmPedido').serialize();
-debugger;
+
         $.ajax({
             type: "POST",
             data: dados,

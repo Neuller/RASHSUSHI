@@ -153,16 +153,27 @@ $formaPagamento = $mostrar[13];
                             <span class="subItemForm">VALOR TOTAL</span>
                             <div><?php echo "R$ ".$valorTotal ?></div>
                         </div>
+                        
                         <!-- VALOR DO PAGAMENTO -->
-                        <div class="itemForm">
-                            <span class="subItemForm">VALOR DO PAGAMENTO</span>
-                            <div><?php echo "R$ ".$valorPagamento ?></div>
-                        </div>
+                        <?php if (($valorPagamento != "") || ($valorPagamento != 0) || ($valorPagamento != 0.00) || ($valorPagamento != null) || ($valorPagamento != "0.00")){
+                            echo 
+                            "<div class='itemForm'>
+                                <span class='subItemForm'>VALOR DO PAGAMENTO</span>
+                                <div>R$ ".$valorPagamento."</div>
+                            </div>";
+                            }
+                        ?>
+
                         <!-- TROCO -->
-                        <div class="itemForm">
-                            <span class="subItemForm">TROCO</span>
-                            <div><?php echo "R$ ".$troco ?></div>
-                        </div>
+                        <?php if (($troco != "") || ($troco != 0) || ($troco != 0.00) || ($troco != null) || ($troco != "0.00")){
+                            echo 
+                            "<div class='itemForm'>
+                                <span class='subItemForm'>TROCO</span>
+                                <div>R$ ".$troco."</div>
+                            </div>";
+                            }
+                        ?>
+
                     </div>
                 <?php } ?>
             </form>

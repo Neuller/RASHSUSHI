@@ -88,11 +88,21 @@ class pedidos {
     
         return mysqli_query($conexao, $sql);
     }
+
     public function cancelarPedido($idPedido){
         $c = new conectar();
         $conexao = $c -> conexao();
     
         $sql = "UPDATE pedidos SET status = 'CANCELADO' WHERE id_pedido = '$idPedido' ";
+    
+        return mysqli_query($conexao, $sql);
+    }
+
+    public function verificarApontamentosDiario($data){
+        $c = new conectar();
+        $conexao = $c -> conexao();
+    
+        $sql = "SELECT * FROM pedidos WHERE data = '$data' ";
     
         return mysqli_query($conexao, $sql);
     }
