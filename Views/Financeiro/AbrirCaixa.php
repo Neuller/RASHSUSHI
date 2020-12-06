@@ -337,11 +337,11 @@ if (isset($_SESSION['User'])) {
 								<input type="text" readonly class="form-control input-sm align text-uppercase" id="data" name="data">
 							</div>
 						</div>
-                        <!-- VALOR TOTAL -->
+                        <!-- CAIXA INICIAL -->
                         <div class="col-md-6 col-sm-6 col-xs-6 itensFormulario">
 							<div>
-								<label>CAPITAL INICIAL</label>
-								<input type="text" readonly class="form-control input-sm align text-uppercase" id="capitalInicial" name="capitalInicial">
+								<label>CAIXA INICIAL</label>
+								<input type="text" readonly class="form-control input-sm align text-uppercase" id="caixaInicial" name="caixaInicial">
 							</div>
 						</div>
                         <!-- BOTÕES ABRIR CAIXA E CANCELAR -->
@@ -435,8 +435,16 @@ if (isset($_SESSION['User'])) {
         const qtdNota100 = $("#nota100").val();
         const qtdNota200 = $("#nota200").val();
 
+        var nota2 = qtdNota2 * 1;
+        var nota5 = qtdNota5 * 1;
+        var nota10 = qtdNota10 * 1;
+        var nota20 = qtdNota20 * 1;
+        var nota50 = qtdNota50 * 1;
+        var nota100 = qtdNota100 * 1;
+        var nota200 = qtdNota200 * 1;
+
         var qtdNotas = 0;
-        qtdNotas = qtdNota2 + qtdNota5 + qtdNota10 + qtdNota20 + qtdNota50 + qtdNota100 + qtdNota200;
+        qtdNotas = nota2 + nota5 + nota10 + nota20 + nota50 + nota100 + nota200;
         return parseInt(qtdNotas);
     }
     $('#btnAvancar1').click(function() {
@@ -499,9 +507,15 @@ if (isset($_SESSION['User'])) {
         const qtdMoeda50 = $("#moeda50").val();
         const qtdMoeda100 = $("#moeda100").val();
 
+        var moeda5 = qtdMoeda5 * 1;
+        var moeda10 = qtdMoeda10 * 1;
+        var moeda25 = qtdMoeda25 * 1;
+        var moeda50 = qtdMoeda50 * 1;
+        var moeda100 = qtdMoeda100 * 1;
+
         var qtdMoedas = 0;
-        qtdMoedas = qtdMoeda5 + qtdMoeda10 + qtdMoeda25 + qtdMoeda50 + qtdMoeda100;
-        return parseInt(qtdMoedas);
+        qtdMoedas = moeda5 + moeda10 + moeda25 + moeda50 + moeda100;
+        return qtdMoedas;
     }
     $('#btnAvancar2').click(function() {
         dadosfrmContabilizarMoedas = $('#frmContabilizarMoedas').serialize();
