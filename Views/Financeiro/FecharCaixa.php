@@ -14,7 +14,7 @@ if (isset($_SESSION['User'])) {
 		<div class="container">
 			<div class="cabecalho bgGradient">
 				<div class="text-center textCabecalho_White opacidade">
-					<h3><strong>ABRIR CAIXA</strong></h3>
+					<h3><strong>FECHAR CAIXA</strong></h3>
 				</div>
 			</div>
 			<!-- FORMULÁRIO CONTABILIZAR NOTAS -->
@@ -340,21 +340,14 @@ if (isset($_SESSION['User'])) {
                         <!-- CAIXA INICIAL -->
                         <div class="col-md-6 col-sm-6 col-xs-6 itensFormulario">
 							<div>
-								<label>CAIXA INICIAL</label>
-								<input type="text" readonly class="form-control input-sm align text-uppercase" id="caixaInicial" name="caixaInicial">
-							</div>
-						</div>
-                        <!-- TAXA DO DIA -->
-                        <div class="col-md-6 col-sm-6 col-xs-6 itensFormulario">
-							<div>
-								<label>TAXA DO DIA</label>
-								<input type="number"  class="form-control input-sm align text-uppercase" id="taxaDia" name="taxaDia">
+								<label>CAIXA FINAL</label>
+								<input type="text" readonly class="form-control input-sm align text-uppercase" id="caixaFinal" name="caixaFinal">
 							</div>
 						</div>
                         <!-- BOTÕES ABRIR CAIXA E CANCELAR -->
 						<div class="col-md-12 col-sm-12 col-xs-12 itensFormulario btnLeft">
                             <span class="btn btn-danger" id="btnCancelar" title="CANCELAR">CANCELAR</span>
-							<span class="btn btn-success" id="btnAbrirCaixa" title="ABRIR CAIXA">ABRIR CAIXA</span>
+							<span class="btn btn-success" id="btnFecharCaixa" title="FECHAR CAIXA">FECHAR CAIXA</span>
 						</div>
 					</form>
 				</div>
@@ -552,19 +545,19 @@ if (isset($_SESSION['User'])) {
     $('#btnCancelar').click(function() {	
 		
 	});
-    $('#btnAbrirCaixa').click(function() {	
+    $('#btnFecharCaixa').click(function() {	
 		dados = $('#frmConfirmarDados').serialize();
         $.ajax({
 		    type: "POST",
 		 	data: dados,
-		 	url: "./Procedimentos/Financeiro/AbrirCaixa.php",
+		 	url: "./Procedimentos/Financeiro/FecharCaixa.php",
 		 	success: function(r) {
                  if(r > 0){
                     $('#frmConfirmarDados')[0].reset();
-                    alertify.success("CAIXA ABERTO");
+                    alertify.success("CAIXA FECHADO");
                     $('#conteudo').load("./Views/Financeiro/FluxoCaixa.php");
                  }else{
-                    alertify.error("NÃO FOI POSSÍVEL ABRIR O CAIXA");
+                    alertify.error("NÃO FOI POSSÍVEL FECHAR O CAIXA");
                     return false;
                  }
 		 	}
@@ -586,9 +579,9 @@ if (isset($_SESSION['User'])) {
         const valorTotalNotas = calcularTotalNotas();
         const valorTotalMoedas = calcularTotalMoedas();
 
-        var caixaInicial = valorTotalNotas + valorTotalMoedas;
+        var caixaFinal = valorTotalNotas + valorTotalMoedas;
   
-        $("#caixaInicial").val("R$ " + caixaInicial);
+        $("#caixaFinal").val("R$ " + caixaFinal);
     }
 </script>
 <?php

@@ -25,7 +25,7 @@ if (isset($_SESSION['User'])) {
 					    <!-- DATA -->
 						<div class="col-md-4 col-sm-4 col-xs-4 itensFormulario">
 							<div>
-								<label>DATA<span class="required">*</span></label>
+								<label>REFERÊNCIA<span class="required">*</span></label>
                                 <input type="date" class="form-control input-sm align text-uppercase" id="data" name="data">
 							</div>
 						</div>
@@ -57,7 +57,6 @@ $('#btnGerar').click(function() {
         data: data,
         url: "./Procedimentos/Utilitarios/VerificarApontamentosDiario.php",
         success: function(r) {
-			debugger;
             if (r == 1) {
 				$('#frmRelatorioDiario')[0].reset();
 				window.open("./Procedimentos/Relatorios/CriarRelatorioDiario.php?data=" + data);

@@ -278,7 +278,22 @@ if (isset($_SESSION['User'])) {
   });
   // PEDIDOS
   $("#cadastrarPedido").click(function(e) {
-    $('#conteudo').load("./Views/Pedidos/CadastrarPedido.php");	
+    moment.locale('pt-br');
+    var data = moment().format('DD/MM/YYYY');
+    $.ajax({
+		  type: "POST",
+      data: "data=" + data,
+      url: "./Procedimentos/Financeiro/VerificarStatusCaixa.php",
+      success: function(r) {
+        retorno = $.parseJSON(r);
+        debugger;
+        if (retorno == "ABERTO") {
+          $('#conteudo').load("./Views/Pedidos/CadastrarPedido.php");	
+        } else {
+          alertify.error("VERIFIQUE O STATUS DO CAIXA");
+      	}
+      }
+	  });
   });
   $("#procurarPedido").click(function(e) {
     $('#conteudo').load("./Views/Pedidos/ProcurarPedidos.php");	

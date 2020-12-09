@@ -57,13 +57,20 @@ if (isset($_SESSION['User'])) {
     });
     
     function setStatusCaixa() {
+        var dados = $('#frmFluxoCaixa').serialize();
         $.ajax({
             type: "POST",
+            data: dados,
             url: "./Procedimentos/Financeiro/VerificarStatusCaixa.php",
             success: function(r) {
-                if (r == 1) {
+                retorno = $.parseJSON(r);
+                $("#status").val(retorno);
+                if (retorno == "ABERTO") {
                     $("#btnAbrirCaixa").hide();
                     $("#btnFecharCaixa").show();
+                } else if(retorno == "FECHADO"){
+                    $("#btnAbrirCaixa").hide();
+                    $("#btnFecharCaixa").hide();
                 } else {
                     $("#btnAbrirCaixa").show();
                     $("#btnFecharCaixa").hide();
@@ -74,6 +81,9 @@ if (isset($_SESSION['User'])) {
 
     $('#btnAbrirCaixa').click(function() {
         $('#conteudo').load("./Views/Financeiro/AbrirCaixa.php");	
+	});
+    $('#btnFecharCaixa').click(function() {
+        $('#conteudo').load("./Views/Financeiro/FecharCaixa.php");	
 	});
 </script>
 <?php
