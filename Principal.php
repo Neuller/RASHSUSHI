@@ -286,7 +286,6 @@ if (isset($_SESSION['User'])) {
       url: "./Procedimentos/Financeiro/VerificarStatusCaixa.php",
       success: function(r) {
         retorno = $.parseJSON(r);
-        debugger;
         if (retorno == "ABERTO") {
           $('#conteudo').load("./Views/Pedidos/CadastrarPedido.php");	
         } else {
@@ -307,7 +306,21 @@ if (isset($_SESSION['User'])) {
   });
   // RELATÓRIOS 
   $("#relatorioDiario").click(function(e) {
-      $('#conteudo').load("./Views/Relatorios/GerarRelatorioDiario.php");	
+    moment.locale('pt-br');
+    var data = moment().format('DD/MM/YYYY');
+    $.ajax({
+		  type: "POST",
+      data: "data=" + data,
+      url: "./Procedimentos/Financeiro/VerificarStatusCaixa.php",
+      success: function(r) {
+        retorno = $.parseJSON(r);
+        if (retorno == "FECHADO") {
+          $('#conteudo').load("./Views/Relatorios/GerarRelatorioDiario.php");	
+        } else {
+          alertify.error("VERIFIQUE O STATUS DO CAIXA");
+      	}
+      }
+	  });
   });
   // USUÁRIOS
   $("#cadastrarUsuario").click(function(e) {

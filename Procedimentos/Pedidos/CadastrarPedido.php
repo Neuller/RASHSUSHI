@@ -13,7 +13,8 @@
 		$_POST['formaPagamento'] = strtoupper($_POST['formaPagamento']),
 		$_POST['entregadorSelect'] = strtoupper($_POST['entregadorSelect']),
 		$_POST['realizarEntrega'] = strtoupper($_POST['realizarEntrega']),
-		$_POST['taxaEntregador'] = strtoupper($_POST['taxaEntregador'])
+		$_POST['taxaEntregador'] = strtoupper($_POST['taxaEntregador']),
+		$_POST['dataReferencia'] = strtoupper($_POST['dataReferencia'])
 	);
 
 	if(count($_SESSION['tabelaTemporaria']) == 0){

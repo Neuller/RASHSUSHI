@@ -30,7 +30,7 @@ $formaPagamento = $mostrar[13];
 ?>
 
 <html>
-<title>COMPROVANTE DE PEDIDO - RASHSUSHI</title>
+<title>CUPOM FISCAL - RASHSUSHI</title>
     <head>
         <link rel="stylesheet" type="text/css" href="../../Css/CupomFiscal.css">
     </head>

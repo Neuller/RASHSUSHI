@@ -7,9 +7,10 @@ class financas{
         $idUsuario = $_SESSION['IDUser'];
         date_default_timezone_set('America/Sao_Paulo');
         $dataHora = date('Y-m-d H:i:s');
+        $dataReferencia = $dados[3];
 
-        $sql = "INSERT into financas (id_usuario, descricao, tipo_financa, valor, data_hora) 
-        VALUES ('$idUsuario','$dados[0]', '$dados[1]','$dados[2]', '$dataHora')";
+        $sql = "INSERT into financas (id_usuario, descricao, tipo_financa, valor, data_hora, data_referencia) 
+        VALUES ('$idUsuario','$dados[0]', '$dados[1]','$dados[2]', '$dataHora', '$dataReferencia')";
         
         return mysqli_query($conexao, $sql);
     }

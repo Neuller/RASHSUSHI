@@ -347,7 +347,7 @@ if (isset($_SESSION['User'])) {
                         <!-- TAXA DO DIA -->
                         <div class="col-md-6 col-sm-6 col-xs-6 itensFormulario">
 							<div>
-								<label>TAXA DO DIA</label>
+								<label>TAXA DE ENTREGA FIXA DO DIA</label>
 								<input type="number"  class="form-control input-sm align text-uppercase" id="taxaDia" name="taxaDia">
 							</div>
 						</div>

@@ -30,7 +30,7 @@ if (isset($_SESSION['User'])) {
 							</div>
 						</div>
 						<!-- TIPO -->
-						<div class="col-md-6 col-sm-6 col-xs-6 itensFormulario">
+						<div class="col-md-4 col-sm-4 col-xs-4 itensFormulario">
 							<div>
                                 <label>TIPO<span class="required">*</span></label>
                                 <select class="form-control input-sm" id="tipoFinanca" name="tipoFinanca">
@@ -41,10 +41,17 @@ if (isset($_SESSION['User'])) {
 							</div>
 						</div>
 						<!-- VALOR -->
-						<div class="col-md-6 col-sm-6 col-xs-6 itensFormulario">
+						<div class="col-md-4 col-sm-4 col-xs-4 itensFormulario">
 							<div>
 					    		<label>VALOR<span class="required">*</span></label>
 								<input type="number" class="form-control input-sm text-uppercase" id="valor" name="valor" maxlenght="10">
+                            </div>
+						</div>
+						<!-- DATA DE REFERÊNCIA -->
+						<div class="col-md-4 col-sm-4 col-xs-4 itensFormulario">
+							<div>
+					    		<label>DATA DE REFERÊNCIA</label>
+								<input type="text" readonly class="form-control input-sm text-uppercase" id="data" name="data" maxlenght="50">
                             </div>
 						</div>
 						<!-- BOTÂO CADASTRAR -->
@@ -60,6 +67,9 @@ if (isset($_SESSION['User'])) {
 
 <script type="text/javascript">
 	$(document).ready(function($) {
+		moment.locale('pt-br');
+    	var data = moment().format('DD/MM/YYYY');
+		$("#data").val(data);
 	});
 
     $('#btnCadastrar').click(function() {
@@ -82,6 +92,7 @@ if (isset($_SESSION['User'])) {
                 if (r == 1) {
                     $('#frmFinanca')[0].reset();
                     alertify.success("CADASTRO REALIZADO");
+					$('#conteudo').load("./Views/Inicio/Inicio.php");
                 } else {
                     alertify.error("NÃO FOI POSSÍVEL CADASTRAR");
                 }

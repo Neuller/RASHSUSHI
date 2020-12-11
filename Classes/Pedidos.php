@@ -17,15 +17,16 @@ class pedidos {
         $idEntregador = $dados[4];
         $realizarEntrega = $dados[5];
         $taxaEntregador = $dados[6];
+        $dataReferencia = $dados[7];
         $r = 0;
 
         for ($i = 0; $i < count($dadosTabela) ; $i++) { 
             $d = explode("||", $dadosTabela[$i]);
 
             $sql = "INSERT INTO pedidos (id_pedido, id_cliente, id_produto, id_usuario, id_entregador, descricao, quantidade_itens, 
-            valor_total, status, data_hora_pedido, endereco_entrega, troco, valor_pagamento, forma_pagamento, data, realizar_entrega, taxa_entrega)
+            valor_total, status, data_hora_pedido, endereco_entrega, troco, valor_pagamento, forma_pagamento, data, realizar_entrega, taxa_entrega, data_referencia)
             VALUES ('$idPedido', '$d[6]', '$d[0]', '$idUsuario', '$idEntregador','$d[1]', '$d[4]', '$d[5]', 'EM ABERTO', '$dataHora', '$enderecoEntrega', 
-            '$troco', '$valorPagamento', '$formaPagamento', '$data', '$realizarEntrega', '$taxaEntregador')";
+            '$troco', '$valorPagamento', '$formaPagamento', '$data', '$realizarEntrega', '$taxaEntregador', '$dataReferencia')";
 
             $r = $r + $result = mysqli_query($conexao, $sql);
         }

@@ -111,7 +111,7 @@ if (isset($_SESSION['User'])) {
                             <hr>
                         </div>
                         <!-- PRODUTO -->
-                        <div class="col-xs-6 col-md-6 col-sm-6 itensFormulario">
+                        <div class="col-xs-4 col-md-4 col-sm-4 itensFormulario">
                             <div>
                                 <label>PRODUTO</label>
                                 <select class="form-control input-sm" id="produtoSelect" name="produtoSelect">
@@ -127,12 +127,19 @@ if (isset($_SESSION['User'])) {
                             </div>
                         </div>
                         <!-- MEDIDA -->
-                        <div class="col-xs-6 col-md-6 col-sm-6 itensFormulario">
+                        <div class="col-xs-4 col-md-4 col-sm-4 itensFormulario">
                             <div>
                                 <label>MEDIDA</label>
                                 <select class="form-control input-sm" id="medidaSelect" name="medidaSelect">
                                     <option value="">SELECIONE UMA OPÇÃO DE MEDIDA</option>
                                 </select>
+                            </div>
+                        </div>
+                        <!-- DATA DE REFERÊNCIA -->
+                        <div class="col-xs-4 col-md-4 col-sm-4 itensFormulario">
+                            <div>
+                                <label>DATA DE REFERÊNCIA</label>
+                                <input readonly type="text" class="form-control input-sm text-uppercase" id="dataReferencia" name="dataReferencia" maxlenght="50">
                             </div>
                         </div>
                         <!-- DESCRIÇÃO DO PRODUTO -->
@@ -227,6 +234,9 @@ if (isset($_SESSION['User'])) {
         $("#divEndereco").hide();
         $("#divEntregador").hide();
         $("#divTaxaEntregador").hide();
+        moment.locale('pt-br');
+        var data = moment().format('DD/MM/YYYY');
+        $("#dataReferencia").val(data);
 
         $("#clienteSelect").change(function(){
             const cliente = $("#clienteSelect").val();
@@ -445,6 +455,7 @@ if (isset($_SESSION['User'])) {
 			return false;
         }else{
             const troco = valorPagtoFormat - valorTotalFormat;
+            debugger;
             var eNaN = Number.isNaN(troco);
             if(eNaN == true){
                 $("#troco").val("");

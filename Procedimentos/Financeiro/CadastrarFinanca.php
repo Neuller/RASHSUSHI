@@ -9,7 +9,8 @@
 	$dados = array(
 		$_POST['descricao'] = strtoupper($_POST['descricao']),		
 		$_POST['tipoFinanca'] = strtoupper($_POST['tipoFinanca']),
-		$_POST['valor'] = strtoupper($_POST['valor'])
+		$_POST['valor'] = strtoupper($_POST['valor']),
+		$_POST['data'] = strtoupper($_POST['data'])
 	);
 
 	echo $obj-> cadastrarFinanca($dados);
