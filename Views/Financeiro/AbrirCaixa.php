@@ -373,43 +373,43 @@ if (isset($_SESSION['User'])) {
     // ETAPA 1
     $('#nota2').change(function() {
         const valorTotal = calcularTotalNotas();
-        $("#valorTotalNotas").val("R$ " + valorTotal + ",00");
+        $("#valorTotalNotas").val(valorTotal);
         const qtdNotas = calcularQtdNotas();
         $("#qtdNotas").val(qtdNotas);
     });
     $('#nota5').change(function() {
         const valorTotal = calcularTotalNotas();
-        $("#valorTotalNotas").val("R$ " + valorTotal + ",00");
+        $("#valorTotalNotas").val(valorTotal);
         const qtdNotas = calcularQtdNotas();
         $("#qtdNotas").val(qtdNotas);
     });
     $('#nota10').change(function() {
         const valorTotal = calcularTotalNotas();
-        $("#valorTotalNotas").val("R$ " + valorTotal + ",00");
+        $("#valorTotalNotas").val(valorTotal);
         const qtdNotas = calcularQtdNotas();
         $("#qtdNotas").val(qtdNotas);
     });
     $('#nota20').change(function() {
         const valorTotal = calcularTotalNotas();
-        $("#valorTotalNotas").val("R$ " + valorTotal + ",00");
+        $("#valorTotalNotas").val(valorTotal);
         const qtdNotas = calcularQtdNotas();
         $("#qtdNotas").val(qtdNotas);
     });
     $('#nota50').change(function() {
         const valorTotal = calcularTotalNotas();
-        $("#valorTotalNotas").val("R$ " + valorTotal + ",00");
+        $("#valorTotalNotas").val(valorTotal);
         const qtdNotas = calcularQtdNotas();
         $("#qtdNotas").val(qtdNotas);
     });
     $('#nota100').change(function() {
         const valorTotal = calcularTotalNotas();
-        $("#valorTotalNotas").val("R$ " + valorTotal + ",00");
+        $("#valorTotalNotas").val(valorTotal);
         const qtdNotas = calcularQtdNotas();
         $("#qtdNotas").val(qtdNotas);
     });
     $('#nota200').change(function() {
         const valorTotal = calcularTotalNotas();
-        $("#valorTotalNotas").val("R$ " + valorTotal + ",00");
+        $("#valorTotalNotas").val(valorTotal);
         const qtdNotas = calcularQtdNotas();
         $("#qtdNotas").val(qtdNotas);
     });
@@ -469,31 +469,31 @@ if (isset($_SESSION['User'])) {
     // ETAPA 2
     $('#moeda5').change(function() {
         const valorTotal = calcularTotalMoedas();
-        $("#valorTotalMoedas").val("R$ " + valorTotal);
+        $("#valorTotalMoedas").val(valorTotal);
         const qtdMoedas = calcularQtdMoedas();
         $("#qtdMoedas").val(qtdMoedas);
 	});
 	$('#moeda10').change(function() {
         const valorTotal = calcularTotalMoedas();
-        $("#valorTotalMoedas").val("R$ " + valorTotal);
+        $("#valorTotalMoedas").val(valorTotal);
         const qtdMoedas = calcularQtdMoedas();
         $("#qtdMoedas").val(qtdMoedas);
 	});
 	$('#moeda25').change(function() {
         const valorTotal = calcularTotalMoedas();
-        $("#valorTotalMoedas").val("R$ " + valorTotal);
+        $("#valorTotalMoedas").val(valorTotal);
         const qtdMoedas = calcularQtdMoedas();
         $("#qtdMoedas").val(qtdMoedas);
 	});
 	$('#moeda50').change(function() {
         const valorTotal = calcularTotalMoedas();
-        $("#valorTotalMoedas").val("R$ " + valorTotal);
+        $("#valorTotalMoedas").val(valorTotal);
         const qtdMoedas = calcularQtdMoedas();
         $("#qtdMoedas").val(qtdMoedas);
 	});
 	$('#moeda100').change(function() {
         const valorTotal = calcularTotalMoedas();
-        $("#valorTotalMoedas").val("R$ " + valorTotal);
+        $("#valorTotalMoedas").val(valorTotal);
         const qtdMoedas = calcularQtdMoedas();
         $("#qtdMoedas").val(qtdMoedas);
     });
@@ -588,7 +588,7 @@ if (isset($_SESSION['User'])) {
 
         var caixaInicial = valorTotalNotas + valorTotalMoedas;
   
-        $("#caixaInicial").val("R$ " + caixaInicial);
+        $("#caixaInicial").val(caixaInicial);
     }
 </script>
 <?php

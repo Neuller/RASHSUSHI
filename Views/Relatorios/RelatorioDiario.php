@@ -60,7 +60,7 @@ $totalPedidos = mysqli_fetch_assoc($result);
                 <!-- VALOR TOTAL DE NOTAS -->
                 <div class="itemForm">
                     <span class="subItemForm">VALOR TOTAL DE NOTAS: </span>
-                    <span><?php echo $caixaInicial[1]?></span>
+                    <span><?php echo "R$ ".$caixaInicial[1]?></span>
                 </div>
                 <!-- QUANTIDADE DE MOEDAS -->
                 <div class="itemForm">
@@ -70,12 +70,12 @@ $totalPedidos = mysqli_fetch_assoc($result);
                 <!-- VALOR TOTAL DE MOEDAS -->
                 <div class="itemForm">
                     <span class="subItemForm">VALOR TOTAL DE MOEDAS: </span>
-                    <span><?php echo $caixaInicial[3]?></span>
+                    <span><?php echo "R$ ".$caixaInicial[3]?></span>
                 </div>
                 <!-- VALOR TOTAL -->
                 <div class="itemForm">
                     <span class="subItemForm">VALOR TOTAL: </span>
-                    <span><?php echo $caixaInicial[4]?></span>
+                    <span><?php echo "R$ ".$caixaInicial[4]?></span>
                 </div>
 
                 <!-- PEDIDOS -->
@@ -170,7 +170,7 @@ $totalPedidos = mysqli_fetch_assoc($result);
                 <!-- VALOR TOTAL DE NOTAS -->
                 <div class="itemForm">
                     <span class="subItemForm">VALOR TOTAL DE NOTAS: </span>
-                    <span><?php echo $caixaFinal[1]?></span>
+                    <span><?php echo "R$ ".$caixaFinal[1]?></span>
                 </div>
                 <!-- QUANTIDADE DE MOEDAS -->
                 <div class="itemForm">
@@ -180,12 +180,12 @@ $totalPedidos = mysqli_fetch_assoc($result);
                 <!-- VALOR TOTAL DE MOEDAS -->
                 <div class="itemForm">
                     <span class="subItemForm">VALOR TOTAL DE MOEDAS: </span>
-                    <span><?php echo $caixaFinal[3]?></span>
+                    <span><?php echo "R$ ".$caixaFinal[3]?></span>
                 </div>
                 <!-- VALOR TOTAL -->
                 <div class="itemForm">
                     <span class="subItemForm">VALOR TOTAL: </span>
-                    <span><?php echo $caixaFinal[4]?></span>
+                    <span><?php echo "R$ ".$caixaFinal[4]?></span>
                 </div>
 
                 <!-- FINANCEIRO -->
