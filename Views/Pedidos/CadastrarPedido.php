@@ -410,6 +410,7 @@ if (isset($_SESSION['User'])) {
                     $("#enderecoEntrega").val("").change();
                     $("#divTaxaEntregador").hide();
                     alertify.success("CADASTRO REALIZADO");
+                    $('#conteudo').load("./Views/Inicio/Inicio.php");
                     // IMPRIMIR COMPROVANTE?
                     alertify.confirm('ATENÇÃO', 'DESEJA IMPRIMIR COMPROVANTE?', function(){
                         const ultimoPedido = r;
@@ -472,11 +473,6 @@ if (isset($_SESSION['User'])) {
         $("#troco").val("");
     });
 </script>
-<style>
-	.cabecalho {
-		margin-bottom: 50px;
-	}
-</style>
 <?php
 } else {
 	header("location:./index.php");

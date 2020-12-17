@@ -91,8 +91,10 @@ if (isset($_SESSION['User'])) {
             success: function(r) {
                 if (r == 1) {
                     $('#frmFinanca')[0].reset();
+					moment.locale('pt-br');
+					var data = moment().format('DD/MM/YYYY');
+					$("#data").val(data);
                     alertify.success("CADASTRO REALIZADO");
-					$('#conteudo').load("./Views/Inicio/Inicio.php");
                 } else {
                     alertify.error("NÃO FOI POSSÍVEL CADASTRAR");
                 }

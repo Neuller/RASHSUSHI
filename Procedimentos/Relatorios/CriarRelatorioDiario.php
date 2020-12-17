@@ -28,5 +28,5 @@ $pdf -> load_html($html);
  
 $pdf -> render();
  
-$pdf -> stream('RashSushi-RelatorioDiario.pdf', array("Attachment" => 0));
+$pdf -> stream("RASHSUSHI-RELATORIO-DIARIO.pdf", array("Attachment" => 0));
 ?>

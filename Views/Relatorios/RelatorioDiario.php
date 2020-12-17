@@ -34,7 +34,6 @@ $totalPedidos = mysqli_fetch_assoc($result);
             <div class="cabecalho">
                 <div class="titulo">RELATÓRIO DIÁRIO - RASHSUSHI</div>
                 <div class="titulo"><?php echo $data ?></div>
-                <hr>
             </div>
         </div>
 
@@ -105,13 +104,43 @@ $totalPedidos = mysqli_fetch_assoc($result);
                 </div>
                 <!-- TOTAL DE TROCO -->
                 <?php
-                    $sql = "SELECT SUM(valor_total) FROM pedidos WHERE data_referencia = '$data'";
+                    $sql = "SELECT SUM(troco) FROM pedidos WHERE data_referencia = '$data'";
                     $resultado = mysqli_query($conexao, $sql);
-                    $valorTotalPedidos = mysqli_fetch_row($resultado);
+                    $troco = mysqli_fetch_row($resultado);
                 ?> 
                 <div class="itemForm">
                     <span class="subItemForm">VALOR TOTAL DE TROCO: </span>
-                    <span>A DESENVOLVER</span>
+                    <span><?php echo "R$ ".$troco[0]?></span>
+                </div>
+                <!-- PAGAMENTOS EM DINHEIRO -->
+                <?php
+                    $sql = "SELECT COUNT(id_pedido) FROM pedidos WHERE forma_pagamento = 'DINHEIRO' AND data_referencia = '$data'";
+                    $resultado = mysqli_query($conexao, $sql);
+                    $pagtoDinheiro = mysqli_fetch_row($resultado);
+                ?> 
+                <div class="itemForm">
+                    <span class="subItemForm">PAGAMENTOS EM DINHEIRO: </span>
+                    <span><?php echo $pagtoDinheiro[0]?></span>
+                </div>
+                <!-- PAGAMENTOS NO DÉBITO -->
+                <?php
+                    $sql = "SELECT COUNT(id_pedido) FROM pedidos WHERE forma_pagamento = 'DEBITO' AND data_referencia = '$data'";
+                    $resultado = mysqli_query($conexao, $sql);
+                    $pagtoDebito = mysqli_fetch_row($resultado);
+                ?> 
+                <div class="itemForm">
+                    <span class="subItemForm">PAGAMENTOS NO DÉBITO: </span>
+                    <span><?php echo $pagtoDebito[0]?></span>
+                </div>
+                <!-- PAGAMENTOS NO CRÉDITO -->
+                <?php
+                    $sql = "SELECT COUNT(id_pedido) FROM pedidos WHERE forma_pagamento = 'CREDITO' AND data_referencia = '$data'";
+                    $resultado = mysqli_query($conexao, $sql);
+                    $pagtoCredito = mysqli_fetch_row($resultado);
+                ?> 
+                <div class="itemForm">
+                    <span class="subItemForm">PAGAMENTOS NO CRÉDITO: </span>
+                    <span><?php echo $pagtoCredito[0]?></span>
                 </div>
 
                 <!-- ENTREGAS -->
@@ -213,21 +242,34 @@ $totalPedidos = mysqli_fetch_assoc($result);
                 ?> 
                 <div class="itemForm">
                     <span class="subItemForm">CRÉDITO FINANÇAS: </span>
-                    <span><?php echo "R$ ".$creditoFinancas[0]?></span>
+                    <span>
+                        <?php 
+                        if(($creditoFinancas != "") || ($creditoFinancas != null) || ($creditoFinancas != 0)){
+                            echo "R$ ".$creditoFinancas[0];
+                        }
+                        ?>
+                    </span>
                 </div>
 
                 <!-- RESULTADOS -->
                 <div class="formulario">
                     <span class="titulo">RESULTADOS</span>
                     <hr>
+                    <div class="text-justify msgResultados">
+                        <span>
+                            CONSISTE NO RESULTADO DE VALOR TOTAL DO CAIXA FINAL JUNTO AO CRÉDITO FINANCEIRO MENOS DÉBITOS COMO: FINANCEIRO, TAXA DE ENTREGA FIXA E TOTAL DE TAXAS DE ENTREGAS.
+                        </span>
+                    </div>
                 </div>
-                <!-- VALOR TOTAL(LÍQUIDO) -->
+                <!-- VALOR TOTAL(RESULTADOS) -->
                 <?php
-                    $valorTotalLiquido = $valorTotalPedidos[0] - $taxaEntregas[0];
+                    $resultados = 0;
+                    $resultados = $caixaFinal[4] + $creditoFinancas[0];
+                    $resultados = $resultados - $debitoFinancas[0] - $taxaFixa[0] - $taxaEntregas[0];
                 ?> 
                 <div class="itemForm">
-                    <span class="subItemForm">VALOR TOTAL(LÍQUIDO): </span>
-                    <span><?php echo $valorTotalLiquido?></span>
+                    <span class="subItemForm">VALOR TOTAL: </span>
+                    <span><?php echo "R$ ".$resultados?></span>
                 </div>
             </form>
         </div>
