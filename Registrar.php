@@ -32,34 +32,36 @@ if (mysqli_num_rows($result) > 0) {
 					<div class="panel panel-body">
 						<!-- FORMULÁRIO -->
 						<form id="frmRegistro" class="col-md-12 col-sm-12 col-xs-12">
-							<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
+							<div class="col-md-12 col-sm-12 col-xs-12 itensFormulario">
 								<div>
 									<label>USUÁRIO<span class="required">*</span></label>
 									<input type="text" class="form-control input-sm text-uppercase" id="usuario" name="usuario" maxlenght="100">
 								</div>
 							</div>
-							<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
+							<div class="col-md-12 col-sm-12 col-xs-12 itensFormulario">
 								<div>
 									<label>NOME COMPLETO<span class="required">*</span></label>
 									<input type="text" class="form-control input-sm text-uppercase" name="nome" id="nome" maxlenght="100">
 								</div>
 							</div>
-							<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
+							<div class="col-md-12 col-sm-12 col-xs-12 itensFormulario">
 								<div>
 									<label>E-MAIL<span class="required">*</span></label>
 									<input type="text" class="form-control input-sm text-uppercase" id="email" name="email" maxlenght="100">
 								</div>
 							</div>
-							<div class="mb-20px col-md-12 col-sm-12 col-xs-12 itensFormularioCadastro">
+							<div class="col-md-12 col-sm-12 col-xs-12 itensFormulario">
 								<div>
 									<label>SENHA<span class="required">*</span></label>
 									<input type="password" class="form-control input-sm text-uppercase" id="senha"  name="senha" maxlenght="100">
 								</div>
 							</div>
-							<!-- BOTOES -->
-							<div class="btns">
-								<span class="btn btn-danger btn-sm" id="registrar" title="REGISTRAR">REGISTRAR</span>
-								<a class="btn btn-default" href="./index.php" title="VOLTAR">VOLTAR</a>
+							<!-- BOTÕES -->
+							<div class="col-md-12 col-sm-12 col-xs-12 cabecalho bgGray">
+								<div class="btnRight">
+									<a class="btn btn-default" href="./index.php" title="VOLTAR">VOLTAR</a>
+									<span class="btn btn-danger" id="registrar" title="REGISTRAR">REGISTRAR</span>
+								</div>
 							</div>
 						</form>
 					</div>

@@ -1,4 +1,3 @@
-<!-- VERIFICA SESSÃO LOGADA -->
 <?php
 session_start();
 if (isset($_SESSION['User'])) {
@@ -102,13 +101,7 @@ if (isset($_SESSION['User'])) {
 				alertify.error('OPERAÇÃO CANCELADA')
 			});
 		}
-	</script>
-
-<style>
-	.cabecalho {
-		margin-bottom: 50px;
-	}
-</style>
+</script>
 <?php
 } else {
 	header("location:./index.php");
